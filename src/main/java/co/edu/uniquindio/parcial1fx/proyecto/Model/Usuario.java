@@ -1,3 +1,4 @@
+package co.edu.uniquindio.parcial1fx.proyecto.Model;
 public class Usuario {
 
     private String nombre;
