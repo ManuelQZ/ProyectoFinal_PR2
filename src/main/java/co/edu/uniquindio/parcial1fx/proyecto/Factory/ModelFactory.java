@@ -1,14 +1,16 @@
 package co.edu.uniquindio.parcial1fx.proyecto.Factory;
 
-Public class ModelFactory(){
+import co.edu.uniquindio.parcial1fx.proyecto.Model.Usuario;
+
+public class ModelFactory{
 
     private static ModelFactory modelFactory;
 
-    private PrestamoObjeto prestamoObjeto;
+    private ProductivityPalaceArcade arcade;
 
 
     private ModelFactory(){
-        prestamoObjeto = new PrestamoObjeto();
+        this.arcade = new ProductivityPalaceArcade();
         inicializarDatos();
     }
 
@@ -20,48 +22,32 @@ Public class ModelFactory(){
     }
 
     private void inicializarDatos() {
-        Cliente cliente1 = Cliente.builder()
-                .cedula("1094")
-                .nombre("juan")
-                .apellido("arias")
-                .direccion("armenia")
-                .edad(17)
-                .build();
+        Usuario usuario1 = new Usuario(
+                "JorgeAniquilador" ,
+                "Jorgeaniquilador@gmail.com",
+                "300");
+        Usuario usuario2 = new Usuario(
+                "MariaGamer",
+                "mariagamer@hotmail.com",
+                "500");
+        Usuario usuario3 = new Usuario(
+                "PedroPlayer",
+                "pedroplayer@gmail.com",
+                "200");
 
-        Cliente cliente2 = Cliente.builder()
-                .cedula("1095")
-                .nombre("Ana")
-                .apellido("cardenas")
-                .direccion("quimbaya")
-                .edad(25)
-                .build();
-
-        Cliente cliente3 = Cliente.builder()
-                .cedula("1096")
-                .nombre("Pedro")
-                .apellido("perez")
-                .direccion("armenia")
-                .edad(40)
-                .build();
-
-        prestamoObjeto.getListaClientes().add(cliente1);
-        prestamoObjeto.getListaClientes().add(cliente2);
-        prestamoObjeto.getListaClientes().add(cliente3);
+        arcade.getListaUsuario().add(usuario1);
+        arcade.getListaUsuario().add(usuario2);
+        arcade.getListaUsuario().add(usuario3);
     }
 
 
-    public boolean crearCliente(String cedula,
-                                String nombre,
-                                String apellido,
-                                String email,
-                                String telefonoFijo,
-                                String telefonoCelular,
-                                String direccion){
-        return prestamoObjeto.crearCliente(cedula,nombre,apellido,email,telefonoFijo,telefonoCelular,direccion);
+    public Usuario crearUsuario(String nombre,
+                                String correo,
+                                String saldo){
+        return new Usuario(nombre,correo,saldo);
     }
 
-    public String obtenerClientesPorCiudad(String ciudad) {
-        return prestamoObjeto.obtenerClientesPorCiudad(ciudad);
-    }
+    public ProductivityPalaceArcade getArcade() {
+        return arcade;
     }
 }

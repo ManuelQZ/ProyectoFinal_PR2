@@ -3,12 +3,12 @@ public class Usuario {
 
     private String nombre;
     private String correo;
-    private Double Saldo;
+    private String saldo;
 
-    public Usuario(String nombre, String correo, Double saldo) {
+    public Usuario (String nombre, String correo, String saldo) {
         this.nombre = nombre;
         this.correo = correo;
-        Saldo = saldo;
+        this.saldo = saldo;
     }
 
     public String getNombre() {
@@ -27,11 +27,11 @@ public class Usuario {
         this.correo = correo;
     }
 
-    public Double getSaldo() {
-        return Saldo;
+    public String getSaldo() {
+        return saldo;
     }
 
-    public void setSaldo(Double saldo) {
-        Saldo = saldo;
+    public void setSaldo(String saldo) {
+        this.saldo = saldo;
     }
 }
