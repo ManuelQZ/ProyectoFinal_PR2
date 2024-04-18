@@ -14,6 +14,27 @@ public class UsuarioController {
         this.factory = ModelFactory.getInstancia();
     }
 
+    public ArrayList<Usuario> filtrarUsuario(Boolean esCorreo, String busqueda) {
+        ArrayList<Usuario> usuarios = factory.getArcade().getListaUsuario();
+        ArrayList<Usuario> usuariosFiltrado = new ArrayList<>();
+        if (esCorreo) {
+            for (Usuario usuario : usuarios) {
+                if (Objects.equals(usuario.getCorreo(), busqueda)) {
+                    usuariosFiltrado.add(usuario);
+                }
+            }
+        }
+        else {
+            for (Usuario usuario : usuarios) {
+                if (Objects.equals(usuario.getNombre(), busqueda)) {
+                    usuariosFiltrado.add(usuario);
+                }
+            }
+        }
+
+        return usuariosFiltrado;
+    }
+
     public void crearUsuario(String nombre, String correo, String saldo){
         factory.crearUsuario(nombre, correo, saldo);
     }
