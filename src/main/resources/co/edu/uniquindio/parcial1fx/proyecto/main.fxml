@@ -84,6 +84,7 @@
                         <TableColumn fx:id="columSaldo" prefWidth="152.0" text="Saldo" />
                     </columns>
                   </TableView>
+                  <Button layoutX="398.0" layoutY="107.0" mnemonicParsing="false" onAction="#buscarUsuario" text="Buscar" />
                </children></AnchorPane>
          </content>
       </Tab>

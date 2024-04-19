@@ -59,6 +59,21 @@ public class MainController {
     }
 
     @FXML
+    void buscarUsuario(ActionEvent event) {
+        columNombre.setCellValueFactory(cellData -> cellData.getValue().nombreProperty());
+        columCorreo.setCellValueFactory(cellData -> cellData.getValue().correoProperty());
+        columSaldo.setCellValueFactory(cellData -> cellData.getValue().saldoProperty().asObject().asString());
+
+        UsuarioController controller = new UsuarioController();
+
+        ArrayList<Usuario> usuarios = controller.filtrarUsuario(radioBuscarCorrreo.isSelected(), textFiltro.getText());
+
+        ObservableList<Usuario> listaUsuarios = FXCollections.observableArrayList();
+        listaUsuarios.addAll(usuarios);
+    }
+
+
+    @FXML
     void removeUsuario(ActionEvent event) {
 
     }
@@ -66,11 +81,12 @@ public class MainController {
     @FXML
     void updateUsuario(ActionEvent event) {
 
-    @FXML
-    void initialize() { // TODO: investigar como convertir datos a datos observables
-        columNombre.setCellValueFactory(cellData -> cellData.getValue().getNombre());
-        columCorreo.setCellValueFactory(cellData -> cellData.getValue().getCorreo());
-        columSaldo.setCellValueFactory(cellData -> cellData.getValue().getSaldo());
+    }
+
+     void initialize () {
+        columNombre.setCellValueFactory(cellData -> cellData.getValue().nombreProperty());
+        columCorreo.setCellValueFactory(cellData -> cellData.getValue().correoProperty());
+        columSaldo.setCellValueFactory(cellData -> cellData.getValue().saldoProperty().asObject().asString());
 
         UsuarioController controller = new UsuarioController();
 
