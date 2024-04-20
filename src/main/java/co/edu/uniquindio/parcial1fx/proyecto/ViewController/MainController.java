@@ -6,22 +6,28 @@ import java.util.ResourceBundle;
 
 import co.edu.uniquindio.parcial1fx.proyecto.Controller.UsuarioController;
 import co.edu.uniquindio.parcial1fx.proyecto.Model.Usuario;
+import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.RadioButton;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 
 public class MainController {
+
+    UsuarioController usuarioController;
+
+    ObservableList<Usuario> listaUsuarios = FXCollections.observableArrayList();
+
 
     @FXML
     private ResourceBundle resources;
 
     @FXML
     private URL location;
+
+    @FXML
+    private Button btnBuscar;
 
     @FXML
     private TableColumn<Usuario, String> columCorreo;
@@ -59,25 +65,58 @@ public class MainController {
     }
 
     @FXML
+    void filtrarUsuario(ActionEvent event) {
+        obtenerUsuarios();
+        tableViewUsuario.getItems().clear();
+        tableViewUsuario.setItems(listaUsuarios);
+    }
+
+    @FXML
     void removeUsuario(ActionEvent event) {
 
     }
 
     @FXML
-    void updateUsuario(ActionEvent event) {
+    void updateUsuario(ActionEvent event) {}
 
     @FXML
-    void initialize() { // TODO: investigar como convertir datos a datos observables
-        columNombre.setCellValueFactory(cellData -> cellData.getValue().getNombre());
-        columCorreo.setCellValueFactory(cellData -> cellData.getValue().getCorreo());
-        columSaldo.setCellValueFactory(cellData -> cellData.getValue().getSaldo());
-
-        UsuarioController controller = new UsuarioController();
-
-        ArrayList<Usuario> usuarios = controller.filtrarUsuario(radioBuscarCorrreo.isSelected(), textFiltro.getText());
-
-        ObservableList<Usuario> listaUsuarios = FXCollections.observableArrayList();
-        listaUsuarios.addAll(usuarios);
-
+    void initialize() {
+        usuarioController = new UsuarioController();
+        initView();
     }
+
+    private void initView(){
+        initDataBinding();
+        obtenerUsuarios();
+        tableViewUsuario.getItems().clear();
+        tableViewUsuario.setItems(listaUsuarios);
+    }
+
+    private void initDataBinding(){
+        columNombre.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getNombre()));
+        columCorreo.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getCorreo()));
+        columSaldo.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getSaldo()));
+    }
+
+    private void obtenerUsuarios () {
+        System.out.println("paso por huevo landia mamahuevo");
+        listaUsuarios.addAll(usuarioController.obtenerUsuario());
+    }
+
+//    private void agregarUsuarios() {
+//        if(validarFormulario()){
+//            usuarioController = crearUsuario();
+//            if(usuarioController.crearUsuario(Usuario);){
+//                listaUsuarios.add(Usuario);
+//                mostrarMensaje("Notificación cliente", "Cliente creado", "El cliente se ha creado con éxito", Alert.AlertType.INFORMATION);
+//                limpiarCamposEmpleado();
+//            }else{
+//                mostrarMensaje("Notificación cliente", "Cliente no creado", "El cliente no se ha creado con éxito", Alert.AlertType.ERROR);
+//            }
+//        }else{
+//            mostrarMensaje("Notificación cliente", "Cliente no creado", "Los datos ingresados son invalidos", Alert.AlertType.ERROR);
+//        }
+//
 }
+
+
