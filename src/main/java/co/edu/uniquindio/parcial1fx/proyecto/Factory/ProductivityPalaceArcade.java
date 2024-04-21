@@ -1,4 +1,4 @@
-package co.edu.uniquindio.parcial1fx.proyecto.Model;
+package co.edu.uniquindio.parcial1fx.proyecto.Factory;
 
 import java.util.ArrayList;
 import co.edu.uniquindio.parcial1fx.proyecto.Model.*;

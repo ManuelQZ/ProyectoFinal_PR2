@@ -1,6 +1,5 @@
 package co.edu.uniquindio.parcial1fx.proyecto.Factory;
 
-import co.edu.uniquindio.parcial1fx.proyecto.Model.ProductivityPalaceArcade;
 import co.edu.uniquindio.parcial1fx.proyecto.Model.Usuario;
 
 public class ModelFactory{

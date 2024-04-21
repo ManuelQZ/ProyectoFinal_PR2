@@ -35,12 +35,8 @@ public class UsuarioController {
         return usuariosFiltrado;
     }
 
-    public ArrayList<Usuario> obtenerUsuario(){
-        return factory.getArcade().getListaUsuario();
-    }
-
-    public Usuario crearUsuario(String nombre, String correo, String saldo){
-        return factory.crearUsuario(nombre, correo, saldo);
+    public void crearUsuario(String nombre, String correo, String saldo){
+        factory.crearUsuario(nombre, correo, saldo);
     }
 
     public void eliminarUsuario(String correo){
