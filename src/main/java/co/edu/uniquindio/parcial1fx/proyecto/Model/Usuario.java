@@ -1,8 +1,4 @@
 package co.edu.uniquindio.parcial1fx.proyecto.Model;
-
-import javafx.beans.binding.BooleanExpression;
-import javafx.beans.value.ObservableValue;
-
 public class Usuario {
 
     private String nombre;
@@ -37,17 +33,5 @@ public class Usuario {
 
     public void setSaldo(String saldo) {
         this.saldo = saldo;
-    }
-
-    public ObservableValue<String> correoProperty() {
-        return null;
-    }
-
-    public ObservableValue<String> nombreProperty() {
-        return null;
-    }
-
-    public BooleanExpression saldoProperty() {
-    return null;
     }
 }
