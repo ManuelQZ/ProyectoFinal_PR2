@@ -61,7 +61,34 @@ public class MainController {
 
     @FXML
     void addUsuario(ActionEvent event) {
+        System.out.println(validarFormulario());
 
+        if(validarFormulario()){
+            Usuario usuario = usuarioController.crearUsuario(txtnombre.getText(), txtCorreo.getText(), txtSaldo.getText());
+            if(!listaUsuarios.contains(usuario)){
+                listaUsuarios.add(usuario);
+                mostrarMensaje("Notificación cliente", "Cliente creado", "El cliente se ha creado con éxito", Alert.AlertType.INFORMATION);
+                limpiarCampos();
+            }else{
+                mostrarMensaje("Notificación cliente", "Cliente no creado", "El usuario especificado ya existe", Alert.AlertType.ERROR);
+            }
+        }else{
+            mostrarMensaje("Notificación cliente", "Cliente no creado", "Los datos ingresados son invalidos", Alert.AlertType.ERROR);
+        }
+    }
+
+    private void mostrarMensaje(String title, String header, String message, Alert.AlertType type){
+        Alert alert = new Alert(type);
+        alert.setTitle(title);
+        alert.setHeaderText(header);
+        alert.setContentText(message);
+        alert.showAndWait();
+    }
+
+    private void limpiarCampos(){
+        txtnombre.setText("");
+        txtCorreo.setText("");
+        txtSaldo.setText("");
     }
 
     @FXML
@@ -98,8 +125,16 @@ public class MainController {
         columSaldo.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getSaldo()));
     }
 
+    private boolean validarFormulario(){
+        boolean cond = txtnombre.getText().isEmpty() || txtCorreo.getText().isEmpty() || txtSaldo.getText().isEmpty();
+        if (cond){
+            return false;
+        } else {
+            return  true;
+        }
+    }
+
     private void obtenerUsuarios () {
-        System.out.println("paso por huevo landia mamahuevo");
         listaUsuarios.addAll(usuarioController.obtenerUsuario());
     }
 

@@ -39,8 +39,8 @@ public class UsuarioController {
         return factory.getArcade().getListaUsuario();
     }
 
-    public void crearUsuario(String nombre, String correo, String saldo){
-        factory.crearUsuario(nombre, correo, saldo);
+    public Usuario crearUsuario(String nombre, String correo, String saldo){
+        return factory.crearUsuario(nombre, correo, saldo);
     }
 
     public void eliminarUsuario(String correo){
