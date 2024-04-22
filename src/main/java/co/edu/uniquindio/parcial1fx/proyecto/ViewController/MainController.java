@@ -19,6 +19,8 @@ public class MainController {
 
     ObservableList<Usuario> listaUsuarios = FXCollections.observableArrayList();
 
+    Usuario usuarioProcesado;
+
 
     @FXML
     private ResourceBundle resources;
@@ -64,9 +66,17 @@ public class MainController {
         System.out.println(validarFormulario());
 
         if(validarFormulario()){
-            Usuario usuario = usuarioController.crearUsuario(txtnombre.getText(), txtCorreo.getText(), txtSaldo.getText());
-            if(!listaUsuarios.contains(usuario)){
-                listaUsuarios.add(usuario);
+            Usuario newUsuario = usuarioController.crearUsuario(txtnombre.getText(), txtCorreo.getText(), txtSaldo.getText());
+            boolean existe = false;
+            for (int i = 0; i < listaUsuarios.size(); i++) {
+                Usuario usuario = listaUsuarios.get(i);
+                if (usuario.getCorreo().equals(newUsuario.getCorreo())){
+                    existe = true;
+                }
+            }
+
+            if(!existe){
+                listaUsuarios.add(newUsuario);
                 mostrarMensaje("Notificación cliente", "Cliente creado", "El cliente se ha creado con éxito", Alert.AlertType.INFORMATION);
                 limpiarCampos();
             }else{
@@ -100,11 +110,25 @@ public class MainController {
 
     @FXML
     void removeUsuario(ActionEvent event) {
+        for (int i = 0; i < listaUsuarios.size(); i++) {
+            Usuario usuario = listaUsuarios.get(i);
+            if (usuario.getCorreo().equals(txtCorreo.getText())){
+                listaUsuarios.remove(usuario);
+                mostrarMensaje("Notificación cliente", "Cliente eliminado", "El cliente se ha eliminado con éxito", Alert.AlertType.INFORMATION);
+            }
+        }
+        limpiarCampos();
 
     }
 
     @FXML
-    void updateUsuario(ActionEvent event) {}
+    void updateUsuario(ActionEvent event) {
+        Usuario usuario = usuarioController.crearUsuario(txtnombre.getText(), txtCorreo.getText(), txtSaldo.getText());
+        listaUsuarios.add(usuario);
+        listaUsuarios.remove(usuarioProcesado);
+        mostrarMensaje("Notificación cliente", "Cliente actualizado", "El cliente se ha actualizado con éxito", Alert.AlertType.INFORMATION);
+        limpiarCampos();
+    }
 
     @FXML
     void initialize() {
@@ -117,6 +141,22 @@ public class MainController {
         obtenerUsuarios();
         tableViewUsuario.getItems().clear();
         tableViewUsuario.setItems(listaUsuarios);
+        listenerSelection();
+    }
+
+    private void listenerSelection() {
+        tableViewUsuario.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
+            mostrarInformacionUsuario(newSelection);
+            usuarioProcesado = newSelection;
+        });
+    }
+
+    private void mostrarInformacionUsuario(Usuario seleccionado) {
+        if(seleccionado != null){
+            txtnombre.setText(seleccionado.getNombre());
+            txtCorreo.setText(seleccionado.getCorreo());
+            txtSaldo.setText(seleccionado.getSaldo());
+        }
     }
 
     private void initDataBinding(){
@@ -137,21 +177,6 @@ public class MainController {
     private void obtenerUsuarios () {
         listaUsuarios.addAll(usuarioController.obtenerUsuario());
     }
-
-//    private void agregarUsuarios() {
-//        if(validarFormulario()){
-//            usuarioController = crearUsuario();
-//            if(usuarioController.crearUsuario(Usuario);){
-//                listaUsuarios.add(Usuario);
-//                mostrarMensaje("Notificación cliente", "Cliente creado", "El cliente se ha creado con éxito", Alert.AlertType.INFORMATION);
-//                limpiarCamposEmpleado();
-//            }else{
-//                mostrarMensaje("Notificación cliente", "Cliente no creado", "El cliente no se ha creado con éxito", Alert.AlertType.ERROR);
-//            }
-//        }else{
-//            mostrarMensaje("Notificación cliente", "Cliente no creado", "Los datos ingresados son invalidos", Alert.AlertType.ERROR);
-//        }
-//
 }
 
 

@@ -52,7 +52,7 @@ public class UsuarioController {
         }
     }
 
-    public void actualiarUsuario(String nombre, String correo, String saldo){
+    public void actualizarUsuario(String nombre, String correo, String saldo){
         ArrayList<Usuario> usuarios = factory.getArcade().getListaUsuario();
         for (int i = 0; i < usuarios.size(); i++){
             if (Objects.equals(usuarios.get(i).getCorreo(), correo)){
