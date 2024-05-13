@@ -1,11 +1,10 @@
-package co.edu.uniquindio.parcial1fx.proyecto.ViewController;
+package co.edu.uniquindio.proyecto.arcade.view;
 
 import java.net.URL;
-import java.util.ArrayList;
 import java.util.ResourceBundle;
 
-import co.edu.uniquindio.parcial1fx.proyecto.Controller.UsuarioController;
-import co.edu.uniquindio.parcial1fx.proyecto.Model.Usuario;
+import co.edu.uniquindio.proyecto.arcade.controller.UsuarioController;
+import co.edu.uniquindio.proyecto.arcade.model.Usuario;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;

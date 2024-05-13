@@ -1,4 +1,4 @@
-package co.edu.uniquindio.parcial1fx.proyecto;
+package co.edu.uniquindio.proyecto.arcade;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -21,4 +21,3 @@ public class App extends Application {
         launch();
     }
 }
-

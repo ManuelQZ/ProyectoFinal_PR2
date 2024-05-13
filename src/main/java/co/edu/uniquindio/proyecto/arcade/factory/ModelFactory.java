@@ -1,17 +1,17 @@
-package co.edu.uniquindio.parcial1fx.proyecto.Factory;
+package co.edu.uniquindio.proyecto.arcade.factory;
 
-import co.edu.uniquindio.parcial1fx.proyecto.Model.ProductivityPalaceArcade;
-import co.edu.uniquindio.parcial1fx.proyecto.Model.Usuario;
+import co.edu.uniquindio.proyecto.arcade.model.ProductivityPalace;
+import co.edu.uniquindio.proyecto.arcade.model.Usuario;
 
 public class ModelFactory{
 
     private static ModelFactory modelFactory;
 
-    private ProductivityPalaceArcade arcade;
+    private ProductivityPalace arcade;
 
 
     private ModelFactory(){
-        this.arcade = new ProductivityPalaceArcade();
+        this.arcade = new ProductivityPalace();
         inicializarDatos();
     }
 
@@ -48,7 +48,7 @@ public class ModelFactory{
         return new Usuario(nombre,correo,saldo);
     }
 
-    public ProductivityPalaceArcade getArcade() {
+    public ProductivityPalace getArcade() {
         return arcade;
     }
 }

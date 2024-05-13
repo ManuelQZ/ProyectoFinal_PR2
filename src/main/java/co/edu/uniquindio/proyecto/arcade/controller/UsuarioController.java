@@ -1,7 +1,7 @@
-package co.edu.uniquindio.parcial1fx.proyecto.Controller;
+package co.edu.uniquindio.proyecto.arcade.controller;
 
-import co.edu.uniquindio.parcial1fx.proyecto.Factory.ModelFactory;
-import co.edu.uniquindio.parcial1fx.proyecto.Model.Usuario;
+import co.edu.uniquindio.proyecto.arcade.factory.ModelFactory;
+import co.edu.uniquindio.proyecto.arcade.model.Usuario;
 
 import java.util.ArrayList;
 import java.util.Objects;

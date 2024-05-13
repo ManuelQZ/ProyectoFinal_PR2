@@ -1,13 +1,13 @@
-package co.edu.uniquindio.parcial1fx.proyecto.Factory;
+package co.edu.uniquindio.proyecto.arcade.model;
 
 import java.util.ArrayList;
-import co.edu.uniquindio.parcial1fx.proyecto.Model.*;
+import co.edu.uniquindio.proyecto.arcade.model.*;
 
-public class ProductivityPalaceArcade {
+public class ProductivityPalace {
 
     private ArrayList<Usuario> listaUsuario;
 
-    public ProductivityPalaceArcade() {
+    public ProductivityPalace() {
         this.listaUsuario = new ArrayList<Usuario>();
     }
 
