@@ -38,10 +38,10 @@ public class UsuarioController {
     public ArrayList<Usuario> obtenerUsuario(){
         return factory.getArcade().getListaUsuario();
     }
-
-    public Usuario crearUsuario(String nombre, String correo, String saldo){
-        return factory.crearUsuario(nombre, correo, saldo);
-    }
+//
+//    public Usuario crearUsuario(String nombre, String correo, String saldo){
+//        return factory.crearUsuario(nombre, correo, saldo);
+//    }
 
     public void eliminarUsuario(String correo){
         ArrayList<Usuario> usuarios = factory.getArcade().getListaUsuario();
@@ -52,14 +52,14 @@ public class UsuarioController {
         }
     }
 
-    public void actualizarUsuario(String nombre, String correo, String saldo){
-        ArrayList<Usuario> usuarios = factory.getArcade().getListaUsuario();
-        for (int i = 0; i < usuarios.size(); i++){
-            if (Objects.equals(usuarios.get(i).getCorreo(), correo)){
-                Usuario nuevoUsuario = new Usuario(nombre, correo, saldo);
-                usuarios.remove(usuarios.get(i));
-                usuarios.add(nuevoUsuario);
-            }
-        }
-    }
+//    public void actualizarUsuario(String nombre, String correo, String saldo){
+//        ArrayList<Usuario> usuarios = factory.getArcade().getListaUsuario();
+//        for (int i = 0; i < usuarios.size(); i++){
+//            if (Objects.equals(usuarios.get(i).getCorreo(), correo)){
+//                Usuario nuevoUsuario = new Usuario(nombre, correo, saldo);
+//                usuarios.remove(usuarios.get(i));
+//                usuarios.add(nuevoUsuario);
+//            }
+//        }
+//    }
 }
