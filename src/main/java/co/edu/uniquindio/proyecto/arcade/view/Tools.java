@@ -9,7 +9,7 @@ import javafx.stage.Stage;
 
 public class Tools {
 
-    private static void mostrarMensaje(String title, String header, String message, Alert.AlertType type){
+    public static void mostrarMensaje(String title, String header, String message, Alert.AlertType type){
         Alert alert = new Alert(type);
         alert.setTitle(title);
         alert.setHeaderText(header);

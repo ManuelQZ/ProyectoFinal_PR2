@@ -14,4 +14,12 @@ public class ProductivityPalace {
     public ArrayList<Usuario> getListaUsuario() {
         return listaUsuario;
     }
+
+    public void addUsuario(Usuario usuario){
+        this.listaUsuario.add(usuario);
+    }
+
+    public void rmUsuario(Usuario usuario){
+        this.listaUsuario.remove(usuario);
+    }
 }

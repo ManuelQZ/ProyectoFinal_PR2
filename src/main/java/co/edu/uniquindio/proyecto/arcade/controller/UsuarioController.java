@@ -9,11 +9,19 @@ import java.util.Objects;
 public class UsuarioController {
 
     private ModelFactory factory;
+    private static UsuarioController instance;
 
-    public UsuarioController() {
+    private UsuarioController() {
         this.factory = ModelFactory.getInstancia();
     }
 
+    public static UsuarioController getInstance(){
+        if(instance == null){
+            return instance = new UsuarioController();
+        }
+        return instance;
+
+    }
     public ArrayList<Usuario> filtrarUsuario(Boolean esCorreo, String busqueda) {
         ArrayList<Usuario> usuarios = factory.getArcade().getListaUsuario();
         ArrayList<Usuario> usuariosFiltrado = new ArrayList<>();
@@ -35,6 +43,8 @@ public class UsuarioController {
         return usuariosFiltrado;
     }
 
+
+
     public ArrayList<Usuario> obtenerUsuario(){
         return factory.getArcade().getListaUsuario();
     }
@@ -50,6 +60,15 @@ public class UsuarioController {
                 usuarios.remove(usuarios.get(i));
             }
         }
+    }
+    public  Usuario consultarUsuario(String correo, String clave){
+        ArrayList<Usuario> usuarios = factory.getArcade().getListaUsuario();
+        for (Usuario value : usuarios) {
+            if (value.getCorreo().equals(correo)){
+                return value;
+            }
+        }
+        return null;
     }
 
 //    public void actualizarUsuario(String nombre, String correo, String saldo){
