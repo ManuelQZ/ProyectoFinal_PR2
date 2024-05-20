@@ -1,4 +1,4 @@
-package co.edu.uniquindio.proyecto.arcade.view;
+package co.edu.uniquindio.proyecto.arcade.view.basura;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -12,7 +12,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 
-public class MainController {
+public class MainViewController {
 
     UsuarioController usuarioController;
 
@@ -64,26 +64,26 @@ public class MainController {
     void addUsuario(ActionEvent event) {
         System.out.println(validarFormulario());
 
-        if(validarFormulario()){
-            Usuario newUsuario = usuarioController.crearUsuario(txtnombre.getText(), txtCorreo.getText(), txtSaldo.getText());
-            boolean existe = false;
-            for (int i = 0; i < listaUsuarios.size(); i++) {
-                Usuario usuario = listaUsuarios.get(i);
-                if (usuario.getCorreo().equals(newUsuario.getCorreo())){
-                    existe = true;
-                }
-            }
-
-            if(!existe){
-                listaUsuarios.add(newUsuario);
-                mostrarMensaje("Notificación cliente", "Cliente creado", "El cliente se ha creado con éxito", Alert.AlertType.INFORMATION);
-                limpiarCampos();
-            }else{
-                mostrarMensaje("Notificación cliente", "Cliente no creado", "El usuario especificado ya existe", Alert.AlertType.ERROR);
-            }
-        }else{
-            mostrarMensaje("Notificación cliente", "Cliente no creado", "Los datos ingresados son invalidos", Alert.AlertType.ERROR);
-        }
+//        if(validarFormulario()){
+////            Usuario newUsuario = usuarioController.crearUsuario(txtnombre.getText(), txtCorreo.getText(), txtSaldo.getText());
+//            boolean existe = false;
+//            for (int i = 0; i < listaUsuarios.size(); i++) {
+//                Usuario usuario = listaUsuarios.get(i);
+//                if (usuario.getCorreo().equals(newUsuario.getCorreo())){
+//                    existe = true;
+//                }
+//            }
+//
+//            if(!existe){
+//                listaUsuarios.add(newUsuario);
+//                mostrarMensaje("Notificación cliente", "Cliente creado", "El cliente se ha creado con éxito", Alert.AlertType.INFORMATION);
+//                limpiarCampos();
+//            }else{
+//                mostrarMensaje("Notificación cliente", "Cliente no creado", "El usuario especificado ya existe", Alert.AlertType.ERROR);
+//            }
+//        }else{
+//            mostrarMensaje("Notificación cliente", "Cliente no creado", "Los datos ingresados son invalidos", Alert.AlertType.ERROR);
+//        }
     }
 
     private void mostrarMensaje(String title, String header, String message, Alert.AlertType type){
@@ -122,9 +122,9 @@ public class MainController {
 
     @FXML
     void updateUsuario(ActionEvent event) {
-        Usuario usuario = usuarioController.crearUsuario(txtnombre.getText(), txtCorreo.getText(), txtSaldo.getText());
-        listaUsuarios.add(usuario);
-        listaUsuarios.remove(usuarioProcesado);
+////        Usuario usuario = usuarioController.crearUsuario(txtnombre.getText(), txtCorreo.getText(), txtSaldo.getText());
+//        listaUsuarios.add(usuario);
+//        listaUsuarios.remove(usuarioProcesado);
         mostrarMensaje("Notificación cliente", "Cliente actualizado", "El cliente se ha actualizado con éxito", Alert.AlertType.INFORMATION);
         limpiarCampos();
     }

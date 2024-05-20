@@ -1,4 +1,4 @@
-package co.edu.uniquindio.proyecto.arcade.controller;
+package co.edu.uniquindio.proyecto.arcade.view;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -7,7 +7,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 
-public class CrearUsuarioController {
+public class CrearUsuarioViewController {
 
     @FXML
     private ResourceBundle resources;
@@ -36,9 +36,9 @@ public class CrearUsuarioController {
 
     @FXML
     void initialize() {
-        assert txtContrasena != null : "fx:id=\"txtContrasena\" was not injected: check your FXML file 'CrearUsuario.fxml'.";
-        assert txtUsuario != null : "fx:id=\"txtUsuario\" was not injected: check your FXML file 'CrearUsuario.fxml'.";
-        assert txtUsuario1 != null : "fx:id=\"txtUsuario1\" was not injected: check your FXML file 'CrearUsuario.fxml'.";
+        assert txtContrasena != null : "fx:id=\"txtContrasena\" was not injected: check your FXML file 'crearUsuario.fxml'.";
+        assert txtUsuario != null : "fx:id=\"txtUsuario\" was not injected: check your FXML file 'crearUsuario.fxml'.";
+        assert txtUsuario1 != null : "fx:id=\"txtUsuario1\" was not injected: check your FXML file 'crearUsuario.fxml'.";
 
     }
 }

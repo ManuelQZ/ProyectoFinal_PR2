@@ -1,4 +1,4 @@
-package co.edu.uniquindio.proyecto.arcade.controller;
+package co.edu.uniquindio.proyecto.arcade.view;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -7,7 +7,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 
-public class LoginController {
+public class LoginViewController {
 
 
     @FXML
@@ -34,8 +34,8 @@ public class LoginController {
 
     @FXML
     void initialize() {
-        assert txtContrasena != null : "fx:id=\"txtContrasena\" was not injected: check your FXML file 'Login.fxml'.";
-        assert txtUsuario != null : "fx:id=\"txtUsuario\" was not injected: check your FXML file 'Login.fxml'.";
+        assert txtContrasena != null : "fx:id=\"txtContrasena\" was not injected: check your FXML file 'login.fxml'.";
+        assert txtUsuario != null : "fx:id=\"txtUsuario\" was not injected: check your FXML file 'login.fxml'.";
 
     }
 

@@ -1,4 +1,4 @@
-package co.edu.uniquindio.proyecto.arcade.controller;
+package co.edu.uniquindio.proyecto.arcade.view;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -7,7 +7,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.text.Text;
 
-public class TrabajadorController {
+public class TrabajadorViewController {
 
     @FXML
     private ResourceBundle resources;
