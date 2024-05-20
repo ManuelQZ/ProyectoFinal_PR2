@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Text?>
+
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uniquindio.proyecto.arcade.controller.TrabajadorController">
+   <children>
+      <TableView fx:id="tbvListaReserva" layoutX="14.0" layoutY="132.0" prefHeight="248.0" prefWidth="279.0">
+        <columns>
+          <TableColumn fx:id="tbcProducto" prefWidth="145.0" text="Producto" />
+          <TableColumn fx:id="tbcInformacionReserva" prefWidth="139.0" text="Información reserva" />
+        </columns>
+      </TableView>
+      <Text fx:id="tbv" layoutX="107.0" layoutY="127.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Lista de reserva" />
+      <TableView fx:id="tbvListaClientes" layoutX="306.0" layoutY="132.0" prefHeight="248.0" prefWidth="279.0">
+         <columns>
+            <TableColumn fx:id="tbcNombreCliente" prefWidth="145.0" text="Nombre" />
+            <TableColumn fx:id="tbcInformacionCliente" prefWidth="139.0" text="Información Cliente" />
+         </columns>
+      </TableView>
+      <Line endX="-100.0" endY="301.0" layoutX="399.0" layoutY="86.0" startX="-100.0" startY="58.0" />
+      <Text layoutX="405.0" layoutY="127.0" strokeType="OUTSIDE" strokeWidth="0.0" text="LIsta Clientes" />
+      <Line endX="468.0" layoutX="114.0" layoutY="28.0" startX="-100.0" />
+      <Text layoutX="14.0" layoutY="19.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Trabajador" />
+      <Text layoutX="242.0" layoutY="84.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Productivity Palace" wrappingWidth="113.82160949707031" />
+      <Text layoutX="261.0" layoutY="66.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Bienvenido a" />
+   </children>
+</AnchorPane>
