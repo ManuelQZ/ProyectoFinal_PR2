@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.AnchorPane?>
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uniquindio.proyecto.arcade.controller.ClienteController">
+   <children>
+      <TabPane layoutX="5.0" prefHeight="400.0" prefWidth="600.0" tabClosingPolicy="UNAVAILABLE">
+        <tabs>
+          <Tab fx:id="tabProducto" text="Producto">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <TableView fx:id="tbvProducto" layoutX="14.0" layoutY="29.0" prefHeight="280.0" prefWidth="300.0">
+                          <columns>
+                            <TableColumn fx:id="tbcProducto" prefWidth="92.0" text="Producto:" />
+                            <TableColumn fx:id="tbcPrecioUnitario" prefWidth="117.0" text="Precio unitario:" />
+                              <TableColumn fx:id="tbcCategoria" prefWidth="90.0" text="Categoria:" />
+                          </columns>
+                        </TableView>
+                        <Label fx:id="lbInfo" contentDisplay="CENTER" layoutX="388.0" layoutY="29.0" prefHeight="70.0" prefWidth="142.0" text="Info:" textAlignment="CENTER" />
+                        <TextField fx:id="txfCantidadProducto" layoutX="331.0" layoutY="122.0" />
+                        <Label fx:id="lbPrecio" layoutX="511.0" layoutY="140.0" text="\$0000" />
+                        <Button layoutX="446.0" layoutY="218.0" mnemonicParsing="false" onAction="#pedir" text="Pedir" />
+                     </children>
+                  </AnchorPane>
+            </content>
+          </Tab>
+            <Tab fx:id="tabJuegos" text="Juegos">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <TableView fx:id="tbvJuegos" layoutX="23.0" layoutY="31.0" prefHeight="280.0" prefWidth="300.0">
+                           <columns>
+                              <TableColumn fx:id="tbcProducto11" prefWidth="92.0" text="Producto:" />
+                              <TableColumn fx:id="tbcPrecioUnitario11" prefWidth="117.0" text="Precio unitario:" />
+                              <TableColumn fx:id="tbcCategoria11" prefWidth="90.0" text="Categoria:" />
+                           </columns>
+                        </TableView>
+                        <Label fx:id="lbInfo11" contentDisplay="CENTER" layoutX="391.0" layoutY="32.0" prefHeight="70.0" prefWidth="142.0" text="Info:" textAlignment="CENTER" />
+                        <TextField fx:id="txfCantidadJuegos" layoutX="364.0" layoutY="122.0" />
+                        <Label fx:id="lbPrecio11" layoutX="533.0" layoutY="131.0" text="\$0000" />
+                        <Button layoutX="435.0" layoutY="209.0" mnemonicParsing="false" onAction="#pedir" text="Pedir" />
+                     </children>
+                  </AnchorPane>
+              </content>
+            </Tab>
+            <Tab fx:id="tabComida" text="Comida">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <TableView fx:id="tbvComida" layoutX="14.0" layoutY="31.0" prefHeight="280.0" prefWidth="300.0">
+                           <columns>
+                              <TableColumn fx:id="tbcProducto1" prefWidth="92.0" text="Producto:" />
+                              <TableColumn fx:id="tbcPrecioUnitario1" prefWidth="117.0" text="Precio unitario:" />
+                              <TableColumn fx:id="tbcCategoria1" prefWidth="90.0" text="Categoria:" />
+                           </columns>
+                        </TableView>
+                        <Label fx:id="lbInfo1" contentDisplay="CENTER" layoutX="384.0" layoutY="25.0" prefHeight="70.0" prefWidth="142.0" text="Info:" textAlignment="CENTER" />
+                        <TextField fx:id="txfCantidadComida" layoutX="346.0" layoutY="116.0" />
+                        <Label fx:id="lbPrecio1" layoutX="526.0" layoutY="125.0" text="\$0000" />
+                        <Button layoutX="461.0" layoutY="197.0" mnemonicParsing="false" onAction="#pedir" text="Pedir" />
+                     </children>
+                  </AnchorPane>
+              </content>
+            </Tab>
+        </tabs>
+      </TabPane>
+   </children>
+</AnchorPane>
