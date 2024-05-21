@@ -6,6 +6,5 @@ module co.edu.uniquindio.parcial1fx.proyecto {
     opens co.edu.uniquindio.proyecto.arcade.view to javafx.fxml;
     exports co.edu.uniquindio.proyecto.arcade;
     exports co.edu.uniquindio.proyecto.arcade.view;
-    exports co.edu.uniquindio.proyecto.arcade.view.basura;
-    opens co.edu.uniquindio.proyecto.arcade.view.basura to javafx.fxml;
+
 }
