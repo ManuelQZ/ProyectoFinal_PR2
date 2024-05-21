@@ -20,6 +20,10 @@ public class UsuarioProxy implements Acceso {
         return (this.correo.equals(correoUsuario) && this.clave.equals(claveUsuario));
     }
 
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
+    }
+
     @Override
     public String acceder() {
         if (autenticar()) {

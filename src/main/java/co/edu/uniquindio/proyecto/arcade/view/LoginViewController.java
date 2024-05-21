@@ -5,6 +5,7 @@ import java.util.ResourceBundle;
 
 import co.edu.uniquindio.proyecto.arcade.controller.UsuarioController;
 import co.edu.uniquindio.proyecto.arcade.model.Usuario;
+import co.edu.uniquindio.proyecto.arcade.model.UsuarioProxy;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
@@ -15,6 +16,7 @@ public class LoginViewController {
 
     UsuarioController usuarioController = UsuarioController.getInstance();
     private String sesion;
+    UsuarioProxy usuarioTemporal = usuarioController.getFactory().getArcade().getUsuarioTemporal();
 
     @FXML
     private ResourceBundle resources;
@@ -37,13 +39,14 @@ public class LoginViewController {
     void ingresar(ActionEvent event) {
 
         Usuario usuario = usuarioController.consultarUsuario(txtCorreo.getText(), txtContrasena.getText());
+        usuarioTemporal.setUsuario(usuario);
         if(usuario!=null){
-            sesion = usuario.acceder();
+            sesion = usuarioTemporal.acceder();
         }else{
             Tools.mostrarMensaje("Error", "No se pudo acceder", "El usuario ingresado no existe", Alert.AlertType.ERROR);
         }
-        if(sesion != "error"){
-
+        if(sesion.equals("error")){
+            seleccionarInterfaz(sesion);
         }
     }
 

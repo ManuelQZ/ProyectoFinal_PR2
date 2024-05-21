@@ -43,7 +43,9 @@ public class UsuarioController {
         return usuariosFiltrado;
     }
 
-
+    public ModelFactory getFactory() {
+        return factory;
+    }
 
     public ArrayList<Usuario> obtenerUsuario(){
         return factory.getArcade().getListaUsuario();

@@ -26,7 +26,7 @@ public class ModelFactory{
     private void inicializarDatos() {
         Usuario usuario1 = new Usuario("Juan Pérez", "juan.perez@example.com", "password123", "1500.00", TipoUsuario.CLIENTE);
         Usuario usuario2 = new Usuario("María López", "maria.lopez@example.com", "m4r1a2023", "2500.00", TipoUsuario.EMPLEADO);
-        Usuario usuario3 = new Usuario("Carlos Gómez", "carlos.gomez@example.com", "c4rl0sPass!", "3500.00", TipoUsuario.ADMINISTRADOR);
+        Usuario usuario3 = new Usuario("Carlos Gómez", "carlos.gomez@example.com", "c4rl0sPass", "3500.00", TipoUsuario.ADMINISTRADOR);
         Usuario usuario4 = new Usuario("Ana Torres", "ana.torres@example.com", "4naT0rr3s", "4500.00", TipoUsuario.CLIENTE);
         Usuario usuario5 = new Usuario("Luis Martínez", "luis.martinez@example.com", "lu1sM8rt!", "5500.00", TipoUsuario.EMPLEADO);
 

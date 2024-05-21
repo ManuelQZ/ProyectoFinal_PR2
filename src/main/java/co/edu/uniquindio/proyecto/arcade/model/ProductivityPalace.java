@@ -7,6 +7,12 @@ public class ProductivityPalace {
 
     private ArrayList<Usuario> listaUsuario;
 
+    private UsuarioProxy usuarioTemporal;
+
+    public UsuarioProxy getUsuarioTemporal() {
+        return usuarioTemporal;
+    }
+
     public ProductivityPalace() {
         this.listaUsuario = new ArrayList<Usuario>();
     }
@@ -23,3 +29,4 @@ public class ProductivityPalace {
         this.listaUsuario.remove(usuario);
     }
 }
+
