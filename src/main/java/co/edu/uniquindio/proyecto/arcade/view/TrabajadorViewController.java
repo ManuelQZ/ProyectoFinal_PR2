@@ -38,13 +38,13 @@ public class TrabajadorViewController {
 
     @FXML
     void initialize() {
-        assert tbcInformacionCliente != null : "fx:id=\"tbcInformacionCliente\" was not injected: check your FXML file 'Trabajador.fxml'.";
-        assert tbcInformacionReserva != null : "fx:id=\"tbcInformacionReserva\" was not injected: check your FXML file 'Trabajador.fxml'.";
-        assert tbcNombreCliente != null : "fx:id=\"tbcNombreCliente\" was not injected: check your FXML file 'Trabajador.fxml'.";
-        assert tbcProducto != null : "fx:id=\"tbcProducto\" was not injected: check your FXML file 'Trabajador.fxml'.";
-        assert tbv != null : "fx:id=\"tbv\" was not injected: check your FXML file 'Trabajador.fxml'.";
-        assert tbvListaClientes != null : "fx:id=\"tbvListaClientes\" was not injected: check your FXML file 'Trabajador.fxml'.";
-        assert tbvListaReserva != null : "fx:id=\"tbvListaReserva\" was not injected: check your FXML file 'Trabajador.fxml'.";
+        assert tbcInformacionCliente != null : "fx:id=\"tbcInformacionCliente\" was not injected: check your FXML file 'trabajador.fxml'.";
+        assert tbcInformacionReserva != null : "fx:id=\"tbcInformacionReserva\" was not injected: check your FXML file 'trabajador.fxml'.";
+        assert tbcNombreCliente != null : "fx:id=\"tbcNombreCliente\" was not injected: check your FXML file 'trabajador.fxml'.";
+        assert tbcProducto != null : "fx:id=\"tbcProducto\" was not injected: check your FXML file 'trabajador.fxml'.";
+        assert tbv != null : "fx:id=\"tbv\" was not injected: check your FXML file 'trabajador.fxml'.";
+        assert tbvListaClientes != null : "fx:id=\"tbvListaClientes\" was not injected: check your FXML file 'trabajador.fxml'.";
+        assert tbvListaReserva != null : "fx:id=\"tbvListaReserva\" was not injected: check your FXML file 'trabajador.fxml'.";
 
     }
 }
