@@ -2,8 +2,10 @@ package co.edu.uniquindio.proyecto.arcade.view;
 
 import co.edu.uniquindio.proyecto.arcade.App;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
@@ -31,4 +33,9 @@ public class Tools {
         stage.setTitle(title);
         stage.show();
     }
+
+    public static void cerrarVentana(TextField context) {
+        Stage stage = (Stage) ((Node) context).getScene().getWindow();
+        stage.close();
     }
+}

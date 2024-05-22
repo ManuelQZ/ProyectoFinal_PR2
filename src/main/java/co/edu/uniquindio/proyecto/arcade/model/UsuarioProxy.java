@@ -8,10 +8,8 @@ public class UsuarioProxy implements Acceso {
     private String clave;
     private Usuario usuario;
 
-    public UsuarioProxy(String correo, String clave, Usuario usuario) {
-        this.correo = correo;
-        this.clave = clave;
-        this.usuario = usuario;
+    public UsuarioProxy() {
+
     }
 
     public boolean autenticar(){
@@ -22,6 +20,8 @@ public class UsuarioProxy implements Acceso {
 
     public void setUsuario(Usuario usuario) {
         this.usuario = usuario;
+        this.correo = usuario.getCorreo();
+        this.clave = usuario.getClave();
     }
 
     @Override

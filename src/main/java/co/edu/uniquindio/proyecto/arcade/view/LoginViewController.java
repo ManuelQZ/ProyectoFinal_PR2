@@ -8,9 +8,11 @@ import co.edu.uniquindio.proyecto.arcade.model.Usuario;
 import co.edu.uniquindio.proyecto.arcade.model.UsuarioProxy;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.Node;
 import javafx.scene.control.Alert;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 
 public class LoginViewController {
 
@@ -45,10 +47,14 @@ public class LoginViewController {
         }else{
             Tools.mostrarMensaje("Error", "No se pudo acceder", "El usuario ingresado no existe", Alert.AlertType.ERROR);
         }
-        if(sesion.equals("error")){
+        if(!sesion.equals("error")){
             seleccionarInterfaz(sesion);
+            Tools.cerrarVentana(txtCorreo);
+        }else {
+            Tools.mostrarMensaje("Error", "No se pudo acceder", "Ocurrio un error intentelo nuevamente", Alert.AlertType.ERROR);
         }
     }
+
 
     public void seleccionarInterfaz(String interfaz){
         switch (interfaz){

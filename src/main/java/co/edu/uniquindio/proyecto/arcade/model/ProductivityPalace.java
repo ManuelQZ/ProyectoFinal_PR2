@@ -9,12 +9,13 @@ public class ProductivityPalace {
 
     private UsuarioProxy usuarioTemporal;
 
-    public UsuarioProxy getUsuarioTemporal() {
-        return usuarioTemporal;
-    }
-
     public ProductivityPalace() {
         this.listaUsuario = new ArrayList<Usuario>();
+        this.usuarioTemporal = new UsuarioProxy();
+    }
+
+    public UsuarioProxy getUsuarioTemporal() {
+        return usuarioTemporal;
     }
 
     public ArrayList<Usuario> getListaUsuario() {
