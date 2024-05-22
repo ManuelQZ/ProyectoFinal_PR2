@@ -2,6 +2,13 @@ package co.edu.uniquindio.proyecto.arcade.view;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+
+import co.edu.uniquindio.proyecto.arcade.controller.ProductoController;
+import co.edu.uniquindio.proyecto.arcade.controller.UsuarioController;
+import co.edu.uniquindio.proyecto.arcade.model.Producto;
+import co.edu.uniquindio.proyecto.arcade.model.Reserva;
+import co.edu.uniquindio.proyecto.arcade.model.Usuario;
+import javafx.beans.property.SimpleStringProperty;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.TableColumn;
@@ -11,6 +18,9 @@ import javafx.scene.text.Text;
 
 public class AdministradorViewController {
 
+    UsuarioController usuarioController = UsuarioController.getInstance();
+    ProductoController productoController = ProductoController.getInstance();
+
     @FXML
     private ResourceBundle resources;
 
@@ -18,28 +28,28 @@ public class AdministradorViewController {
     private URL location;
 
     @FXML
-    private TableColumn<?, ?> tbcCantidad;
+    private TableColumn<Producto, String> tbcCantidad;
 
     @FXML
-    private TableColumn<?, ?> tbcCorreoUsuario;
+    private TableColumn<Usuario, String> tbcCorreoUsuario;
 
     @FXML
-    private TableColumn<?, ?> tbcNombreUsuario;
+    private TableColumn<Usuario, String> tbcNombreUsuario;
 
     @FXML
-    private TableColumn<?, ?> tbcPrecio;
+    private TableColumn<Producto, String> tbcPrecio;
 
     @FXML
-    private TableColumn<?, ?> tbcProducto;
+    private TableColumn<Producto, String> tbcProducto;
 
     @FXML
-    private TableColumn<?, ?> tbcReserva;
+    private TableColumn<Usuario, String> tbcSaldo;
 
     @FXML
-    private TableView<?> tbvGestionProducto;
+    private TableView<Producto> tbvGestionProducto;
 
     @FXML
-    private TableView<?> tbvGestionUsuario;
+    private TableView<Usuario> tbvGestionUsuario;
 
     @FXML
     private TextField txtCantidad;
@@ -60,56 +70,79 @@ public class AdministradorViewController {
     private TextField txtUsuario;
 
     @FXML
+    private TextField txtSaldo;
+
+    @FXML
     void addActualizarProducto(ActionEvent event) {
+        productoController.actualizarProducto(txtProducto.getText(), txtPrecio.getText(), txtCantidad.getText());
 
     }
 
     @FXML
     void addActualizarUsuario(ActionEvent event) {
-
-    }
-
-    @FXML
-    void addContrasena(ActionEvent event) {
-
-    }
-
-    @FXML
-    void addUsuario(ActionEvent event) {
-
-    }
-
-    @FXML
-    void addcorreo(ActionEvent event) {
-
+        usuarioController.actualizarUsuario(txtUsuario.getText(), txtCorreo.getText(), txtContrasena.getText(), txtSaldo.getText());
     }
 
     @FXML
     void removeEliminarProducto(ActionEvent event) {
-
+        productoController.eliminarProducto(txtProducto.getText());
     }
 
     @FXML
     void removeEliminarUsuario(ActionEvent event) {
-
+        usuarioController.eliminarUsuario(txtUsuario.getText());
     }
 
     @FXML
     void initialize() {
-        assert tbcCantidad != null : "fx:id=\"tbcCantidad\" was not injected: check your FXML file 'administrador.fxml'.";
-        assert tbcCorreoUsuario != null : "fx:id=\"tbcCorreoUsuario\" was not injected: check your FXML file 'administrador.fxml'.";
-        assert tbcNombreUsuario != null : "fx:id=\"tbcNombreUsuario\" was not injected: check your FXML file 'administrador.fxml'.";
-        assert tbcPrecio != null : "fx:id=\"tbcPrecio\" was not injected: check your FXML file 'administrador.fxml'.";
-        assert tbcProducto != null : "fx:id=\"tbcProducto\" was not injected: check your FXML file 'administrador.fxml'.";
-        assert tbcReserva != null : "fx:id=\"tbcReserva\" was not injected: check your FXML file 'administrador.fxml'.";
-        assert tbvGestionProducto != null : "fx:id=\"tbvGestionProducto\" was not injected: check your FXML file 'administrador.fxml'.";
-        assert tbvGestionUsuario != null : "fx:id=\"tbvGestionUsuario\" was not injected: check your FXML file 'administrador.fxml'.";
-        assert txtCantidad != null : "fx:id=\"txtCantidad\" was not injected: check your FXML file 'administrador.fxml'.";
-        assert txtContrasena != null : "fx:id=\"txtContrasena\" was not injected: check your FXML file 'administrador.fxml'.";
-        assert txtCorreo != null : "fx:id=\"txtCorreo\" was not injected: check your FXML file 'administrador.fxml'.";
-        assert txtPrecio != null : "fx:id=\"txtPrecio\" was not injected: check your FXML file 'administrador.fxml'.";
-        assert txtProducto != null : "fx:id=\"txtProducto\" was not injected: check your FXML file 'administrador.fxml'.";
-        assert txtUsuario != null : "fx:id=\"txtUsuario\" was not injected: check your FXML file 'administrador.fxml'.";
+        initview();
 
+    }
+
+    private void initview() {
+        initDataBinding();
+        tbvGestionUsuario.getItems().clear();
+        tbvGestionProducto.getItems().clear();
+        tbvGestionUsuario.setItems(usuarioController.getListaUsuarioObservable());
+        tbvGestionProducto.setItems(productoController.getListaProductoObservable());
+        listenerSelectionProducto();
+        listenerSelectionUsuario();
+    }
+
+    private void initDataBinding(){
+        tbcNombreUsuario.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getNombre()));
+        tbcCorreoUsuario.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getCorreo()));
+        tbcSaldo.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getSaldo()));
+        tbcProducto.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getNombre()));
+        tbcPrecio.setCellValueFactory(cellData -> new SimpleStringProperty(String.valueOf(cellData.getValue().getPrecio())));
+        tbcCantidad.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getCantidadDisponible()));
+    }
+
+    private void listenerSelectionProducto() {
+        tbvGestionProducto.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
+            this.mostrarInformacionProducto((Producto) newSelection);
+        });
+    }
+
+    private void listenerSelectionUsuario() {
+        tbvGestionUsuario.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
+            this.mostrarInformacionUsuario((Usuario) newSelection);
+        });
+    }
+
+    private void mostrarInformacionProducto(Producto seleccionado) {
+        if(seleccionado != null){
+            txtProducto.setText(seleccionado.getNombre());
+            txtPrecio.setText(String.valueOf(seleccionado.getPrecio()));
+            txtCantidad.setText(seleccionado.getCantidadDisponible());
+        }
+    }
+
+    private void mostrarInformacionUsuario(Usuario seleccionado) {
+        if(seleccionado != null){
+            txtUsuario.setText(seleccionado.getNombre());
+            txtCorreo.setText(String.valueOf(seleccionado.getCorreo()));
+            txtContrasena.setText(seleccionado.getClave());
+        }
     }
 }

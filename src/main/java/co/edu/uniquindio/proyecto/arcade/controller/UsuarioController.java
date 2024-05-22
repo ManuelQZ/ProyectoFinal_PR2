@@ -18,6 +18,7 @@ public class UsuarioController {
     private UsuarioController() {
         this.factory = ModelFactory.getInstancia();
         this.listaUsuarioObservable = FXCollections.observableArrayList();
+        this.sincronizarData();
     }
 
     public static UsuarioController getInstance(){
@@ -58,11 +59,17 @@ public class UsuarioController {
 
 
     public void eliminarUsuario(String correo){
+        int eliminable = -1;
         ArrayList<Usuario> usuarios = factory.getArcade().getListaUsuario();
         for (int i = 0; i < usuarios.size(); i++){
             if (Objects.equals(usuarios.get(i).getCorreo(), correo)){
                 usuarios.remove(usuarios.get(i));
+                this.factory.getArcade().addUsuario(usuarios.get(i));
+                eliminable = i;
             }
+        }
+        if (eliminable!= -1){
+            this.listaUsuarioObservable.remove(eliminable);
         }
     }
     public  Usuario consultarUsuario(String correo, String clave){
@@ -75,15 +82,30 @@ public class UsuarioController {
         return null;
     }
 
-    public void actualizarUsuario(String nombre, String correo, String clave, String saldo, TipoUsuario tipoUsuario){
+
+    public void actualizarUsuario(String nombre, String correo, String clave, String saldo){
         ArrayList<Usuario> usuarios = factory.getArcade().getListaUsuario();
+        int actualizable = -1;
+        Usuario usuarioTemporal = null;
         for (int i = 0; i < usuarios.size(); i++){
             if (Objects.equals(usuarios.get(i).getCorreo(), correo)){
-                Usuario nuevoUsuario = new Usuario(nombre,  correo,  clave,  saldo, tipoUsuario);
-                usuarios.remove(usuarios.get(i));
-                usuarios.add(nuevoUsuario);
+                usuarioTemporal = usuarios.get(i);
+                usuarioTemporal.setNombre(nombre);
+                usuarioTemporal.setClave(clave);
+                usuarioTemporal.setSaldo(saldo);
+                actualizable = i;
             }
         }
+        if (actualizable!= -1 && usuarioTemporal != null){
+            this.listaUsuarioObservable.remove(actualizable);
+            this.factory.getArcade().rmUsuario(actualizable);
+            this.factory.getArcade().addUsuario(usuarioTemporal);
+            this.listaUsuarioObservable.add(usuarioTemporal);
+        }
+    }
+
+    public ObservableList<Usuario> getListaUsuarioObservable() {
+        return listaUsuarioObservable;
     }
 
     public void sincronizarData() {

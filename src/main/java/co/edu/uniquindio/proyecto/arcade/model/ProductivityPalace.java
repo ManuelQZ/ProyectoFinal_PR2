@@ -14,6 +14,8 @@ public class ProductivityPalace {
     public ProductivityPalace() {
         this.listaUsuario = new ArrayList<Usuario>();
         this.usuarioTemporal = new UsuarioProxy();
+        this.listaProducto = new ArrayList<Producto>();
+        this.listaServicio = new ArrayList<Servicio>();
     }
 
     public UsuarioProxy getUsuarioTemporal() {
@@ -28,8 +30,8 @@ public class ProductivityPalace {
         this.listaUsuario.add(usuario);
     }
 
-    public void rmUsuario(Usuario usuario){
-        this.listaUsuario.remove(usuario);
+    public void rmUsuario(int index){
+        this.listaUsuario.remove(index);
     }
 
     public void addProducto(Producto producto) {

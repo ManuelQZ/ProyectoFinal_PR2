@@ -18,6 +18,7 @@ public class ProductoController {
     private ProductoController() {
         this.factory = ModelFactory.getInstancia();
         this.listaProductoObservable = FXCollections.observableArrayList();
+        this.sincronizarData();
     }
 
     public static ProductoController getInstance(){
@@ -38,6 +39,7 @@ public class ProductoController {
         for (int i = 0; i < productos.size(); i++){
             if (Objects.equals(productos.get(i).getNombre(), nombre)){
                 productos.remove(productos.get(i));
+                this.listaProductoObservable.remove(productos.get(i));
             }
         }
     }
@@ -49,6 +51,8 @@ public class ProductoController {
                 Producto nuevoProducto = new Producto(nombre, precio, cantidadDisponible);
                 productos.remove(productos.get(i));
                 productos.add(nuevoProducto);
+                this.listaProductoObservable.remove(productos.get(i));
+                this.listaProductoObservable.add(nuevoProducto);
             }
         }
     }
@@ -61,6 +65,10 @@ public class ProductoController {
             }
         }
         return null;
+    }
+
+    public ObservableList<Producto> getListaProductoObservable() {
+        return listaProductoObservable;
     }
 
     public void sincronizarData() {
