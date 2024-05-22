@@ -1,4 +1,4 @@
-module co.edu.uniquindio.parcial1fx.proyecto {
+module co.edu.uniquindio.proyecto.arcade {
     requires javafx.controls;
     requires javafx.fxml;
 
