@@ -1,61 +1,33 @@
 package co.edu.uniquindio.proyecto.arcade.controller;
 
 import co.edu.uniquindio.proyecto.arcade.factory.ModelFactory;
+import co.edu.uniquindio.proyecto.arcade.model.Servicio;
 import co.edu.uniquindio.proyecto.arcade.model.TipoUsuario;
 import co.edu.uniquindio.proyecto.arcade.model.Usuario;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 
 import java.util.ArrayList;
 import java.util.Objects;
 
-public class UsuarioController {
+public class ServicioController {
 
-    private ObservableList<Usuario> listaUsuarioObservable;
     private ModelFactory factory;
-    private static UsuarioController instance;
+    private static ServicioController instance;
 
-    private UsuarioController() {
+    private ServicioController() {
         this.factory = ModelFactory.getInstancia();
-        this.listaUsuarioObservable = FXCollections.observableArrayList();
     }
 
-    public static UsuarioController getInstance(){
+    public static ServicioController getInstance(){
         if(instance == null){
-            return instance = new UsuarioController();
+            return instance = new ServicioController();
         }
         return instance;
 
-    }
-    public ArrayList<Usuario> filtrarUsuario(Boolean esCorreo, String busqueda) {
-        ArrayList<Usuario> usuarios = factory.getArcade().getListaUsuario();
-        ArrayList<Usuario> usuariosFiltrado = new ArrayList<>();
-        if (esCorreo) {
-            for (Usuario usuario : usuarios) {
-                if (Objects.equals(usuario.getCorreo(), busqueda)) {
-                    usuariosFiltrado.add(usuario);
-                }
-            }
-        }
-        else {
-            for (Usuario usuario : usuarios) {
-                if (Objects.equals(usuario.getNombre(), busqueda)) {
-                    usuariosFiltrado.add(usuario);
-                }
-            }
-        }
-
-        return usuariosFiltrado;
     }
 
     public ModelFactory getFactory() {
         return factory;
     }
-
-    public ArrayList<Usuario> obtenerUsuario(){
-        return factory.getArcade().getListaUsuario();
-    }
-
 
     public void eliminarUsuario(String correo){
         ArrayList<Usuario> usuarios = factory.getArcade().getListaUsuario();
@@ -86,7 +58,4 @@ public class UsuarioController {
         }
     }
 
-    public void sincronizarData() {
-        this.listaUsuarioObservable.addAll(this.factory.getArcade().getListaUsuario());
-    }
 }
