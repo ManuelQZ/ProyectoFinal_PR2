@@ -1,7 +1,6 @@
 package co.edu.uniquindio.proyecto.arcade.model;
 
 import java.util.ArrayList;
-import co.edu.uniquindio.proyecto.arcade.model.*;
 
 public class ProductivityPalace {
 

@@ -6,7 +6,6 @@ import java.util.ResourceBundle;
 import co.edu.uniquindio.proyecto.arcade.controller.ProductoController;
 import co.edu.uniquindio.proyecto.arcade.controller.UsuarioController;
 import co.edu.uniquindio.proyecto.arcade.model.Producto;
-import co.edu.uniquindio.proyecto.arcade.model.Reserva;
 import co.edu.uniquindio.proyecto.arcade.model.Usuario;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.event.ActionEvent;
@@ -14,7 +13,6 @@ import javafx.fxml.FXML;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
-import javafx.scene.text.Text;
 
 public class AdministradorViewController {
 

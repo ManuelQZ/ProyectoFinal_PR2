@@ -1,0 +1,64 @@
+/* Cambia el fondo de la ventana */
+.root {
+    -fx-background-color: #f0f0f0;
+}
+
+/* Estilo para los botones */
+.button {
+    -fx-background-color: #af544c;
+    -fx-text-fill: white;
+    -fx-font-size: 14px;
+    -fx-padding: 10px;
+}
+
+/* Estilo para los labels */
+.label {
+    -fx-font-size: 16px;
+    -fx-text-fill: #00ff1e;
+    
+}
+
+.text-field {
+    -fx-font-size: 16px;
+    -fx-text-fill: #333333;
+    -fx-background-color: #b918e2;
+    -fx-padding: 10px;
+}
+
+
+/* Estilo para BOTONES */
+#button {
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    width: 162px;
+    height: 27px;
+    border-radius: 8px;
+    border: 1px solid #808080;
+    background: #fcc951;
+    background-blend-mode: normal;
+    font-family: Alata;
+    font-size: 12px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+  }
+
+/* Estilo para TEXTFIELD */
+#text-field {
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    width: 182px;
+    height: 40px;
+    border: 1px solid #e55156;
+    color: #87252b; /*color de texto*/
+    font-family: Alata;
+    font-size: 12px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+  }
+
+
+  

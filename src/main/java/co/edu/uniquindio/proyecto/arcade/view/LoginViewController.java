@@ -8,11 +8,9 @@ import co.edu.uniquindio.proyecto.arcade.model.Usuario;
 import co.edu.uniquindio.proyecto.arcade.model.UsuarioProxy;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.Node;
 import javafx.scene.control.Alert;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
-import javafx.stage.Stage;
 
 public class LoginViewController {
 

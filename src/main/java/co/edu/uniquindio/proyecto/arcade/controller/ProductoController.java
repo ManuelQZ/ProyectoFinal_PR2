@@ -2,7 +2,6 @@ package co.edu.uniquindio.proyecto.arcade.controller;
 
 import co.edu.uniquindio.proyecto.arcade.factory.ModelFactory;
 import co.edu.uniquindio.proyecto.arcade.model.Producto;
-import co.edu.uniquindio.proyecto.arcade.model.Producto;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
