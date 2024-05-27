@@ -35,6 +35,10 @@ public class Usuario implements Acceso {
         return saldo;
     }
 
+    public String getTipoUsuario() {
+        return tipoUsuario.toString();
+    }
+
     public void setTipoUsuario(TipoUsuario tipoUsuario) {
         this.tipoUsuario = tipoUsuario;
     }
@@ -66,6 +70,7 @@ public class Usuario implements Acceso {
         }
         return "error";
     }
+
 
     public void realizarPago(String tipoDePago, String monto, String fecha, String[] nombresProductos, double descuento) {
     }

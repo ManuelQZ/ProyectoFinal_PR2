@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.Objects;
 
 public class ReservaController {
-    private final ObservableList<Reserva> listaReservaObservable;
+    private ObservableList<Reserva> listaReservaObservable;
     private final Mediator mediator;
     private static ReservaController instance;
 
@@ -90,6 +90,10 @@ public class ReservaController {
 
     public ObservableList<Reserva> getListaReservaObservable() {
         return listaReservaObservable;
+    }
+
+    public void setListaReservaObservable(ObservableList<Reserva> listaReservaObservable) {
+        this.listaReservaObservable = listaReservaObservable;
     }
 
     public void sincronizarData() {
