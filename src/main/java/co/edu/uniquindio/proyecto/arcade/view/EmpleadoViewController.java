@@ -2,10 +2,14 @@ package co.edu.uniquindio.proyecto.arcade.view;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+
+import co.edu.uniquindio.proyecto.arcade.model.Reserva;
+import co.edu.uniquindio.proyecto.arcade.model.Usuario;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
-import javafx.scene.text.Text;
+import javafx.scene.control.TextField;
 
 public class EmpleadoViewController {
 
@@ -16,35 +20,82 @@ public class EmpleadoViewController {
     private URL location;
 
     @FXML
-    private TableColumn<?, ?> tbcInformacionCliente;
+    private TableColumn<Usuario, String> tbcCorreoUsuarios;
 
     @FXML
-    private TableColumn<?, ?> tbcInformacionReserva;
+    private TableColumn<Reserva, String> tbcFechaReservas;
 
     @FXML
-    private TableColumn<?, ?> tbcNombreCliente;
+    private TableColumn<Reserva, String> tbcNombreReservas;
 
     @FXML
-    private TableColumn<?, ?> tbcProducto;
+    private TableColumn<Usuario, String> tbcNombreUsuarios;
 
     @FXML
-    private Text tbv;
+    private TableView<Reserva> tbvGestionFecha;
 
     @FXML
-    private TableView<?> tbvListaClientes;
+    private TableView<Usuario> tbvGestionUsuarios;
 
     @FXML
-    private TableView<?> tbvListaReserva;
+    private TextField txtCantidadReservas;
+
+    @FXML
+    private TextField txtContrasenaUsuarios;
+
+    @FXML
+    private TextField txtCorreoUsuario;
+
+    @FXML
+    private TextField txtNombreReservas;
+
+    @FXML
+    private TextField txtNombreUsuario;
+
+    @FXML
+    void addReserva(ActionEvent event) {
+
+    }
+
+    @FXML
+    void addUsuarios(ActionEvent event) {
+
+    }
+
+    @FXML
+    void removeReserva(ActionEvent event) {
+
+    }
+
+    @FXML
+    void removeUsuarios(ActionEvent event) {
+
+    }
+
+    @FXML
+    void updateReserva(ActionEvent event) {
+
+    }
+
+    @FXML
+    void updateUsuarios(ActionEvent event) {
+
+    }
 
     @FXML
     void initialize() {
-        assert tbcInformacionCliente != null : "fx:id=\"tbcInformacionCliente\" was not injected: check your FXML file 'empleado.fxml'.";
-        assert tbcInformacionReserva != null : "fx:id=\"tbcInformacionReserva\" was not injected: check your FXML file 'empleado.fxml'.";
-        assert tbcNombreCliente != null : "fx:id=\"tbcNombreCliente\" was not injected: check your FXML file 'empleado.fxml'.";
-        assert tbcProducto != null : "fx:id=\"tbcProducto\" was not injected: check your FXML file 'empleado.fxml'.";
-        assert tbv != null : "fx:id=\"tbv\" was not injected: check your FXML file 'empleado.fxml'.";
-        assert tbvListaClientes != null : "fx:id=\"tbvListaClientes\" was not injected: check your FXML file 'empleado.fxml'.";
-        assert tbvListaReserva != null : "fx:id=\"tbvListaReserva\" was not injected: check your FXML file 'empleado.fxml'.";
+        assert tbcCorreoUsuarios != null : "fx:id=\"tbcCorreoUsuarios\" was not injected: check your FXML file 'empleado.fxml'.";
+        assert tbcFechaReservas != null : "fx:id=\"tbcFechaReservas\" was not injected: check your FXML file 'empleado.fxml'.";
+        assert tbcNombreReservas != null : "fx:id=\"tbcNombreReservas\" was not injected: check your FXML file 'empleado.fxml'.";
+        assert tbcNombreUsuarios != null : "fx:id=\"tbcNombreUsuarios\" was not injected: check your FXML file 'empleado.fxml'.";
+        assert tbvGestionFecha != null : "fx:id=\"tbvGestionFecha\" was not injected: check your FXML file 'empleado.fxml'.";
+        assert tbvGestionUsuarios != null : "fx:id=\"tbvGestionUsuarios\" was not injected: check your FXML file 'empleado.fxml'.";
+        assert txtCantidadReservas != null : "fx:id=\"txtCantidadReservas\" was not injected: check your FXML file 'empleado.fxml'.";
+        assert txtContrasenaUsuarios != null : "fx:id=\"txtContrasenaUsuarios\" was not injected: check your FXML file 'empleado.fxml'.";
+        assert txtCorreoUsuario != null : "fx:id=\"txtCorreoUsuario\" was not injected: check your FXML file 'empleado.fxml'.";
+        assert txtNombreReservas != null : "fx:id=\"txtNombreReservas\" was not injected: check your FXML file 'empleado.fxml'.";
+        assert txtNombreUsuario != null : "fx:id=\"txtNombreUsuario\" was not injected: check your FXML file 'empleado.fxml'.";
 
     }
+
 }
