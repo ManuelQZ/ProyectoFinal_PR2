@@ -9,6 +9,8 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
+import java.util.Objects;
+
 public class Tools {
 
     public static void mostrarMensaje(String title, String header, String message, Alert.AlertType type){
@@ -19,11 +21,13 @@ public class Tools {
         alert.showAndWait();
     }
 
-    public static void ventanaEmergente(String url, String title) {
+    public static void ventanaEmergente(String url, String title, String style) {
         Scene scene = new Scene(new Pane());
+
         try {
             FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource(url));
             scene = new Scene(fxmlLoader.load());
+            scene.getStylesheets().add(Objects.requireNonNull(Tools.class.getResource(style)).toExternalForm());
         }catch (Exception e){
             mostrarMensaje("Error", "Error al cargar la ventana", e.getMessage(), Alert.AlertType.ERROR);
         }
