@@ -20,7 +20,7 @@ public class EmpleadoViewController {
     private URL location;
 
     @FXML
-    private TableColumn<?, ?> tbcCorreoUsuarios;
+    private TableColumn<Usuario, String> tbcCorreoUsuarios;
 
     @FXML
     private TableColumn<Reserva, String> tbcFechaReservas;
