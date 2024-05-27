@@ -12,7 +12,7 @@ import java.util.Objects;
 
 public class UsuarioController {
 
-    private final ObservableList<Usuario> listaUsuarioObservable;
+    private ObservableList<Usuario> listaUsuarioObservable;
     private final Mediator mediator;
     private static UsuarioController instance;
 
@@ -131,6 +131,10 @@ public class UsuarioController {
 
     public ObservableList<Usuario> getListaUsuarioObservable() {
         return listaUsuarioObservable;
+    }
+
+    public void setListaUsuarioObservable(ObservableList<Usuario> listaUsuarioObservable) {
+        this.listaUsuarioObservable = listaUsuarioObservable;
     }
 
     public void sincronizarData() {

@@ -71,6 +71,10 @@ public class ProductoController {
         return listaProductoObservable;
     }
 
+    public void setListaProductoObservable(ObservableList<Producto> listaProductoObservable) {
+        this.listaProductoObservable = listaProductoObservable;
+    }
+
     public void sincronizarData() {
         this.listaProductoObservable.addAll(this.factory.getArcade().getListaProducto());
     }

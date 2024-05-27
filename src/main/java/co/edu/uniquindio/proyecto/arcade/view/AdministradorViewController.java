@@ -1,16 +1,20 @@
 package co.edu.uniquindio.proyecto.arcade.view;
 
 import java.net.URL;
+import java.time.LocalDate;
 import java.util.ResourceBundle;
 
 import co.edu.uniquindio.proyecto.arcade.controller.ProductoController;
 import co.edu.uniquindio.proyecto.arcade.controller.UsuarioController;
+import co.edu.uniquindio.proyecto.arcade.controller.ReservaController;
 import co.edu.uniquindio.proyecto.arcade.model.Producto;
 import co.edu.uniquindio.proyecto.arcade.model.Reserva;
 import co.edu.uniquindio.proyecto.arcade.model.Usuario;
 import javafx.beans.property.SimpleStringProperty;
+import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.DatePicker;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
@@ -19,6 +23,7 @@ public class AdministradorViewController {
 
     UsuarioController usuarioController = UsuarioController.getInstance();
     ProductoController productoController = ProductoController.getInstance();
+    ReservaController reservaController = ReservaController.getInstance();
 
     @FXML
     private ResourceBundle resources;
@@ -26,7 +31,6 @@ public class AdministradorViewController {
     @FXML
     private URL location;
 
-//Tablas:
     @FXML
     private TableView<Producto> tbvGestionProducto;
 
@@ -35,6 +39,9 @@ public class AdministradorViewController {
 
     @FXML
     private TableColumn<Producto, String> tbcNombreProducto;
+
+    @FXML
+    private TableColumn<Producto, String> tbcPrecio;
 
     @FXML
     private TableView<Usuario> tbvGestionUsuario;
@@ -49,21 +56,16 @@ public class AdministradorViewController {
     private TableColumn<Usuario, String> tbcTipoUsuario;
 
     @FXML
-    private TableView<Reserva> tbvGestionReserva;
-
+    private TableColumn<Usuario, String> tbcSaldo;
 
     @FXML
-    private TableColumn<?, ?> tbcNombreReserva;
+    private TableView<Reserva> tbvGestionReserva;
+
+    @FXML
+    private TableColumn<Reserva, String> tbcNombreReserva;
 
     @FXML
     private TableColumn<Reserva, String> tbcFechaReserva;
-
-    @FXML
-    private TableColumn<Producto, String> tbcPrecio;
-
-    @FXML
-    private TableColumn<Usuario, String> tbcSaldo;
-
 
     @FXML
     private TextField txtCantidad;
@@ -75,8 +77,8 @@ public class AdministradorViewController {
     private TextField txtCorreo;
 
     @FXML
-    private TextField txtFechaReserva;
-    
+    private DatePicker dateFechaReserva;
+
     @FXML
     private TextField txtNombre;
 
@@ -101,19 +103,17 @@ public class AdministradorViewController {
     @FXML
     void addProducto(ActionEvent event) {
         productoController.actualizarProducto(txtProducto.getText(), txtPrecio.getText(), txtCantidad.getText());
-
     }
 
     @FXML
     void updateProducto(ActionEvent event) {
-
+        // Aquí puedes agregar la lógica para actualizar el producto si es necesario
     }
 
     @FXML
     void removeProducto(ActionEvent event) {
         productoController.eliminarProducto(txtProducto.getText());
     }
-
 
     @FXML
     void addUsuario(ActionEvent event) {
@@ -122,7 +122,7 @@ public class AdministradorViewController {
 
     @FXML
     void updateUsuario(ActionEvent event) {
-
+        // Aquí puedes agregar la lógica para actualizar el usuario si es necesario
     }
 
     @FXML
@@ -132,48 +132,46 @@ public class AdministradorViewController {
 
     @FXML
     void addReserva(ActionEvent event) {
-
+        // Aquí puedes agregar la lógica para agregar reservas si es necesario
     }
 
     @FXML
     void updateReserva(ActionEvent event) {
-
+        // Aquí puedes agregar la lógica para actualizar reservas si es necesario
     }
 
     @FXML
     void removeReserva(ActionEvent event) {
-
+        reservaController.eliminarReserva(txtNombreReserva.getText());
     }
 
     @FXML
     void initialize() {
-//        initview();
 
     }
 
     private void initview() {
         initDataBinding();
         tbvGestionUsuario.getItems().clear();
-        tbvGestionProducto.getItems().clear();
+        tbvGestionReserva.getItems().clear();
         tbvGestionUsuario.setItems(usuarioController.getListaUsuarioObservable());
-        tbvGestionProducto.setItems(productoController.getListaProductoObservable());
-        listenerSelectionProducto();
+        tbvGestionReserva.setItems(reservaController.getListaReservaObservable());
         listenerSelectionUsuario();
     }
 
-    private void initDataBinding(){
+    private void initDataBinding() {
+        // lista de usuarios
         tbcNombreUsuario.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getNombre()));
         tbcCorreoUsuario.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getCorreo()));
-        tbcSaldo.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getSaldo()));
-        tbcNombreProducto.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getNombre()));
-        tbcPrecio.setCellValueFactory(cellData -> new SimpleStringProperty(String.valueOf(cellData.getValue().getPrecio())));
-        tbcCantidadProducto.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getCantidadDisponible()));
-    }
+        tbcTipoUsuario.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getTipoUsuario()));
 
-    private void listenerSelectionProducto() {
-        tbvGestionProducto.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
-            this.mostrarInformacionProducto((Producto) newSelection);
-        });
+        // lista de reserva
+        tbcNombreReserva.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getId()));
+        tbcFechaReserva.setCellValueFactory(cellData -> new SimpleStringProperty(String.valueOf(cellData.getValue().getFecha())));
+
+        // lista de productos
+        tbcNombreProducto.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getNombre()));
+        tbcCantidadProducto.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getCantidadDisponible()));
     }
 
     private void listenerSelectionUsuario() {
@@ -182,19 +180,35 @@ public class AdministradorViewController {
         });
     }
 
-    private void mostrarInformacionProducto(Producto seleccionado) {
+    private void mostrarInformacionUsuario(Usuario seleccionado) {
         if(seleccionado != null){
+            txtNombre.setText(seleccionado.getNombre());
+            txtCorreo.setText(String.valueOf(seleccionado.getCorreo()));
+            txtContrasena.setText(seleccionado.getClave());
+            txtSaldo.setText(seleccionado.getSaldo());
+        }
+    }
+
+
+
+    private void mostrarInformacionProducto(Producto seleccionado) {
+        if (seleccionado != null) {
             txtProducto.setText(seleccionado.getNombre());
-            txtPrecio.setText(String.valueOf(seleccionado.getPrecio()));
+            txtPrecio.setText(seleccionado.getPrecio());
             txtCantidad.setText(seleccionado.getCantidadDisponible());
         }
     }
 
-    private void mostrarInformacionUsuario(Usuario seleccionado) {
-        if(seleccionado != null){
-            txtUsuario.setText(seleccionado.getNombre());
-            txtCorreo.setText(String.valueOf(seleccionado.getCorreo()));
-            txtContrasena.setText(seleccionado.getClave());
+    private void listenerSelectionReserva() {
+        tbvGestionReserva.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
+            this.mostrarInformacionReserva((Reserva) newSelection);
+        });
+    }
+
+    private void mostrarInformacionReserva(Reserva seleccionado) {
+        if (seleccionado != null) {
+            txtNombreReserva.setText(seleccionado.getEstado());
+            dateFechaReserva.setValue(LocalDate.parse(seleccionado.getFecha()));
         }
     }
 }
