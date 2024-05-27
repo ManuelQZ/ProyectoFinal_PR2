@@ -3,8 +3,11 @@ package co.edu.uniquindio.proyecto.arcade.view;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-import co.edu.uniquindio.proyecto.arcade.model.Reserva;
-import co.edu.uniquindio.proyecto.arcade.model.Usuario;
+import co.edu.uniquindio.proyecto.arcade.controller.ReservaController;
+import co.edu.uniquindio.proyecto.arcade.controller.UsuarioController;
+
+import co.edu.uniquindio.proyecto.arcade.model.*;
+import javafx.beans.property.SimpleStringProperty;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
@@ -16,6 +19,9 @@ import javafx.scene.control.TextField;
 
 public class EmpleadoViewController {
 
+    UsuarioController usuarioController = UsuarioController.getInstance();
+    ReservaController reservaController = ReservaController.getInstance();
+
     @FXML
     private ResourceBundle resources;
 
@@ -23,10 +29,10 @@ public class EmpleadoViewController {
     private URL location;
 
     @FXML
-    private ComboBox<?> boxMetodoPago;
+    private ComboBox<Pago> boxMetodoPago;
 
     @FXML
-    private ComboBox<?> boxServicio;
+    private ComboBox<Servicio> boxServicio;
 
     @FXML
     private DatePicker dateFechaReserva;
@@ -115,4 +121,42 @@ public class EmpleadoViewController {
 
     }
 
+    private void initview() {
+        initDataBinding();
+        tbvGestionUsuarios.getItems().clear();
+        tbvGestionReserva.getItems().clear();
+        tbvGestionUsuarios.setItems(usuarioController.getListaUsuarioObservable());
+        tbvGestionReserva.setItems(reservaController.getListaReservaObservable());
+        listenerSelectionUsuario();
+    }
+
+    private void initDataBinding() {
+        // lista de cliente
+        tbcNombreCliente.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getNombre()));
+        tbcCorreoCliente.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getCorreo()));
+        tbcClaveCliente.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getClave()));
+        tbcSaldoCliente.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getSaldo()));
+
+        // lista de reserva
+        tbcIdReserva.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getId()));
+        tbcServicioReserva.setCellValueFactory(cellData -> new SimpleStringProperty(String.valueOf(cellData.getValue().getServicio().getNombre())));
+        tbcEstadoReserva.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getEstado()));
+        tbcCostoReserva.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getServicio().getPrecio()));
+
+    }
+
+    private void listenerSelectionUsuario() {
+        tbvGestionUsuarios.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
+            this.mostrarInformacionUsuario((Usuario) newSelection);
+        });
+    }
+
+    private void mostrarInformacionUsuario(Usuario seleccionado) {
+        if(seleccionado != null){
+            txtNombreCliente.setText(seleccionado.getNombre());
+            txtCorreoCliente.setText(String.valueOf(seleccionado.getCorreo()));
+            txtContrasenaCliente.setText(seleccionado.getClave());
+            txtSaldoCliente.setText(seleccionado.getSaldo());
+        }
+    }
 }

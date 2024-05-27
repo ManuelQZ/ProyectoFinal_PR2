@@ -65,6 +65,7 @@ public class ReservaController {
         ArrayList<Reserva> reservas = mediator.getArcade().getListaReserva();
         int actualizable = -1;
         Reserva reservaTemporal = null;
+
         for (int i = 0; i < reservas.size(); i++){
             if (Objects.equals(reservas.get(i).getId(), id)){
                 reservaTemporal = reservas.get(i);
@@ -72,12 +73,19 @@ public class ReservaController {
                 actualizable = i;
             }
         }
+
         if (actualizable!= -1 && reservaTemporal != null){
             this.listaReservaObservable.remove(actualizable);
             this.mediator.getArcade().rmReserva(actualizable);
             this.mediator.getArcade().addReserva(reservaTemporal);
             this.listaReservaObservable.add(reservaTemporal);
         }
+    }
+
+    public void agregarReserva(String nombre, String id, String clave, String saldo){
+        Reserva reserva = new Reserva(null, id, null, null, null);
+        this.mediator.getArcade().addReserva(reserva);
+        this.listaReservaObservable.add(reserva);
     }
 
     public ObservableList<Reserva> getListaReservaObservable() {

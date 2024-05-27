@@ -14,11 +14,13 @@ public class ProductivityPalace {
     private final ArrayList<Producto> listaProducto;
     private final ArrayList<Servicio> listaServicio;
     private final ArrayList<Usuario> listaUsuario;
+    private final ArrayList<Usuario> listaCliente;
     private final ArrayList<Reserva> listaReserva;
     private final Usuario administrador;
     private final UsuarioProxy usuarioTemporal;
 
     public ProductivityPalace() {
+        this.listaCliente = new ArrayList<>();
         this.listaUsuario = new ArrayList<>();
         this.listaReserva = new ArrayList<>();
         this.usuarioTemporal = new UsuarioProxy();
@@ -46,6 +48,11 @@ public class ProductivityPalace {
 
     public void addUsuario(Usuario usuario){
         this.listaUsuario.add(usuario);
+        System.out.println("la lista tiene los elementos: " + this.listaUsuario.toString());
+    }
+    public void addCliente(Usuario usuario){
+        this.listaUsuario.add(usuario);
+        System.out.println("la lista tiene los elementos: " + this.listaUsuario.toString());
     }
 
     public void rmUsuario(int index){
@@ -83,6 +90,7 @@ public class ProductivityPalace {
                 .tipoUsuario(TipoUsuario.CLIENTE)
                 .build();
 
+        this.addCliente(cliente);
         this.addUsuario(cliente);
     }
 

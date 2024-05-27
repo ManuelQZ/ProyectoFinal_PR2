@@ -23,6 +23,4 @@ public class Mediator {
     public ProductivityPalace getArcade() {
         return arcade;
     }
-
-
 }
