@@ -207,8 +207,8 @@ public class AdministradorViewController {
 
     private void mostrarInformacionReserva(Reserva seleccionado) {
         if (seleccionado != null) {
-            txtNombreReserva.setText(seleccionado.getEstado());
-            dateFechaReserva.setValue(LocalDate.parse(seleccionado.getFecha()));
+            txtNombreReserva.setText(seleccionado.getId());
+            dateFechaReserva.setValue(LocalDate.parse(seleccionado.getFecha().toString()));
         }
     }
 }
