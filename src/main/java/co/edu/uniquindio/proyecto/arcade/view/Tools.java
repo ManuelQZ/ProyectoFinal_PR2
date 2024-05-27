@@ -27,7 +27,7 @@ public class Tools {
         try {
             FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource(url));
             scene = new Scene(fxmlLoader.load());
-            scene.getStylesheets().add(Objects.requireNonNull(Tools.class.getResource(style)).toExternalForm());
+            scene.getStylesheets().add(Objects.requireNonNull(App.class.getResource(style)).toExternalForm());
         }catch (Exception e){
             mostrarMensaje("Error", "Error al cargar la ventana", e.getMessage(), Alert.AlertType.ERROR);
         }

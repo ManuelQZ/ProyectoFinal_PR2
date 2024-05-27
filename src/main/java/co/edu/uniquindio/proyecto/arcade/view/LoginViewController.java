@@ -57,16 +57,16 @@ public class LoginViewController {
     public void seleccionarInterfaz(String interfaz){
         switch (interfaz){
             case "cliente":
-                Tools.ventanaEmergente("cliente.fxml", "cliente");
+                Tools.ventanaEmergente("cliente.fxml", "cliente", "Estilos/login.css");
                 System.out.println("Mano se ejecuto algo");
                 break;
 
             case "empleado":
-                Tools.ventanaEmergente("empleado.fxml", "empleado");
+                Tools.ventanaEmergente("empleado.fxml", "empleado", "Estilos/login.css");
                 System.out.println("mano se ejecuto un empleadod nano");
                 break;
             case "administrador":
-                Tools.ventanaEmergente("administrador.fxml", "administrador");
+                Tools.ventanaEmergente("administrador.fxml", "administrador", "Estilos/login.css");
                 System.out.println("mano se ejecuto el admin nanerdo");
                 break;
         }
