@@ -16,20 +16,20 @@
             <content>
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="371.0" prefWidth="635.0">
                      <children>
-                        <TableView fx:id="tbvGestionUsuario" layoutX="21.0" layoutY="20.0" prefHeight="319.0" prefWidth="352.0">
+                        <TableView fx:id="tbvGestionUsuario" layoutX="21.0" layoutY="20.0" prefHeight="319.0" prefWidth="349.0">
                            <columns>
                               <TableColumn fx:id="tbcNombreUsuario" prefWidth="111.0" text="Nombre" />
-                              <TableColumn fx:id="tbcCorreoUsuario" prefWidth="130.0" text="Correo" />
-                              <TableColumn fx:id="tbcTipoUsuario" prefWidth="109.0" text="Tipo Usuario" />
+                              <TableColumn fx:id="tbcCorreoUsuario" prefWidth="115.0" text="Correo" />
+                              <TableColumn fx:id="tbcTipoUsuario" prefWidth="124.0" text="Tipo Usuario" />
                            </columns>
                         </TableView>
-                        <Button layoutX="440.0" layoutY="311.0" mnemonicParsing="false" onAction="#removeUsuario" prefWidth="93.0" text="Eliminar" />
+                        <Button layoutX="441.0" layoutY="302.0" mnemonicParsing="false" onAction="#removeUsuario" prefWidth="93.0" text="Eliminar" />
                         <TextField fx:id="txtUsuario" layoutX="411.0" layoutY="46.0" promptText="Nombre" />
                         <TextField fx:id="txtContrasena" layoutX="411.0" layoutY="136.0" promptText="Contraseña" />
                         <TextField fx:id="txtCorreo" layoutX="411.0" layoutY="89.0" promptText="Correo" />
-                        <Button layoutX="440.0" layoutY="222.0" mnemonicParsing="false" onAction="#addUsuario" prefHeight="39.0" prefWidth="93.0" text="Agregar" />
+                        <Button layoutX="440.0" layoutY="232.0" mnemonicParsing="false" onAction="#addUsuario" prefHeight="39.0" prefWidth="93.0" text="Agregar" />
                         <TextField fx:id="txtTIpoUsuario" layoutX="412.0" layoutY="178.0" promptText="Tipo usuario" />
-                        <Button layoutX="440.0" layoutY="267.0" mnemonicParsing="false" onAction="#updateUsuario" prefWidth="93.0" text="Actualizar" />
+                        <Button layoutX="441.0" layoutY="267.0" mnemonicParsing="false" onAction="#updateUsuario" prefWidth="93.0" text="Actualizar" />
                      </children>
                   </AnchorPane>
             </content>
