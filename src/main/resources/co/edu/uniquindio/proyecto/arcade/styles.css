@@ -1,75 +1,74 @@
 /* Cambia el fondo de la ventana */
 .root {
-/: ;-fx-background-color: rgba(255, 255, 255, 0.7);
-    -fx-background-image: url("Imagenes/LogoProductivityPalace.jpg");
-    -fx-opacity: 0.9;
-    -fx-background-repeat: stretch;
-    -fx-background-size: 603 400;
-    -fx-background-position: center;
+    -fx-background-color: #F7ECDE;
 }
 
 /* Estilo para los botones */
 .button {
-    -fx-background-color: #c43b32;
-    -fx-text-fill: white;
-    -fx-font-size: 12px;
+
+    -fx-border-radius: 8 8 8 8;
+    -fx-background-radius: 8 8 8 8;
     -fx-border-color: #000000;
     -fx-border-width: 1px;
+    -fx-pref-height: 30px;
+    -fx-background-color: #FCC951;
+    -fx-text-fill: black;
+    -fx-font-family: 'Alata';
+    -fx-font-size: 12px;
     -fx-padding: 10px;
+    -fx-alignment: center;
 }
-
 
 /* Estilo para los labels */
 .label {
+
     -fx-font-size: 16px;
-    -fx-text-fill: #00ff1e;
-    
+    -fx-text-fill: #000000;
+    -fx-font-family: 'Alata';
+}
+
+/* Estilo para los campos de texto */
+.text-field {
+    -fx-border-width: 0 0 2px 0;
+    -fx-border-color: #e55156;
+    -fx-text-fill: #87252b; /* Color de texto */
+    -fx-background-color: rgba(255, 255, 255, 0);
+    -fx-font-family: 'Alata';
+    -fx-font-size: 12px;
+    -fx-alignment: center;
+}
+
+
+/*
+.root {
+    -fx-background-color: #F7ECDE;
+}
+
+
+.button {
+    -fx-background-radius: 8px;
+    -fx-border-color: #000000;
+    -fx-border-width: 1px;
+    -fx-background-color: #FCC951;
+    -fx-text-fill: black;
+    -fx-font-family: 'Alata';
+    -fx-font-size: 12px;
+    -fx-padding: 10px;
+    -fx-alignment: center;
+}
+
+.label {
+    -fx-font-size: 16px;
+    -fx-text-fill: #000000;
+    -fx-font-family: 'Alata';
 }
 
 .text-field {
+    -fx-border-color: #e55156;
+    -fx-border-width: 1px;
+    -fx-text-fill: #87252b;
+    -fx-background-color: rgba(255, 255, 255, 0);
+    -fx-font-family: 'Alata';
     -fx-font-size: 12px;
-    -fx-text-fill: #000000;
-    -fx-background-color: #ffffff;
-    -fx-border-color: #000000;
-    -fx-border-width: 1.5px;
-    -fx-border-radius: 5px;
-    -fx-padding: 10px;
-}
-
-
-/* Estilo para BOTONES */
-#button {
-    position: absolute;
-    left: 0px;
-    top: 0px;
-    width: 162px;
-    height: 27px;
-    border-radius: 8px;
-    border: 1px solid #808080;
-    background: #fcc951;
-    background-blend-mode: normal;
-    font-family: Alata;
-    font-size: 12px;
-    text-align: center;
-    display: flex;
-    align-items: center;
-  }
-
-/* Estilo para TEXTFIELD */
-#text-field {
-    position: absolute;
-    left: 0px;
-    top: 100px;
-    width: 182px;
-    height: 40px;
-    border: 1px solid #e55156;
-    color: #87252b; /*color de texto*/
-    font-family: Alata;
-    font-size: 12px;
-    text-align: center;
-    display: flex;
-    align-items: center;
-  }
-
-
-
+    -fx-alignment: center;
+}  */
