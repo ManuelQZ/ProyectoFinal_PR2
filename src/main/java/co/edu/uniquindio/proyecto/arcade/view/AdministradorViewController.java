@@ -6,6 +6,7 @@ import java.util.ResourceBundle;
 import co.edu.uniquindio.proyecto.arcade.controller.ProductoController;
 import co.edu.uniquindio.proyecto.arcade.controller.UsuarioController;
 import co.edu.uniquindio.proyecto.arcade.model.Producto;
+import co.edu.uniquindio.proyecto.arcade.model.Reserva;
 import co.edu.uniquindio.proyecto.arcade.model.Usuario;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.event.ActionEvent;
@@ -25,8 +26,18 @@ public class AdministradorViewController {
     @FXML
     private URL location;
 
+//Tablas:
     @FXML
-    private TableColumn<Producto, String> tbcCantidad;
+    private TableView<Producto> tbvGestionProducto;
+
+    @FXML
+    private TableColumn<Producto, String> tbcCantidadProducto;
+
+    @FXML
+    private TableColumn<Producto, String> tbcNombreProducto;
+
+    @FXML
+    private TableView<Usuario> tbvGestionUsuario;
 
     @FXML
     private TableColumn<Usuario, String> tbcCorreoUsuario;
@@ -35,19 +46,24 @@ public class AdministradorViewController {
     private TableColumn<Usuario, String> tbcNombreUsuario;
 
     @FXML
-    private TableColumn<Producto, String> tbcPrecio;
+    private TableColumn<Usuario, String> tbcTipoUsuario;
 
     @FXML
-    private TableColumn<Producto, String> tbcProducto;
+    private TableView<Reserva> tbvGestionReserva;
+
+
+    @FXML
+    private TableColumn<?, ?> tbcNombreReserva;
+
+    @FXML
+    private TableColumn<Reserva, String> tbcFechaReserva;
+
+    @FXML
+    private TableColumn<Producto, String> tbcPrecio;
 
     @FXML
     private TableColumn<Usuario, String> tbcSaldo;
 
-    @FXML
-    private TableView<Producto> tbvGestionProducto;
-
-    @FXML
-    private TableView<Usuario> tbvGestionUsuario;
 
     @FXML
     private TextField txtCantidad;
@@ -59,36 +75,74 @@ public class AdministradorViewController {
     private TextField txtCorreo;
 
     @FXML
+    private TextField txtFechaReserva;
+    
+    @FXML
+    private TextField txtNombre;
+
+    @FXML
+    private TextField txtNombreReserva;
+
+    @FXML
+    private TextField txtTIpoUsuario;
+
+    @FXML
+    private TextField txtUsuario;
+
+    @FXML
     private TextField txtPrecio;
 
     @FXML
     private TextField txtProducto;
 
     @FXML
-    private TextField txtUsuario;
-
-    @FXML
     private TextField txtSaldo;
 
     @FXML
-    void addActualizarProducto(ActionEvent event) {
+    void addProducto(ActionEvent event) {
         productoController.actualizarProducto(txtProducto.getText(), txtPrecio.getText(), txtCantidad.getText());
 
     }
 
     @FXML
-    void addActualizarUsuario(ActionEvent event) {
+    void updateProducto(ActionEvent event) {
+
+    }
+
+    @FXML
+    void removeProducto(ActionEvent event) {
+        productoController.eliminarProducto(txtProducto.getText());
+    }
+
+
+    @FXML
+    void addUsuario(ActionEvent event) {
         usuarioController.actualizarUsuario(txtUsuario.getText(), txtCorreo.getText(), txtContrasena.getText(), txtSaldo.getText());
     }
 
     @FXML
-    void removeEliminarProducto(ActionEvent event) {
-        productoController.eliminarProducto(txtProducto.getText());
+    void updateUsuario(ActionEvent event) {
+
     }
 
     @FXML
-    void removeEliminarUsuario(ActionEvent event) {
+    void removeUsuario(ActionEvent event) {
         usuarioController.eliminarUsuario(txtUsuario.getText());
+    }
+
+    @FXML
+    void addReserva(ActionEvent event) {
+
+    }
+
+    @FXML
+    void updateReserva(ActionEvent event) {
+
+    }
+
+    @FXML
+    void removeReserva(ActionEvent event) {
+
     }
 
     @FXML
@@ -111,9 +165,9 @@ public class AdministradorViewController {
         tbcNombreUsuario.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getNombre()));
         tbcCorreoUsuario.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getCorreo()));
         tbcSaldo.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getSaldo()));
-        tbcProducto.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getNombre()));
+        tbcNombreProducto.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getNombre()));
         tbcPrecio.setCellValueFactory(cellData -> new SimpleStringProperty(String.valueOf(cellData.getValue().getPrecio())));
-        tbcCantidad.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getCantidadDisponible()));
+        tbcCantidadProducto.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getCantidadDisponible()));
     }
 
     private void listenerSelectionProducto() {

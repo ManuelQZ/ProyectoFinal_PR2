@@ -1,0 +1,82 @@
+/* Cambia el fondo de la ventana */
+.root {
+    -fx-background-color: #F7ECDE;
+}
+
+/* Estilo para los botones */
+.button {
+    -fx-border-radius: 8 8 8 8;
+    -fx-background-radius: 8 8 8 8;
+    -fx-border-color: #000000;
+    -fx-border-width: 1px;
+    -fx-pref-height: 30px;
+    -fx-background-color: #FCC951;
+    -fx-text-fill: black;
+    -fx-font-family: 'Alata';
+    -fx-font-size: 12px;
+    -fx-padding: 10px;
+    -fx-alignment: center;
+}
+
+/* Estilo para los labels */
+.label {
+    -fx-font-size: 16px;
+    -fx-text-fill: #000000;
+    -fx-font-family: 'Alata';
+}
+
+/* Estilo para los campos de texto */
+.text-field {
+    -fx-border-width: 0 0 2px 0;
+    -fx-border-color: #e55156;
+    -fx-text-fill: #87252b; /* Color de texto */
+    -fx-background-color: rgba(255, 255, 255, 0);
+    -fx-font-family: 'Alata';
+    -fx-font-size: 12px;
+    -fx-alignment: center;
+}
+
+.tab-pane {
+    -fx-background-color: #F7ECDE ;
+    -fx-border-color: #000000;
+    -fx-border-width: 1px;
+    -fx-tab-min-width: 100px;
+    -fx-tab-max-width: 200px;
+    -fx-tab-min-height: 10px;
+    -fx-tab-max-height: 20px;
+}
+
+.tab {
+    -fx-border-radius: 8 0 8 0;
+    -fx-background-radius: 8 8 8 8;
+    -fx-background-color: #F7ECDE;
+    -fx-border-color: #000000;
+    -fx-border-width: 1px;
+    -fx-padding: 5px;
+    -fx-font-family: 'Alata';
+    -fx-font-size: 12px;
+}
+
+.table-view {
+    -fx-background-color: #F7ECDE;
+    -fx-border-radius: 0 0 8 8;
+    -fx-background-radius: 8 8 8 8;
+    -fx-border-color: #000000;
+    -fx-border-width: 1px;
+    -fx-font-family: 'Alata';
+    -fx-font-size: 12px;
+}
+
+
+.table-view .column-header .label {
+    -fx-text-fill: #000000;
+    -fx-background-color: #F7ECDE;
+    -fx-border-color: #000000;
+    -fx-border-radius: 0 0 0 0;
+    -fx-background-radius: 0 0 0 0;
+    -fx-border-width: 1px;
+    -fx-padding: 5px;
+    -fx-alignment: center;
+    -fx-font-family: 'Alata';
+    -fx-font-size: 12px;
+}
