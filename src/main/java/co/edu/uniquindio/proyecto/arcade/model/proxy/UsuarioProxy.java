@@ -1,5 +1,6 @@
-package co.edu.uniquindio.proyecto.arcade.model;
+package co.edu.uniquindio.proyecto.arcade.model.proxy;
 
+import co.edu.uniquindio.proyecto.arcade.model.Usuario;
 import co.edu.uniquindio.proyecto.arcade.services.Acceso;
 
 public class UsuarioProxy implements Acceso {

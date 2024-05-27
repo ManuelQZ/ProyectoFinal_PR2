@@ -2,34 +2,46 @@
 
 ## Descripción del Proyecto
 
-Productivity Palace Arcade es un sistema de gestión integral diseñado para un arcade que ofrece servicios de gaming y productos relacionados. El objetivo principal del sistema es facilitar la administración eficiente de usuarios, reservas, empleados, servicios, productos y pagos, proporcionando una experiencia fluida tanto para los usuarios como para los empleados.
+Productivity Palace Arcade es un sistema de gestión integral diseñado para un arcade
+que ofrece servicios de gaming y productos relacionados. El objetivo principal del 
+sistema es facilitar la administración eficiente de usuarios, reservas, empleados, 
+servicios, productos y pagos, proporcionando una experiencia fluida tanto para los 
+usuarios como para los empleados.
 
 ## Características Principales
 
 ### Gestión de Usuarios
-- **Registro de Usuarios:** Permite a los nuevos usuarios registrarse proporcionando su nombre, correo electrónico y saldo inicial.
+- **Registro de Usuarios:** Permite a los nuevos usuarios registrarse proporcionando su 
+nombre, correo electrónico y saldo inicial.
 - **Inicio de Sesión:** Los usuarios pueden autenticarse para acceder a sus cuentas.
 - **Administración de Saldo:** Los usuarios pueden ver y actualizar su saldo disponible.
 
 ### Gestión de Reservas
 - **Creación de Reservas:** Los usuarios pueden realizar reservas para diferentes servicios ofrecidos por el arcade.
-- **Consulta y Modificación:** Permite ver detalles de las reservas, así como modificar o cancelar las reservas existentes.
+- **Consulta y Modificación:** Permite ver detalles de las reservas, así como modificar o 
+- cancelar las reservas existentes.
 
 ### Gestión de Empleados
-- **Registro de Empleados:** Los empleados pueden ser registrados con sus respectivos cargos y niveles de permisos.
+- **Registro de Empleados:** Los empleados pueden ser registrados con sus respectivos 
+cargos y niveles de permisos.
 - **Asignación de Tareas:** Los empleados pueden gestionar reservas y supervisar servicios.
 
 ### Gestión de Servicios
-- **Definición de Servicios:** Administración de los servicios ofrecidos, incluyendo precios y disponibilidad.
+- **Definición de Servicios:** Administración de los servicios ofrecidos, incluyendo 
+precios y disponibilidad.
 - **Reserva de Servicios:** Los usuarios pueden reservar servicios disponibles.
 
 ### Gestión de Productos
-- **Inventario de Productos:** Administración de los productos disponibles para la venta, incluyendo precios y cantidades disponibles.
-- **Actualización de Inventario:** Modificación de la información de los productos y actualización de inventarios tras las ventas.
+- **Inventario de Productos:** Administración de los productos disponibles para la venta,
+incluyendo precios y cantidades disponibles.
+- **Actualización de Inventario:** Modificación de la información de los productos y 
+actualización de inventarios tras las ventas.
 
 ### Gestión de Pagos
-- **Registro de Pagos:** Los usuarios pueden realizar pagos por servicios y productos adquiridos.
-- **Historial de Pagos:** Consulta de los pagos realizados, incluyendo detalles como tipo de pago, monto y fecha.
+- **Registro de Pagos:** Los usuarios pueden realizar pagos por servicios y productos 
+adquiridos.
+- **Historial de Pagos:** Consulta de los pagos realizados, incluyendo detalles como tipo
+de pago, monto y fecha.
 
 ## Arquitectura del Sistema
 

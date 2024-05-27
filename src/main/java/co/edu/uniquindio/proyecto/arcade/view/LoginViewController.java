@@ -5,7 +5,7 @@ import java.util.ResourceBundle;
 
 import co.edu.uniquindio.proyecto.arcade.controller.UsuarioController;
 import co.edu.uniquindio.proyecto.arcade.model.Usuario;
-import co.edu.uniquindio.proyecto.arcade.model.UsuarioProxy;
+import co.edu.uniquindio.proyecto.arcade.model.proxy.UsuarioProxy;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
