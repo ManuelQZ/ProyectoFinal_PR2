@@ -14,7 +14,7 @@ public class ReservaController {
     private ModelFactory factory;
     private static ReservaController instance;
 
-    private UsuarioController() {
+    private ReservaController() {
         this.factory = ModelFactory.getInstancia();
         this.listaReservaObservable = FXCollections.observableArrayList();
         this.sincronizarData();
@@ -111,4 +111,4 @@ public class ReservaController {
         this.listaReservaObservable.addAll(this.factory.getArcade().getListaReserva());
     }
 }
-}
+
