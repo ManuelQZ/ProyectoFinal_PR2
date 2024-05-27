@@ -14,8 +14,8 @@
 - [ ] Compra de Producto y Actualización de Inventario
 
 ## Patrones creacionales
-- [ ] Abstract factory ->
-- [ ] Prototype ->
+- [ ] Builder -> Asignar atributos a `Usuario`.
+- [ ] Prototype -> .
 - [X] Singleton -> Se implementa en el `ModelFactory` y en los controladores.
 
 ## Patrones comportamentales

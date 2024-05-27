@@ -5,6 +5,7 @@ import co.edu.uniquindio.proyecto.arcade.model.Producto;
 import co.edu.uniquindio.proyecto.arcade.model.Servicio;
 import co.edu.uniquindio.proyecto.arcade.model.TipoUsuario;
 import co.edu.uniquindio.proyecto.arcade.model.Usuario;
+import co.edu.uniquindio.proyecto.arcade.model.builder.UsuarioBuilder;
 
 public class ModelFactory{
 
@@ -26,17 +27,16 @@ public class ModelFactory{
     }
 
     private void inicializarDatos() {
-        Usuario usuario1 = new Usuario("Juan Pérez", "juan.perez@example.com", "password123", "1500.00", TipoUsuario.CLIENTE);
-        Usuario usuario2 = new Usuario("María López", "maria.lopez@example.com", "m4r1a2023", "2500.00", TipoUsuario.EMPLEADO);
-        Usuario usuario3 = new Usuario("Carlos Gómez", "carlos.gomez@example.com", " ", "3500.00", TipoUsuario.ADMINISTRADOR);
-        Usuario usuario4 = new Usuario("Ana Torres", "ana.torres@example.com", "4naT0rr3s", "4500.00", TipoUsuario.CLIENTE);
-        Usuario usuario5 = new Usuario("Luis Martínez", "luis.martinez@example.com", "lu1sM8rt!", "5500.00", TipoUsuario.EMPLEADO);
+        Usuario cliente1 = arcade.crearCliente("Juan Pérez", "juan.perez@example.com", "password123", "1500.00");
+        Usuario cliente2 = arcade.crearCliente("Ana Torres", "ana.torres@example.com", "4naT0rr3s", "4500.00");
 
-        arcade.addUsuario(usuario1);
-        arcade.addUsuario(usuario2);
-        arcade.addUsuario(usuario3);
-        arcade.addUsuario(usuario4);
-        arcade.addUsuario(usuario5);
+        Usuario empleado1 = arcade.crearEmpleado("María López", "maria.lopez@example.com", "m4r1a2023");
+        Usuario empleado2 = arcade.crearEmpleado("Luis Martínez", "luis.martinez@example.com", "lu1sM8rt!");
+
+        arcade.addUsuario(cliente1);
+        arcade.addUsuario(cliente2);
+        arcade.addUsuario(empleado1);
+        arcade.addUsuario(empleado2);
 
         Producto producto1 = new Producto("GTA V", "5.99", "50");
         Producto producto2 = new Producto("Warframe", "3.49", "30");
@@ -63,15 +63,6 @@ public class ModelFactory{
         arcade.addServicio(servicio5);
 
     }
-
-    public Usuario crearUsuario(String nombre,
-                                String correo,
-                                String clave,
-                                String saldo,
-                                TipoUsuario tipoUsuario){
-        return new Usuario(nombre,correo,clave,saldo,tipoUsuario);
-    }
-
 
     public ProductivityPalace getArcade() {
         return arcade;

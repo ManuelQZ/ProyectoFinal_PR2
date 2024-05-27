@@ -1,5 +1,6 @@
 package co.edu.uniquindio.proyecto.arcade.model;
 
+import co.edu.uniquindio.proyecto.arcade.model.builder.UsuarioBuilder;
 import co.edu.uniquindio.proyecto.arcade.services.Acceso;
 
 public class Usuario implements Acceso {
@@ -10,20 +11,16 @@ public class Usuario implements Acceso {
     private String saldo;
     private TipoUsuario tipoUsuario;
 
-    public Usuario (String nombre, String correo, String clave, String saldo, TipoUsuario tipoUsuario) {
-        this.nombre = nombre;
-        this.correo = correo;
-        this.clave = clave;
-        this.saldo = saldo;
-        this.tipoUsuario = tipoUsuario;
+    public Usuario (UsuarioBuilder builder) {
+        this.nombre = builder.nombre;
+        this.correo = builder.correo;
+        this.clave = builder.clave;
+        this.saldo = builder.saldo;
+        this.tipoUsuario = builder.tipoUsuario;
     }
 
     public String getNombre() {
         return nombre;
-    }
-
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
     }
 
     public String getCorreo() {
@@ -38,10 +35,6 @@ public class Usuario implements Acceso {
         return saldo;
     }
 
-    public void setSaldo(String saldo) {
-        this.saldo = saldo;
-    }
-
     public void setTipoUsuario(TipoUsuario tipoUsuario) {
         this.tipoUsuario = tipoUsuario;
     }
@@ -52,6 +45,14 @@ public class Usuario implements Acceso {
 
     public void setClave(String clave) {
         this.clave = clave;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public void setSaldo(String saldo) {
+        this.saldo = saldo;
     }
 
     @Override
