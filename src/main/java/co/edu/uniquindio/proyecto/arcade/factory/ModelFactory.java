@@ -13,7 +13,7 @@ public class ModelFactory {
     protected static void inicializarDatos(ProductivityPalace arcade) {
         new RegistrarClienteCommand(arcade, "Juan Pérez", "juan.perez@example.com", "password123", "1500.00").execute();
         new RegistrarClienteCommand(arcade, "Ana Torres", "ana.torres@example.com", "4naT0rr3s", "4500.00").execute();
-        new RegistrarEmpleadoCommand(arcade, "María López", "maria.lopez@example.com", "m4r1a2023").execute();
+        new RegistrarEmpleadoCommand(arcade, "María López", "maria.lopez@example.com", "123").execute();
         new RegistrarEmpleadoCommand(arcade, "Luis Martínez", "luis.martinez@example.com", "lu1sM8rt!").execute();
 
         Producto producto1 = new Producto("GTA V", "5.99", "50");

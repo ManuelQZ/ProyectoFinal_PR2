@@ -69,7 +69,6 @@ public class ReservaController {
             if (Objects.equals(reservas.get(i).getId(), id)){
                 reservaTemporal = reservas.get(i);
                 reservaTemporal.setEstado(nombre);
-                reservaTemporal.setFecha(clave);
                 actualizable = i;
             }
         }

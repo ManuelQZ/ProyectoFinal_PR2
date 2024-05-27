@@ -2,15 +2,17 @@ package co.edu.uniquindio.proyecto.arcade.model;
 
 import co.edu.uniquindio.proyecto.arcade.model.strategy.PagoStrategy;
 
+import java.util.Date;
+
 public class Pago {
     private final PagoStrategy estrategiaPago;
     private double monto;
-    private String fecha;
+    private final Date fecha;
 
-    public Pago(PagoStrategy estrategiaPago, double monto, String fecha) {
+    public Pago(PagoStrategy estrategiaPago, double monto) {
         this.estrategiaPago = estrategiaPago;
         this.monto = monto;
-        this.fecha = fecha;
+        this.fecha = new Date();
     }
 
     public void realizarPago() {
@@ -25,11 +27,7 @@ public class Pago {
         this.monto = monto;
     }
 
-    public String getFecha() {
+    public Date getFecha() {
         return fecha;
-    }
-
-    public void setFecha(String fecha) {
-        this.fecha = fecha;
     }
 }
