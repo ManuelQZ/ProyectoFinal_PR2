@@ -12,16 +12,17 @@
 
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uniquindio.proyecto.arcade.view.LoginViewController">
    <children>
-      <Button layoutX="336.0" layoutY="292.0" mnemonicParsing="false" onAction="#crearUsuario" prefHeight="39.0" prefWidth="127.0" text="Crear usuario.">
+      <Button layoutX="345.0" layoutY="267.0" mnemonicParsing="false" onAction="#ingresar" prefHeight="39.0" prefWidth="127.0" text="Ingresar">
          <font>
             <Font name="System Bold" size="12.0" />
          </font></Button>
-      <Button layoutX="336.0" layoutY="239.0" mnemonicParsing="false" onAction="#ingresar" prefHeight="39.0" prefWidth="127.0" text="Ingresar">
+      <TextField layoutX="333.0" layoutY="118.0" promptText="Correo" />
+      <PasswordField fx:id="txtContrasena" layoutX="333.0" layoutY="201.0" promptText="Contraseña" />
+      <Text fill="#343440" layoutX="357.0" layoutY="95.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Inicio de sesión">
          <font>
-            <Font name="System Bold" size="12.0" />
-         </font></Button>
-      <TextField layoutX="324.0" layoutY="90.0" promptText="Correo" />
-      <PasswordField fx:id="txtContrasena" layoutX="324.0" layoutY="173.0" promptText="Contraseña" />
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Text>
       <Pane prefHeight="210.0" prefWidth="207.0" style="-fx-background-color: #87252B;" />
       <Pane layoutX="-6.0" layoutY="207.0" prefHeight="197.0" prefWidth="213.0" style="-fx-background-color: #343440;">
          <children>
@@ -32,10 +33,5 @@
             </ImageView>
          </children>
       </Pane>
-      <Text fill="#343440" layoutX="348.0" layoutY="67.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Inicio de sesión">
-         <font>
-            <Font name="System Bold" size="14.0" />
-         </font>
-      </Text>
    </children>
 </AnchorPane>
