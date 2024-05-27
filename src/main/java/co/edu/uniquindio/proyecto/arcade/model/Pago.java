@@ -1,31 +1,28 @@
 package co.edu.uniquindio.proyecto.arcade.model;
 
-public class Pago {
+import co.edu.uniquindio.proyecto.arcade.model.strategy.PagoStrategy;
 
-    private String tipoDePago;
-    private String Monto;
+public class Pago {
+    private PagoStrategy estrategiaPago;
+    private double monto;
     private String fecha;
 
-    public Pago(String tipoDePago, String monto, String fecha) {
-        this.tipoDePago = tipoDePago;
-        Monto = monto;
+    public Pago(PagoStrategy estrategiaPago, double monto, String fecha) {
+        this.estrategiaPago = estrategiaPago;
+        this.monto = monto;
         this.fecha = fecha;
     }
 
-    public String getTipoDePago() {
-        return tipoDePago;
+    public void realizarPago() {
+        estrategiaPago.pagar(monto);
     }
 
-    public void setTipoDePago(String tipoDePago) {
-        this.tipoDePago = tipoDePago;
+    public double getMonto() {
+        return monto;
     }
 
-    public String getMonto() {
-        return Monto;
-    }
-
-    public void setMonto(String monto) {
-        Monto = monto;
+    public void setMonto(double monto) {
+        this.monto = monto;
     }
 
     public String getFecha() {
