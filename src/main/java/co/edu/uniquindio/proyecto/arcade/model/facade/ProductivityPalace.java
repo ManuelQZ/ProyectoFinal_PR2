@@ -1,6 +1,9 @@
 package co.edu.uniquindio.proyecto.arcade.model.facade;
 
 import co.edu.uniquindio.proyecto.arcade.model.*;
+import co.edu.uniquindio.proyecto.arcade.model.bridge.EnvioCorreo;
+import co.edu.uniquindio.proyecto.arcade.model.bridge.Notificacion;
+import co.edu.uniquindio.proyecto.arcade.model.bridge.NotificacionReserva;
 import co.edu.uniquindio.proyecto.arcade.model.builder.UsuarioBuilder;
 import co.edu.uniquindio.proyecto.arcade.model.proxy.UsuarioProxy;
 
@@ -67,6 +70,11 @@ public class ProductivityPalace {
                 .clave(clave)
                 .tipoUsuario(TipoUsuario.EMPLEADO)
                 .build();
+    }
+
+    public void enviarNotificacionReserva(String destinatario, String mensaje) {
+        Notificacion notificacion = new NotificacionReserva(new EnvioCorreo());
+        notificacion.enviar(destinatario, mensaje);
     }
 
     public Usuario crearCliente(String nombre, String correo, String clave, String saldo) {
