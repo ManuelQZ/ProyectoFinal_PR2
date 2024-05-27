@@ -10,8 +10,8 @@ import java.util.ArrayList;
 import java.util.Objects;
 
 public class ReservaController {
-    private ObservableList<Usuario> listaReservaObservable;
-    private ModelFactory factory;
+    private final ObservableList<Reserva> listaReservaObservable;
+    private final ModelFactory factory;
     private static ReservaController instance;
 
     private ReservaController() {
@@ -27,26 +27,6 @@ public class ReservaController {
         return instance;
 
     }
-    public ArrayList<Reserva> filtrarReserva(Boolean esCorreo, String busqueda) {
-        ArrayList<Reserva> reservas = factory.getArcade().getListaReserva();
-        ArrayList<Reserva> reservasFiltrado = new ArrayList<>();
-        if (esCorreo) {
-            for (Reserva reserva : reservas) {
-                if (Objects.equals(reserva.getFecha(), busqueda)) {
-                    reservasFiltrado.add(reserva);
-                }
-            }
-        }
-        else {
-            for (Reserva reserva : reservas) {
-                if (Objects.equals(reserva.getNombre(), busqueda)) {
-                    usuariosFiltrado.add(usuario);
-                }
-            }
-        }
-
-        return usuariosFiltrado;
-    }
 
     public ModelFactory getFactory() {
         return factory;
@@ -57,11 +37,11 @@ public class ReservaController {
     }
 
 
-    public void eliminarReserva(String correo){
+    public void eliminarReserva(String id){
         int eliminable = -1;
         ArrayList<Reserva> reservas = factory.getArcade().getListaReserva();
         for (int i = 0; i < reservas.size(); i++){
-            if (Objects.equals(reservas.get(i).getFecha(), correo)){
+            if (Objects.equals(reservas.get(i).getId(), id)){
                 reservas.remove(reservas.get(i));
                 this.factory.getArcade().addReserva(reservas.get(i));
                 eliminable = i;
@@ -71,10 +51,10 @@ public class ReservaController {
             this.listaReservaObservable.remove(eliminable);
         }
     }
-    public  Reserva consultarReserva(String correo, String clave){
+    public  Reserva consultarReserva(String id, String clave) {
         ArrayList<Reserva> reservas = factory.getArcade().getListaReserva();
         for (Reserva value : reservas) {
-            if (value.getCorreo().equals(correo)){
+            if (value.getId().equals(id)){
                 return value;
             }
         }
@@ -82,16 +62,15 @@ public class ReservaController {
     }
 
 
-    public void actualizarReserva(String nombre, String correo, String clave, String saldo){
+    public void actualizarReserva(String nombre, String id, String clave, String saldo){
         ArrayList<Reserva> reservas = factory.getArcade().getListaReserva();
         int actualizable = -1;
         Reserva reservaTemporal = null;
         for (int i = 0; i < reservas.size(); i++){
-            if (Objects.equals(reservas.get(i).getCorreo(), correo)){
-                reservaTemporal = usuarios.get(i);
-                reservaTemporal.setNombre(nombre);
-                reservaTemporal.setClave(clave);
-                reservaTemporal.setSaldo(saldo);
+            if (Objects.equals(reservas.get(i).getId(), id)){
+                reservaTemporal = reservas.get(i);
+                reservaTemporal.setEstado(nombre);
+                reservaTemporal.setFecha(clave);
                 actualizable = i;
             }
         }

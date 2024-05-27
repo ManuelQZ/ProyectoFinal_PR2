@@ -10,6 +10,7 @@ public class ProductivityPalace {
     private final ArrayList<Producto> listaProducto;
     private final ArrayList<Servicio> listaServicio;
     private final ArrayList<Usuario> listaUsuario;
+    private final ArrayList<Reserva> listaReserva;
     private final Usuario administrador;
     private final UsuarioProxy usuarioTemporal;
 
@@ -23,10 +24,11 @@ public class ProductivityPalace {
 
         addUsuario(this.administrador);
 
-        this.listaUsuario = new ArrayList<Usuario>();
+        this.listaUsuario = new ArrayList<>();
+        this.listaReserva = new ArrayList<>();
         this.usuarioTemporal = new UsuarioProxy();
-        this.listaProducto = new ArrayList<Producto>();
-        this.listaServicio = new ArrayList<Servicio>();
+        this.listaProducto = new ArrayList<>();
+        this.listaServicio = new ArrayList<>();
     }
 
     public UsuarioProxy getUsuarioTemporal() {
@@ -78,6 +80,23 @@ public class ProductivityPalace {
 
     public Usuario getAdministrador() {
         return administrador;
+    }
+
+    public ArrayList<Reserva> getListaReserva() {
+        return listaReserva;
+    }
+
+    public ArrayList<Servicio> getListaServicio() {
+        return listaServicio;
+    }
+
+    public void addReserva(Reserva reserva) {
+        listaReserva.add(reserva);
+    }
+
+
+    public void rmReserva(int index) {
+        listaReserva.remove(index);
     }
 }
 

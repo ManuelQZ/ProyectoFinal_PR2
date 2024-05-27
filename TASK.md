@@ -14,16 +14,16 @@
 - [ ] Compra de Producto y Actualización de Inventario
 
 ## Patrones creacionales
-- [ ] Builder -> Asignar atributos a `Usuario`.
-- [ ] Prototype -> .
+- [X] Builder -> Asignar atributos a `Usuario`.
+- [X] Prototype -> Clonar `Reserva` ya existente.
 - [X] Singleton -> Se implementa en el `ModelFactory` y en los controladores.
 
 ## Patrones comportamentales
-- [ ] Strategy ->
+- [ ] Strategy -> Implementa diferentes extrategias para `Pago`.
 - [ ] Observer ->
 - [ ] Command ->
 
 ## Patrones estructurales
 - [X] Proxy -> Se implementa en el login con la clase `Usuario`.
-- [ ] Facade ->
-- [ ] Bridge ->
+- [ ] Facade -> fachada para Productivity Palace.
+- [ ] Decorator ->
