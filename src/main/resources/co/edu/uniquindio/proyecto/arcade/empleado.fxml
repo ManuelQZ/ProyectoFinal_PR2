@@ -1,32 +1,57 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.shape.Line?>
-<?import javafx.scene.text.Text?>
-
 
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uniquindio.proyecto.arcade.view.EmpleadoViewController">
    <children>
-      <TableView fx:id="tbvListaReserva" layoutX="14.0" layoutY="132.0" prefHeight="248.0" prefWidth="279.0">
-        <columns>
-          <TableColumn fx:id="tbcProducto" prefWidth="145.0" text="Producto" />
-          <TableColumn fx:id="tbcInformacionReserva" prefWidth="139.0" text="Información reserva" />
-        </columns>
-      </TableView>
-      <Text fx:id="tbv" layoutX="107.0" layoutY="127.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Lista de reserva" />
-      <TableView fx:id="tbvListaClientes" layoutX="306.0" layoutY="132.0" prefHeight="248.0" prefWidth="279.0">
-         <columns>
-            <TableColumn fx:id="tbcNombreCliente" prefWidth="145.0" text="Nombre" />
-            <TableColumn fx:id="tbcInformacionCliente" prefWidth="139.0" text="Información Cliente" />
-         </columns>
-      </TableView>
-      <Line endX="-100.0" endY="301.0" layoutX="399.0" layoutY="86.0" startX="-100.0" startY="58.0" />
-      <Text layoutX="405.0" layoutY="127.0" strokeType="OUTSIDE" strokeWidth="0.0" text="LIsta Clientes" />
-      <Line endX="468.0" layoutX="114.0" layoutY="28.0" startX="-100.0" />
-      <Text layoutX="14.0" layoutY="19.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Trabajador" />
-      <Text layoutX="242.0" layoutY="84.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Productivity Palace" wrappingWidth="113.82160949707031" />
-      <Text layoutX="261.0" layoutY="66.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Bienvenido a" />
+      <TabPane prefHeight="400.0" prefWidth="600.0" tabClosingPolicy="UNAVAILABLE">
+         <tabs>
+            <Tab text="Usuarios">
+               <content>
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="371.0" prefWidth="600.0">
+                     <children>
+                        <Button layoutX="441.0" layoutY="302.0" mnemonicParsing="false" onAction="#removeUsuarios" prefWidth="93.0" text="Eliminar" />
+                        <TextField fx:id="txtNombreUsuario" alignment="CENTER" layoutX="412.0" layoutY="71.0" promptText="Nombre" />
+                        <TextField fx:id="txtContrasenaUsuarios" alignment="CENTER" layoutX="412.0" layoutY="155.0" promptText="Contraseña" />
+                        <TextField fx:id="txtCorreoUsuario" alignment="CENTER" layoutX="412.0" layoutY="114.0" promptText="Correo" />
+                        <Button layoutX="441.0" layoutY="267.0" mnemonicParsing="false" onAction="#updateUsuarios" prefWidth="93.0" text="Actualizar" />
+                        <TableView fx:id="tbvGestionUsuarios" layoutX="14.0" layoutY="24.0" prefHeight="311.0" prefWidth="299.0">
+                           <columns>
+                              <TableColumn fx:id="tbcNombreUsuarios" prefWidth="148.0" text="Nombre" />
+                              <TableColumn fx:id="tbcCorreoUsuarios" prefWidth="149.0" text="Correo" />
+                           </columns>
+                        </TableView>
+                        <Button layoutX="441.0" layoutY="229.0" mnemonicParsing="false" onAction="#addUsuarios" prefWidth="93.0" text="Agregar" />
+                     </children>
+                  </AnchorPane>
+               </content>
+            </Tab>
+            <Tab text="Reservas">
+               <content>
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="371.0" prefWidth="600.0">
+                     <children>
+                        <TableView fx:id="tbvGestionFecha" layoutX="14.0" layoutY="24.0" prefHeight="311.0" prefWidth="299.0">
+                           <columns>
+                              <TableColumn fx:id="tbcNombreReservas" prefWidth="148.0" text="Nombre" />
+                              <TableColumn fx:id="tbcFechaReservas" prefWidth="149.0" text="Fecha" />
+                           </columns>
+                        </TableView>
+                        <Button layoutX="354.0" layoutY="205.0" mnemonicParsing="false" onAction="#addReserva" prefWidth="93.0" text="Agregar" />
+                        <Button layoutX="419.0" layoutY="263.0" mnemonicParsing="false" onAction="#removeReserva" prefWidth="93.0" text="Eliminar" />
+                        <TextField fx:id="txtNombreReservas" alignment="CENTER" layoutX="393.0" layoutY="87.0" promptText="Nombre" />
+                        <TextField fx:id="txtCantidadReservas" alignment="CENTER" layoutX="393.0" layoutY="128.0" promptText="Cantidad" />
+                        <Button layoutX="485.0" layoutY="205.0" mnemonicParsing="false" onAction="#updateReserva" prefWidth="93.0" text="Actualizar" />
+                     </children>
+                  </AnchorPane>
+               </content>
+            </Tab>
+         </tabs>
+      </TabPane>
    </children>
 </AnchorPane>
