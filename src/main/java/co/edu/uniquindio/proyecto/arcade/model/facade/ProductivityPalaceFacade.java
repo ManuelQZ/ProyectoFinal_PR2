@@ -2,14 +2,28 @@ package co.edu.uniquindio.proyecto.arcade.model.facade;
 
 import co.edu.uniquindio.proyecto.arcade.model.*;
 import co.edu.uniquindio.proyecto.arcade.model.builder.UsuarioBuilder;
+import co.edu.uniquindio.proyecto.arcade.model.command.Command;
 
 import java.util.ArrayList;
 
 public class ProductivityPalaceFacade {
     private final ProductivityPalace productivityPalace;
+    private final Queue<Command> commandQueue;
 
     public ProductivityPalaceFacade() {
         this.productivityPalace = new ProductivityPalace();
+        this.commandQueue = new LinkedList<>();
+    }
+
+    public void agregarCommand(Command command) {
+        commandQueue.add(command);
+    }
+
+    public void ejecutarComandosPendientes() {
+        while (!commandQueue.isEmpty()) {
+            Command command = commandQueue.poll();
+            command.execute();
+        }
     }
 
     // Métodos de gestión de usuarios
