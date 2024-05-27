@@ -2,12 +2,19 @@ package co.edu.uniquindio.proyecto.arcade.model;
 
 public class Reserva {
 
+    private Usuario usuario;
+    private Servicio servicio;
     private String fecha;
-    private String objetoReserva;
+    private String estado;
 
-    public Reserva(String fecha, String objetoReserva) {
+
+    public Reserva(Usuario usuario, String fecha, Servicio servicio, String estado) {
         this.fecha = fecha;
-        this.objetoReserva = objetoReserva;
+
+    }
+
+    public Usuario getUsuario() {
+        return usuario;
     }
 
     public String getFecha() {
@@ -18,11 +25,14 @@ public class Reserva {
         this.fecha = fecha;
     }
 
-    public String getObjetoReserva() {
-        return objetoReserva;
+    public String getEstado() {
+        return estado;
+    }
+    public void setEstado(String estado) {
+        this.estado = estado;
     }
 
-    public void setObjetoReserva(String objetoReserva) {
-        this.objetoReserva = objetoReserva;
+    public Servicio getServicio() {
+        return servicio;
     }
 }
