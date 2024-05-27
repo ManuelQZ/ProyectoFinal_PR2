@@ -1,4 +1,4 @@
-package co.edu.uniquindio.proyecto.arcade.services;
+package co.edu.uniquindio.proyecto.arcade.model.proxy;
 
 public interface Acceso {
     public String acceder();
