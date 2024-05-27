@@ -19,11 +19,11 @@
 - [X] Singleton -> Se implementa en el `ModelFactory` y en los controladores.
 
 ## Patrones comportamentales
-- [ ] Strategy -> Implementa diferentes extrategias para `Pago`.
-- [ ] Observer ->
-- [ ] Command ->
+- [X] Strategy -> Implementa diferentes extrategias para `Pago`.
+- [X] Mediator -> `Mediator` Sirve de mediador entre los modelos y la vista.
+- [X] Command -> 
 
 ## Patrones estructurales
 - [X] Proxy -> Se implementa en el login con la clase `Usuario`.
-- [ ] Facade -> fachada para Productivity Palace.
-- [ ] Decorator ->
+- [X] Facade -> fachada para Productivity Palace.
+- [ ] Bridge -> 

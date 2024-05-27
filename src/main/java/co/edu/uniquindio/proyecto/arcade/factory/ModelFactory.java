@@ -1,32 +1,14 @@
 package co.edu.uniquindio.proyecto.arcade.factory;
 
-import co.edu.uniquindio.proyecto.arcade.model.ProductivityPalace;
+import co.edu.uniquindio.proyecto.arcade.model.facade.ProductivityPalace;
 import co.edu.uniquindio.proyecto.arcade.model.Producto;
 import co.edu.uniquindio.proyecto.arcade.model.Servicio;
-import co.edu.uniquindio.proyecto.arcade.model.TipoUsuario;
 import co.edu.uniquindio.proyecto.arcade.model.Usuario;
-import co.edu.uniquindio.proyecto.arcade.model.builder.UsuarioBuilder;
 
-public class ModelFactory{
-
-    private static ModelFactory modelFactory;
-
-    private ProductivityPalace arcade;
+public class ModelFactory {
 
 
-    private ModelFactory(){
-        this.arcade = new ProductivityPalace();
-        inicializarDatos();
-    }
-
-    public static ModelFactory getInstancia() {
-        if(modelFactory == null) {
-            modelFactory = new ModelFactory();
-        }
-        return modelFactory;
-    }
-
-    private void inicializarDatos() {
+    protected static void inicializarDatos(ProductivityPalace arcade) {
         Usuario cliente1 = arcade.crearCliente("Juan Pérez", "juan.perez@example.com", "password123", "1500.00");
         Usuario cliente2 = arcade.crearCliente("Ana Torres", "ana.torres@example.com", "4naT0rr3s", "4500.00");
 
@@ -64,7 +46,4 @@ public class ModelFactory{
 
     }
 
-    public ProductivityPalace getArcade() {
-        return arcade;
-    }
 }

@@ -16,7 +16,7 @@ public class LoginViewController {
 
     UsuarioController usuarioController = UsuarioController.getInstance();
     private String sesion;
-    UsuarioProxy usuarioTemporal = usuarioController.getFactory().getArcade().getUsuarioTemporal();
+    UsuarioProxy usuarioTemporal = usuarioController.getMediator().getArcade().getUsuarioTemporal();
 
     @FXML
     private ResourceBundle resources;

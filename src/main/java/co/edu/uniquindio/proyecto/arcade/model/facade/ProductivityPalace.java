@@ -1,5 +1,6 @@
-package co.edu.uniquindio.proyecto.arcade.model;
+package co.edu.uniquindio.proyecto.arcade.model.facade;
 
+import co.edu.uniquindio.proyecto.arcade.model.*;
 import co.edu.uniquindio.proyecto.arcade.model.builder.UsuarioBuilder;
 import co.edu.uniquindio.proyecto.arcade.model.proxy.UsuarioProxy;
 

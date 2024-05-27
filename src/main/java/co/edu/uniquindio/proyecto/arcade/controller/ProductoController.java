@@ -1,5 +1,6 @@
 package co.edu.uniquindio.proyecto.arcade.controller;
 
+import co.edu.uniquindio.proyecto.arcade.factory.Mediator;
 import co.edu.uniquindio.proyecto.arcade.factory.ModelFactory;
 import co.edu.uniquindio.proyecto.arcade.model.Producto;
 import javafx.collections.FXCollections;
@@ -11,11 +12,11 @@ import java.util.Objects;
 public class ProductoController {
 
     private ObservableList<Producto> listaProductoObservable;
-    private ModelFactory factory;
+    private Mediator factory;
     private static ProductoController instance;
 
     private ProductoController() {
-        this.factory = ModelFactory.getInstancia();
+        this.factory = Mediator.getInstancia();
         this.listaProductoObservable = FXCollections.observableArrayList();
         this.sincronizarData();
     }
@@ -28,7 +29,7 @@ public class ProductoController {
 
     }
 
-    public ModelFactory getFactory() {
+    public Mediator getFactory() {
         return factory;
     }
 
