@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.DatePicker?>
@@ -11,7 +14,7 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uniquindio.proyecto.arcade.view.EmpleadoViewController">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uniquindio.proyecto.arcade.view.EmpleadoViewController">
    <children>
       <TabPane prefHeight="400.0" prefWidth="600.0" tabClosingPolicy="UNAVAILABLE">
          <tabs>
@@ -19,11 +22,11 @@
                <content>
                   <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="371.0" prefWidth="600.0">
                      <children>
-                        <Button layoutX="442.0" layoutY="290.0" mnemonicParsing="false" onAction="#removeUsuarios" prefWidth="93.0" text="Eliminar" />
+                        <Button layoutX="442.0" layoutY="275.0" mnemonicParsing="false" onAction="#removeUsuarios" prefWidth="93.0" text="Eliminar" />
                         <TextField fx:id="txtNombreCliente" alignment="CENTER" layoutX="407.0" layoutY="34.0" promptText="Nombre" />
                         <TextField fx:id="txtContrasenaCliente" alignment="CENTER" layoutX="407.0" layoutY="115.0" promptText="Contraseña" />
                         <TextField fx:id="txtCorreoCliente" alignment="CENTER" layoutX="407.0" layoutY="73.0" promptText="Correo" />
-                        <Button layoutX="442.0" layoutY="255.0" mnemonicParsing="false" onAction="#updateUsuarios" prefWidth="93.0" text="Actualizar" />
+                        <Button layoutX="493.0" layoutY="235.0" mnemonicParsing="false" onAction="#updateUsuarios" prefWidth="93.0" text="Actualizar" />
                         <TableView fx:id="tbvGestionUsuarios" layoutX="14.0" layoutY="24.0" prefHeight="311.0" prefWidth="362.0">
                            <columns>
                               <TableColumn fx:id="tbcNombreCliente" text="Nombre" />
@@ -32,7 +35,7 @@
                               <TableColumn fx:id="tbcSaldoCliente" prefWidth="99.0" text="Saldo" />
                            </columns>
                         </TableView>
-                        <Button layoutX="442.0" layoutY="217.0" mnemonicParsing="false" onAction="#addUsuarios" prefWidth="93.0" text="Agregar" />
+                        <Button layoutX="389.0" layoutY="235.0" mnemonicParsing="false" onAction="#addUsuarios" prefWidth="93.0" text="Agregar" />
                         <TextField fx:id="txtSaldoCliente" alignment="CENTER" layoutX="407.0" layoutY="154.0" promptText="Saldo" />
                      </children>
                   </AnchorPane>
