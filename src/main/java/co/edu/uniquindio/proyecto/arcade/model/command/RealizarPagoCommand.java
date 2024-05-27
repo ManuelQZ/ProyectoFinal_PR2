@@ -1,9 +1,9 @@
 package co.edu.uniquindio.proyecto.arcade.model.command;
 
-import co.edu.uniquindio.proyecto.arcade.model.facade.ProductivityPalaceFacade;
+import co.edu.uniquindio.proyecto.arcade.model.facade.ProductivityPalace;
 
 public class RealizarPagoCommand implements Command {
-    private final ProductivityPalaceFacade facade;
+    private final ProductivityPalace facade;
     private final String correoUsuario;
     private final String tipoDePago;
     private final String monto;
@@ -11,7 +11,7 @@ public class RealizarPagoCommand implements Command {
     private final String[] nombresProductos;
     private final double descuento;
 
-    public RealizarPagoCommand(ProductivityPalaceFacade facade, String correoUsuario, String tipoDePago, String monto, String fecha, String[] nombresProductos, double descuento) {
+    public RealizarPagoCommand(ProductivityPalace facade, String correoUsuario, String tipoDePago, String monto, String fecha, String[] nombresProductos, double descuento) {
         this.facade = facade;
         this.correoUsuario = correoUsuario;
         this.tipoDePago = tipoDePago;

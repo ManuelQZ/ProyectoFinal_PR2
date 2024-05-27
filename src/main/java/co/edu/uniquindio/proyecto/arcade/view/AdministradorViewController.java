@@ -147,7 +147,7 @@ public class AdministradorViewController {
 
     @FXML
     void initialize() {
-        initview();
+//        initview();
 
     }
 

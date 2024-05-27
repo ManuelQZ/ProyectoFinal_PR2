@@ -1,7 +1,7 @@
 package co.edu.uniquindio.proyecto.arcade.model.strategy;
 
 public class PagoTarjeta implements PagoStrategy {
-    private String numeroTarjeta;
+    private final String numeroTarjeta;
 
     public PagoTarjeta(String numeroTarjeta) {
         this.numeroTarjeta = numeroTarjeta;

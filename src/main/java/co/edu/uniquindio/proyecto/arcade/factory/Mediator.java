@@ -5,8 +5,7 @@ import co.edu.uniquindio.proyecto.arcade.model.facade.ProductivityPalace;
 public class Mediator {
 
     private static Mediator mediator;
-
-    private ProductivityPalace arcade;
+    private final ProductivityPalace arcade;
 
 
     private Mediator(){
@@ -24,4 +23,6 @@ public class Mediator {
     public ProductivityPalace getArcade() {
         return arcade;
     }
+
+
 }

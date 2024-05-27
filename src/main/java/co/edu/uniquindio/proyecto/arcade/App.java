@@ -1,10 +1,5 @@
 package co.edu.uniquindio.proyecto.arcade;
 
-import co.edu.uniquindio.proyecto.arcade.model.*;
-import co.edu.uniquindio.proyecto.arcade.model.strategy.PagoEfectivo;
-import co.edu.uniquindio.proyecto.arcade.model.strategy.PagoPayPal;
-import co.edu.uniquindio.proyecto.arcade.model.strategy.PagoStrategy;
-import co.edu.uniquindio.proyecto.arcade.model.strategy.PagoTarjeta;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -13,7 +8,6 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 public class App extends Application {
-
 
     @Override
     public void start(Stage stage) throws IOException {

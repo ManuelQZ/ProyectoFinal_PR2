@@ -40,11 +40,8 @@ public class LoginViewController {
 
         Usuario usuario = usuarioController.consultarUsuario(txtCorreo.getText(), txtContrasena.getText());
         usuarioTemporal.setUsuario(usuario);
-        if(usuario!=null){
-            sesion = usuarioTemporal.acceder();
-        }else{
-            Tools.mostrarMensaje("Error", "No se pudo acceder", "El usuario ingresado no existe", Alert.AlertType.ERROR);
-        }
+        sesion = usuarioTemporal.acceder();
+
         if(!sesion.equals("error")){
             seleccionarInterfaz(sesion);
             Tools.cerrarVentana(txtCorreo);
@@ -62,11 +59,11 @@ public class LoginViewController {
                 break;
 
             case "empleado":
-                Tools.ventanaEmergente("empleado.fxml", "empleado", "Estilos/login.css");
+                Tools.ventanaEmergente("empleado.fxml", "empleado", "Estilos/empleado.css");
                 System.out.println("mano se ejecuto un empleadod nano");
                 break;
             case "administrador":
-                Tools.ventanaEmergente("administrador.fxml", "administrador", "Estilos/login.css");
+                Tools.ventanaEmergente("administrador.fxml", "administrador", "Estilos/administrador.css");
                 System.out.println("mano se ejecuto el admin nanerdo");
                 break;
         }

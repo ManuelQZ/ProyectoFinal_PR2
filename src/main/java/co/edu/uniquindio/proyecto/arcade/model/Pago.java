@@ -3,7 +3,7 @@ package co.edu.uniquindio.proyecto.arcade.model;
 import co.edu.uniquindio.proyecto.arcade.model.strategy.PagoStrategy;
 
 public class Pago {
-    private PagoStrategy estrategiaPago;
+    private final PagoStrategy estrategiaPago;
     private double monto;
     private String fecha;
 

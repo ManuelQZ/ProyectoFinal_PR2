@@ -66,4 +66,7 @@ public class Usuario implements Acceso {
         }
         return "error";
     }
+
+    public void realizarPago(String tipoDePago, String monto, String fecha, String[] nombresProductos, double descuento) {
+    }
 }

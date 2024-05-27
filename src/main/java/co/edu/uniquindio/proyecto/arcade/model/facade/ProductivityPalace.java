@@ -19,6 +19,12 @@ public class ProductivityPalace {
     private final UsuarioProxy usuarioTemporal;
 
     public ProductivityPalace() {
+        this.listaUsuario = new ArrayList<>();
+        this.listaReserva = new ArrayList<>();
+        this.usuarioTemporal = new UsuarioProxy();
+        this.listaProducto = new ArrayList<>();
+        this.listaServicio = new ArrayList<>();
+
         this.administrador = new UsuarioBuilder()
                 .nombre("Productivty Palace")
                 .correo("arcade@admin.com")
@@ -26,13 +32,8 @@ public class ProductivityPalace {
                 .tipoUsuario(TipoUsuario.ADMINISTRADOR)
                 .build();
 
-        addUsuario(this.administrador);
+        this.addUsuario(this.administrador);
 
-        this.listaUsuario = new ArrayList<>();
-        this.listaReserva = new ArrayList<>();
-        this.usuarioTemporal = new UsuarioProxy();
-        this.listaProducto = new ArrayList<>();
-        this.listaServicio = new ArrayList<>();
     }
 
     public UsuarioProxy getUsuarioTemporal() {
@@ -63,28 +64,31 @@ public class ProductivityPalace {
         return listaProducto;
     }
 
-    public Usuario crearEmpleado(String nombre, String correo, String clave) {
-        return new UsuarioBuilder()
+    public void crearEmpleado(String nombre, String correo, String clave) {
+        Usuario empleado = new UsuarioBuilder()
                 .nombre(nombre)
                 .correo(correo)
                 .clave(clave)
                 .tipoUsuario(TipoUsuario.EMPLEADO)
                 .build();
+        this.addUsuario(empleado);
+    }
+
+    public void crearCliente(String nombre, String correo, String clave, String saldo) {
+        Usuario cliente =  new UsuarioBuilder()
+                .nombre(nombre)
+                .correo(correo)
+                .clave(clave)
+                .saldo(saldo)
+                .tipoUsuario(TipoUsuario.CLIENTE)
+                .build();
+
+        this.addUsuario(cliente);
     }
 
     public void enviarNotificacionReserva(String destinatario, String mensaje) {
         Notificacion notificacion = new NotificacionReserva(new EnvioCorreo());
         notificacion.enviar(destinatario, mensaje);
-    }
-
-    public Usuario crearCliente(String nombre, String correo, String clave, String saldo) {
-        return new UsuarioBuilder()
-                .nombre(nombre)
-                .correo(correo)
-                .clave(clave)
-                .saldo(saldo)
-                .tipoUsuario(TipoUsuario.EMPLEADO)
-                .build();
     }
 
     public Usuario getAdministrador() {
@@ -106,6 +110,18 @@ public class ProductivityPalace {
 
     public void rmReserva(int index) {
         listaReserva.remove(index);
+    }
+
+    public void realizarPago(String correoUsuario, String tipoDePago, String monto, String fecha, String[] nombresProductos, double descuento) {
+        Usuario usuario = null;
+        for (int i = 0; i < listaUsuario.size(); i++) {
+            if (listaUsuario.get(i).getCorreo().equals(correoUsuario)) {
+                usuario = listaUsuario.get(i);
+            }
+        }
+        if (usuario!= null) {
+            usuario.realizarPago(tipoDePago, monto, fecha, nombresProductos, descuento);
+        }
     }
 }
 

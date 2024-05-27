@@ -1,5 +1,7 @@
 package co.edu.uniquindio.proyecto.arcade.factory;
 
+import co.edu.uniquindio.proyecto.arcade.model.command.RegistrarClienteCommand;
+import co.edu.uniquindio.proyecto.arcade.model.command.RegistrarEmpleadoCommand;
 import co.edu.uniquindio.proyecto.arcade.model.facade.ProductivityPalace;
 import co.edu.uniquindio.proyecto.arcade.model.Producto;
 import co.edu.uniquindio.proyecto.arcade.model.Servicio;
@@ -9,16 +11,10 @@ public class ModelFactory {
 
 
     protected static void inicializarDatos(ProductivityPalace arcade) {
-        Usuario cliente1 = arcade.crearCliente("Juan Pérez", "juan.perez@example.com", "password123", "1500.00");
-        Usuario cliente2 = arcade.crearCliente("Ana Torres", "ana.torres@example.com", "4naT0rr3s", "4500.00");
-
-        Usuario empleado1 = arcade.crearEmpleado("María López", "maria.lopez@example.com", "m4r1a2023");
-        Usuario empleado2 = arcade.crearEmpleado("Luis Martínez", "luis.martinez@example.com", "lu1sM8rt!");
-
-        arcade.addUsuario(cliente1);
-        arcade.addUsuario(cliente2);
-        arcade.addUsuario(empleado1);
-        arcade.addUsuario(empleado2);
+        new RegistrarClienteCommand(arcade, "Juan Pérez", "juan.perez@example.com", "password123", "1500.00").execute();
+        new RegistrarClienteCommand(arcade, "Ana Torres", "ana.torres@example.com", "4naT0rr3s", "4500.00").execute();
+        new RegistrarEmpleadoCommand(arcade, "María López", "maria.lopez@example.com", "m4r1a2023").execute();
+        new RegistrarEmpleadoCommand(arcade, "Luis Martínez", "luis.martinez@example.com", "lu1sM8rt!").execute();
 
         Producto producto1 = new Producto("GTA V", "5.99", "50");
         Producto producto2 = new Producto("Warframe", "3.49", "30");
