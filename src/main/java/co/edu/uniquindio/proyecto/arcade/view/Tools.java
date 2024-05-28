@@ -9,6 +9,10 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
+import java.time.Instant;
+import java.time.LocalDate;
+import java.time.ZoneId;
+import java.util.Date;
 import java.util.Objects;
 
 public class Tools {
@@ -36,6 +40,11 @@ public class Tools {
         stage.setScene(scene);
         stage.setTitle(title);
         stage.show();
+    }
+
+    public static LocalDate convertToLocalDate(Date date) {
+        Instant instant = date.toInstant();
+        return instant.atZone(ZoneId.systemDefault()).toLocalDate();
     }
 
     public static void cerrarVentana(TextField context) {

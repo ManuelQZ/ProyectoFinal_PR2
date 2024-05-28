@@ -21,9 +21,9 @@
 ## Patrones comportamentales
 - [X] Strategy -> Implementa diferentes extrategias para `Pago`.
 - [X] Mediator -> `Mediator` Sirve de mediador entre los modelos y la vista.
-- [X] Command -> 
+- [X] Command -> Implementa comandos para crear distintos tipos de usuarios.
 
 ## Patrones estructurales
 - [X] Proxy -> Se implementa en el login con la clase `Usuario`.
 - [X] Facade -> fachada para Productivity Palace.
-- [ ] Bridge -> 
+- [X] Bridge -> Se implementa para distribuir información en diferentes servicios de correo.

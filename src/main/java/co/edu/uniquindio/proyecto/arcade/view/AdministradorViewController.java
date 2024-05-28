@@ -2,6 +2,7 @@ package co.edu.uniquindio.proyecto.arcade.view;
 
 import java.net.URL;
 import java.time.LocalDate;
+import java.util.Arrays;
 import java.util.ResourceBundle;
 
 import co.edu.uniquindio.proyecto.arcade.controller.ProductoController;
@@ -50,7 +51,10 @@ public class AdministradorViewController {
     private TextField txtPrecio;
 
     @FXML
-    private ComboBox<Modalidad> comboModalidad;
+    private TextField txtPrecioServicio;
+
+    @FXML
+    private ComboBox<String> comboModalidad;
 
     @FXML
     private TableColumn<Servicio, String> tbcNombreServicio;
@@ -80,7 +84,7 @@ public class AdministradorViewController {
     private TableView<Producto> tbvGestionProducto;
 
     @FXML
-    private ComboBox<String> comboEstado;
+    private TextField txtEstadoReserva;
 
     @FXML
     private TableColumn<Producto, String> tbcNombreProducto;
@@ -92,7 +96,7 @@ public class AdministradorViewController {
     private TableColumn<Reserva, String> tbcFecha;
 
     @FXML
-    private TableColumn<Servicio, String> tbcPrecio;
+    private TableColumn<Producto, String> tbcPrecio;
 
     @FXML
     private TextField txtCorreo;
@@ -193,8 +197,10 @@ public class AdministradorViewController {
 
     }
 
+
     @FXML
     void initialize() {
+        comboModalidad.getItems().addAll(Arrays.toString(Modalidad.values()).replace("[", "").replace("]", "").split(", "));
         initview();
 
     }
@@ -266,8 +272,8 @@ public class AdministradorViewController {
 
     private void mostrarInformacionReserva(Reserva seleccionado) {
         if (seleccionado != null) {
-            dateFechaReserva.setValue(LocalDate.parse(seleccionado.getFecha().toString()));
-            comboEstado.setValue(seleccionado.getEstado());
+            dateFechaReserva.setValue(Tools.convertToLocalDate(seleccionado.getFecha()));
+            txtEstadoReserva.setText(seleccionado.getEstado());
             txtCosto.setText(seleccionado.getServicio().getPrecio());
         }
     }
@@ -282,8 +288,8 @@ public class AdministradorViewController {
         if (seleccionado != null) {
             txtServicio.setText(seleccionado.getNombre());
             txtDescripcion.setText(seleccionado.getDescripcion());
-            comboModalidad.setValue(seleccionado.getModalidad());
-            txtPrecio.setText(seleccionado.getPrecio());
+            comboModalidad.setValue(seleccionado.getModalidad().toString());
+            txtPrecioServicio.setText(seleccionado.getPrecio());
             txtDisponibilidadServicio.setText(seleccionado.getDisponibilidadReserva());
         }
     }

@@ -55,7 +55,7 @@
                         <Button layoutX="432.0" layoutY="294.0" mnemonicParsing="false" onAction="#removeReserva" prefWidth="93.0" text="Eliminar" />
                         <DatePicker fx:id="dateFechaReserva" layoutX="410.0" layoutY="63.0" prefHeight="27.0" prefWidth="148.0" promptText="Elije una fecha" />
                         <TextField fx:id="txtCosto" layoutX="410.0" layoutY="171.0" promptText="Costo" />
-                        <ComboBox fx:id="comboEstado" layoutX="409.0" layoutY="120.0" prefWidth="150.0" promptText="Estado" />
+                        <TextField fx:id="txtEstadoReserva" layoutX="410.0" layoutY="119.0" promptText="Estado Reserva" />
                      </children>
                   </AnchorPane>
               </content>
@@ -79,7 +79,7 @@
                         <TextField fx:id="txtServicio" layoutX="421.0" layoutY="32.0" promptText="Nombre" />
                         <TextField fx:id="txtDescripcion" layoutX="421.0" layoutY="74.0" promptText="Descripcion" />
                         <ComboBox fx:id="comboModalidad" layoutX="421.0" layoutY="121.0" prefWidth="150.0" promptText="Modalidad" />
-                        <TextField fx:id="txtPrecio" layoutX="421.0" layoutY="157.0" promptText="Precio" />
+                        <TextField fx:id="txtPrecioServicio" layoutX="421.0" layoutY="157.0" promptText="Precio" />
                         <TextField fx:id="txtDisponibilidadServicio" layoutX="421.0" layoutY="204.0" promptText="Disponibilidad Reserva" />
                      </children>
                   </AnchorPane>

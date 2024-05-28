@@ -56,6 +56,16 @@ public class ProductivityPalace {
         System.out.println("la lista tiene los elementos: " + this.listaUsuario.toString());
     }
 
+    public Usuario obtenerUsuario(String correo) {
+        for (int i = 0; i < listaUsuario.size(); i++) {
+            if (listaUsuario.get(i).getCorreo().equals(correo)) {
+                return listaUsuario.get(i);
+            }
+        }
+        return null;
+
+    }
+
     public void rmUsuario(int index){
         this.listaUsuario.remove(index);
     }

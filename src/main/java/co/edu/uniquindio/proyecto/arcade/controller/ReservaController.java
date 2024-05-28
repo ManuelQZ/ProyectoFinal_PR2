@@ -74,7 +74,7 @@ public class ReservaController {
             }
         }
 
-        if (actualizable!= -1 && reservaTemporal != null){
+        if (actualizable != -1){
             this.listaReservaObservable.remove(actualizable);
             this.mediator.getArcade().rmReserva(actualizable);
             this.mediator.getArcade().addReserva(reservaTemporal);
@@ -92,9 +92,6 @@ public class ReservaController {
         return listaReservaObservable;
     }
 
-    public void setListaReservaObservable(ObservableList<Reserva> listaReservaObservable) {
-        this.listaReservaObservable = listaReservaObservable;
-    }
 
     public void sincronizarData() {
         this.listaReservaObservable.addAll(this.mediator.getArcade().getListaReserva());
