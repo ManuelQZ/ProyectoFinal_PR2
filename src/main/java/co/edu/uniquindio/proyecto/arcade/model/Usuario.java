@@ -1,6 +1,7 @@
 package co.edu.uniquindio.proyecto.arcade.model;
 
 import co.edu.uniquindio.proyecto.arcade.model.builder.UsuarioBuilder;
+import co.edu.uniquindio.proyecto.arcade.model.enumeradores.TipoUsuario;
 import co.edu.uniquindio.proyecto.arcade.model.proxy.Acceso;
 
 public class Usuario implements Acceso {

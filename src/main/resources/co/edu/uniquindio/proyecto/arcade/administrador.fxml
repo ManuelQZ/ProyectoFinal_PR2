@@ -37,40 +37,71 @@
                   </AnchorPane>
             </content>
           </Tab>
+            <Tab text="Reservas">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <TableView fx:id="tbvGestionReserva" layoutX="14.0" layoutY="24.0" prefHeight="311.0" prefWidth="340.0">
+                           <columns>
+                              <TableColumn fx:id="tbcId" prefWidth="60.0" text="Id" />
+                              <TableColumn fx:id="tbcServicio" prefWidth="73.0" text="Servicio" />
+                              <TableColumn fx:id="tbcFecha" prefWidth="90.0" text="Fecha" />
+                              <TableColumn fx:id="tbcEstado" prefWidth="56.0" text="Estado" />
+                              <TableColumn fx:id="tbcCosto" prefWidth="60.0" text="Costo" />
+                           </columns>
+                        </TableView>
+                        <Button layoutX="367.0" layoutY="236.0" mnemonicParsing="false" onAction="#addReserva" prefWidth="93.0" text="Agregar" />
+                        <Button layoutX="498.0" layoutY="236.0" mnemonicParsing="false" onAction="#updateReserva" prefWidth="93.0" text="Actualizar" />
+                        <Button layoutX="432.0" layoutY="294.0" mnemonicParsing="false" onAction="#removeReserva" prefWidth="93.0" text="Eliminar" />
+                        <DatePicker fx:id="dateFechaReserva" layoutX="410.0" layoutY="63.0" prefHeight="27.0" prefWidth="148.0" promptText="Elije una fecha" />
+                        <TextField fx:id="txtCosto" layoutX="410.0" layoutY="171.0" promptText="Costo" />
+                        <ComboBox fx:id="comboEstado" layoutX="409.0" layoutY="120.0" prefWidth="150.0" promptText="Estado" />
+                     </children>
+                  </AnchorPane>
+              </content>
+            </Tab>
+            <Tab text="Servicio">
+               <content>
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <TableView fx:id="tbvGestionServicio" layoutX="14.0" layoutY="24.0" prefHeight="311.0" prefWidth="361.0">
+                           <columns>
+                              <TableColumn fx:id="tbcNombreServicio" prefWidth="51.0" text="Nombre" />
+                              <TableColumn fx:id="tbcDescripcion" prefWidth="120.0" text="Descripción" />
+                              <TableColumn fx:id="tbcModalidad" prefWidth="66.0" text="Modalidad" />
+                              <TableColumn fx:id="tbcPrecioServicio" prefWidth="45.0" text="Precio" />
+                              <TableColumn fx:id="tbcDisponibilidadReserva" prefWidth="78.0" text="Disponibilidad" />
+                           </columns>
+                        </TableView>
+                        <Button layoutX="380.0" layoutY="267.0" mnemonicParsing="false" onAction="#addServicio" prefWidth="93.0" text="Agregar" />
+                        <Button layoutX="507.0" layoutY="267.0" mnemonicParsing="false" onAction="#updateServicio" prefWidth="93.0" text="Actualizar" />
+                        <Button layoutX="436.0" layoutY="310.0" mnemonicParsing="false" onAction="#removeServicio" prefWidth="93.0" text="Eliminar" />
+                        <TextField fx:id="txtServicio" layoutX="421.0" layoutY="32.0" promptText="Nombre" />
+                        <TextField fx:id="txtDescripcion" layoutX="421.0" layoutY="74.0" promptText="Descripcion" />
+                        <ComboBox fx:id="comboModalidad" layoutX="421.0" layoutY="121.0" prefWidth="150.0" promptText="Modalidad" />
+                        <TextField fx:id="txtPrecio" layoutX="421.0" layoutY="157.0" promptText="Precio" />
+                        <TextField fx:id="txtDisponibilidadServicio" layoutX="421.0" layoutY="204.0" promptText="Disponibilidad Reserva" />
+                     </children>
+                  </AnchorPane>
+               </content>
+            </Tab>
             <Tab text="Producto">
               <content>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
                         <TableView fx:id="tbvGestionProducto" layoutX="14.0" layoutY="24.0" prefHeight="311.0" prefWidth="299.0">
                            <columns>
-                              <TableColumn fx:id="tbcNombreProducto" prefWidth="148.0" text="Nombre" />
-                              <TableColumn fx:id="tbcCantidadProducto" prefWidth="149.0" text="Cantidad" />
+                              <TableColumn fx:id="tbcNombreProducto" prefWidth="117.0" text="Nombre" />
+                              <TableColumn fx:id="tbcCantidadProducto" prefWidth="86.0" text="Cantidad" />
+                              <TableColumn fx:id="tbcPrecio" prefWidth="95.0" text="Precio" />
                            </columns>
                         </TableView>
                         <Button layoutX="354.0" layoutY="205.0" mnemonicParsing="false" onAction="#addProducto" prefWidth="93.0" text="Agregar" />
                         <Button layoutX="419.0" layoutY="263.0" mnemonicParsing="false" onAction="#removeProducto" prefWidth="93.0" text="Eliminar" />
-                        <TextField fx:id="txtNombre" layoutX="393.0" layoutY="87.0" promptText="Nombre" />
-                        <TextField fx:id="txtCantidad" layoutX="393.0" layoutY="128.0" promptText="Cantidad" />
+                        <TextField fx:id="txtProducto" layoutX="393.0" layoutY="65.0" promptText="Nombre" />
+                        <TextField fx:id="txtCantidad" layoutX="393.0" layoutY="106.0" promptText="Cantidad" />
                         <Button layoutX="485.0" layoutY="205.0" mnemonicParsing="false" onAction="#updateProducto" prefWidth="93.0" text="Actualizar" />
-                     </children>
-                  </AnchorPane>
-              </content>
-            </Tab>
-            <Tab text="Reservas">
-              <content>
-                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-                     <children>
-                        <TableView fx:id="tbvGestionReserva" layoutX="14.0" layoutY="24.0" prefHeight="311.0" prefWidth="299.0">
-                           <columns>
-                              <TableColumn fx:id="tbcNombreReserva" prefWidth="148.0" text="Nombre" />
-                              <TableColumn fx:id="tbcFechaReserva" prefWidth="149.0" text="Fecha" />
-                           </columns>
-                        </TableView>
-                        <TextField fx:id="txtNombreReserva" layoutX="393.0" layoutY="87.0" promptText="Nombre" />
-                        <Button layoutX="354.0" layoutY="205.0" mnemonicParsing="false" onAction="#addReserva" prefWidth="93.0" text="Agregar" />
-                        <Button layoutX="485.0" layoutY="205.0" mnemonicParsing="false" onAction="#updateReserva" prefWidth="93.0" text="Actualizar" />
-                        <Button layoutX="419.0" layoutY="263.0" mnemonicParsing="false" onAction="#removeReserva" prefWidth="93.0" text="Eliminar" />
-                        <DatePicker fx:id="dateFechaReserva" layoutX="394.0" layoutY="146.0" prefHeight="27.0" prefWidth="148.0" promptText="Elije una fecha" />
+                        <TextField fx:id="txtPrecio" layoutX="393.0" layoutY="149.0" promptText="Precio" />
                      </children>
                   </AnchorPane>
               </content>

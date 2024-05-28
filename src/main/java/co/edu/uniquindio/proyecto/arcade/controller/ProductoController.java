@@ -1,8 +1,9 @@
 package co.edu.uniquindio.proyecto.arcade.controller;
 
 import co.edu.uniquindio.proyecto.arcade.factory.Mediator;
-import co.edu.uniquindio.proyecto.arcade.factory.ModelFactory;
 import co.edu.uniquindio.proyecto.arcade.model.Producto;
+import co.edu.uniquindio.proyecto.arcade.model.Usuario;
+import co.edu.uniquindio.proyecto.arcade.model.command.RegistrarClienteCommand;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
@@ -12,11 +13,11 @@ import java.util.Objects;
 public class ProductoController {
 
     private ObservableList<Producto> listaProductoObservable;
-    private Mediator factory;
+    private Mediator mediator;
     private static ProductoController instance;
 
     private ProductoController() {
-        this.factory = Mediator.getInstancia();
+        this.mediator = Mediator.getInstancia();
         this.listaProductoObservable = FXCollections.observableArrayList();
         this.sincronizarData();
     }
@@ -29,13 +30,13 @@ public class ProductoController {
 
     }
 
-    public Mediator getFactory() {
-        return factory;
+    public Mediator getMediator() {
+        return mediator;
     }
 
 
     public void eliminarProducto(String nombre){
-        ArrayList<Producto> productos = factory.getArcade().getListaProducto();
+        ArrayList<Producto> productos = mediator.getArcade().getListaProducto();
         for (int i = 0; i < productos.size(); i++){
             if (Objects.equals(productos.get(i).getNombre(), nombre)){
                 productos.remove(productos.get(i));
@@ -45,7 +46,7 @@ public class ProductoController {
     }
 
     public void actualizarProducto(String nombre, String precio, String cantidadDisponible){
-        ArrayList<Producto> productos = factory.getArcade().getListaProducto();
+        ArrayList<Producto> productos = mediator.getArcade().getListaProducto();
         for (int i = 0; i < productos.size(); i++){
             if (Objects.equals(productos.get(i).getNombre(), nombre)){
                 Producto nuevoProducto = new Producto(nombre, precio, cantidadDisponible);
@@ -58,7 +59,7 @@ public class ProductoController {
     }
 
     public  Producto consultarProducto(String nombre){
-        ArrayList<Producto> productos = factory.getArcade().getListaProducto();
+        ArrayList<Producto> productos = mediator.getArcade().getListaProducto();
         for (Producto value : productos) {
             if (value.getNombre().equals(nombre)){
                 return value;
@@ -67,15 +68,25 @@ public class ProductoController {
         return null;
     }
 
+    public String crearProducto(String nombre, String precio, String cantidadDisponible) {
+        ArrayList<Producto> productos = mediator.getArcade().getListaProducto();
+        for (Producto producto : productos) {
+            if (Objects.equals(producto.getNombre(), nombre)) {
+                return "El producto ingresado ya se existe";
+            }
+        }
+        Producto nuevoProducto = new Producto(nombre, precio, cantidadDisponible);
+        this.mediator.getArcade().addProducto(nuevoProducto);
+        this.listaProductoObservable.add(nuevoProducto);
+        return "Producto registrado exitosamente";
+    }
+
     public ObservableList<Producto> getListaProductoObservable() {
         return listaProductoObservable;
     }
 
-    public void setListaProductoObservable(ObservableList<Producto> listaProductoObservable) {
-        this.listaProductoObservable = listaProductoObservable;
-    }
 
     public void sincronizarData() {
-        this.listaProductoObservable.addAll(this.factory.getArcade().getListaProducto());
+        this.listaProductoObservable.addAll(this.mediator.getArcade().getListaProducto());
     }
 }

@@ -2,6 +2,7 @@ package co.edu.uniquindio.proyecto.arcade.factory;
 
 import co.edu.uniquindio.proyecto.arcade.model.command.RegistrarClienteCommand;
 import co.edu.uniquindio.proyecto.arcade.model.command.RegistrarEmpleadoCommand;
+import co.edu.uniquindio.proyecto.arcade.model.enumeradores.Modalidad;
 import co.edu.uniquindio.proyecto.arcade.model.facade.ProductivityPalace;
 import co.edu.uniquindio.proyecto.arcade.model.Producto;
 import co.edu.uniquindio.proyecto.arcade.model.Servicio;
@@ -28,11 +29,11 @@ public class ModelFactory {
         arcade.addProducto(producto4);
         arcade.addProducto(producto5);
 
-        Servicio servicio1 = new Servicio("Máquina de Pac-Man", "500", "Disponible");
-        Servicio servicio2 = new Servicio("Máquina de Pinball", "600", "No Disponible");
-        Servicio servicio3 = new Servicio("Máquina de Dance Dance Revolution", "700", "Disponible");
-        Servicio servicio4 = new Servicio("Máquina de Mortal Kombat", "550", "Disponible");
-        Servicio servicio5 = new Servicio("Máquina de Air Hockey", "800", "No Disponible");
+        Servicio servicio1 = new Servicio("Arcade Nocturno", "Acceso ilimitado al arcade durante las noches", Modalidad.TIEMPO, "12.99", "Disponible de 8 PM a 6 AM");
+        Servicio servicio2 = new Servicio("Suscripción VIP", "Acceso completo a todas las máquinas y eventos especiales del arcade", Modalidad.SUSCRIPCION, "49.99 al mes", "Disponible");
+        Servicio servicio3 = new Servicio("Partida Única", "Pago por una sola partida en cualquier juego del arcade", Modalidad.PAGO_POR_USO, "2.99 por partida", "Disponible");
+        Servicio servicio4 = new Servicio("Membresía Gratuita", "Acceso gratuito a una selección limitada de juegos y eventos comunitarios", Modalidad.GRATUITO, "0.00", "Disponible");
+        Servicio servicio5 = new Servicio("Pase de Evento Especial", "Acceso a eventos temáticos y torneos de fin de semana", Modalidad.TIEMPO, "24.99", "Disponible solo los fines de semana");
 
         arcade.addServicio(servicio1);
         arcade.addServicio(servicio2);
@@ -40,6 +41,7 @@ public class ModelFactory {
         arcade.addServicio(servicio4);
         arcade.addServicio(servicio5);
 
+        
     }
 
 }

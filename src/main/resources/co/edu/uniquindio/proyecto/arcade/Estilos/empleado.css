@@ -64,6 +64,72 @@
 }
 
 
+.root {
+    -fx-background-color: #001481;
+}
+
+/* Estilo para los botones */
+.button {
+    -fx-border-radius: 8 8 8 8;
+    -fx-background-radius: 8 8 8 8;
+    -fx-border-color: #87252b;
+    -fx-border-width: 1px;
+    -fx-pref-height: -15px;
+    -fx-background-color: #e55156;
+    -fx-text-fill: black;
+    -fx-font-family: 'Alata';
+    -fx-font-size: 12px;
+    -fx-padding: 3;
+    -fx-alignment: center;
+}
+
+/* Estilo para los labels */
+.label {
+    -fx-font-size: 16px;
+    -fx-text-fill: #000000;
+    -fx-font-family: 'Alata';
+}
+
+/* Estilo para los campos de texto */
+.text-field {
+    -fx-border-width: 0 0 2px 0;
+    -fx-border-color: #87252B;
+
+    -fx-text-fill: #040000; /* Color de texto */
+    -fx-background-color: rgba(255, 255, 255, 0);
+    -fx-font-family: 'Alata';
+    -fx-font-size: 12px;
+    -fx-alignment: center;
+}
+
+.tab-pane {
+    -fx-background-color: #ffffff;
+
+    -fx-text-fill: #ffffff;
+    -fx-border-width: 1px;
+    -fx-tab-min-width: 100px;
+    -fx-tab-max-width: 200px;
+    -fx-tab-min-height: 10px;
+    -fx-tab-max-height: 20px;
+}
+
+.tab {
+
+    -fx-padding: 5px;
+    -fx-font-family: 'Alata';
+    -fx-font-size: 12px;
+}
+
+.tab-header-area {
+    -fx-background-color: #171d4d;
+}
+
+.tab.header-background {
+
+    -fx-background-color: #171d4d;
+}
+
+
 .table-view {
     -fx-background-color: #f7ecde;
     -fx-border-radius: 8 8 8 8;

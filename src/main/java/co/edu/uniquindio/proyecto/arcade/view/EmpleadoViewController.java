@@ -1,6 +1,7 @@
 package co.edu.uniquindio.proyecto.arcade.view;
 
 import java.net.URL;
+import java.time.LocalDate;
 import java.util.ResourceBundle;
 
 import co.edu.uniquindio.proyecto.arcade.controller.ReservaController;
@@ -119,6 +120,8 @@ public class EmpleadoViewController {
     @FXML
     void initialize() {
 
+        initview();
+
     }
 
     private void initview() {
@@ -157,6 +160,18 @@ public class EmpleadoViewController {
             txtCorreoCliente.setText(String.valueOf(seleccionado.getCorreo()));
             txtContrasenaCliente.setText(seleccionado.getClave());
             txtSaldoCliente.setText(seleccionado.getSaldo());
+        }
+    }
+    private void listenerSelectionReserva() {
+        tbvGestionReserva.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
+            this.mostrarInformacionReserva((Reserva) newSelection);
+        });
+    }
+    private void mostrarInformacionReserva(Reserva seleccionado) {
+        if (seleccionado != null) {
+            txtCliente.setText(seleccionado.getUsuario().getNombre());
+            boxServicio.setValue(seleccionado.getServicio());
+            dateFechaReserva.setValue(LocalDate.parse(seleccionado.getFecha().toString()));
         }
     }
 }

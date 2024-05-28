@@ -1,6 +1,5 @@
 package co.edu.uniquindio.proyecto.arcade.model.command;
 
-import co.edu.uniquindio.proyecto.arcade.model.TipoUsuario;
 import co.edu.uniquindio.proyecto.arcade.model.facade.ProductivityPalace;
 
 public class RegistrarEmpleadoCommand implements Command {

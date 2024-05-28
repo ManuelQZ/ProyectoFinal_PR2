@@ -5,6 +5,7 @@ import co.edu.uniquindio.proyecto.arcade.model.bridge.EnvioCorreo;
 import co.edu.uniquindio.proyecto.arcade.model.bridge.Notificacion;
 import co.edu.uniquindio.proyecto.arcade.model.bridge.NotificacionReserva;
 import co.edu.uniquindio.proyecto.arcade.model.builder.UsuarioBuilder;
+import co.edu.uniquindio.proyecto.arcade.model.enumeradores.TipoUsuario;
 import co.edu.uniquindio.proyecto.arcade.model.proxy.UsuarioProxy;
 
 import java.util.ArrayList;

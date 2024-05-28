@@ -1,6 +1,6 @@
 package co.edu.uniquindio.proyecto.arcade.model.builder;
 
-import co.edu.uniquindio.proyecto.arcade.model.TipoUsuario;
+import co.edu.uniquindio.proyecto.arcade.model.enumeradores.TipoUsuario;
 import co.edu.uniquindio.proyecto.arcade.model.Usuario;
 
 public class UsuarioBuilder {
