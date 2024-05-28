@@ -31,6 +31,22 @@ public class ReservaController {
         return mediator;
     }
 
+    public void agregarReserva(Usuario usuario, Date fecha, Servicio servicio, String estado){
+        Reserva reserva = new Reserva(usuario, fecha, servicio, estado);
+        this.mediator.getArcade().addReserva(reserva);
+        this.listaReservaObservable.add(reserva);
+    }
+
+    public  Reserva consultarReserva(String id, String clave) {
+        ArrayList<Reserva> reservas = mediator.getArcade().getListaReserva();
+        for (Reserva value : reservas) {
+            if (value.getId().equals(id)){
+                return value;
+            }
+        }
+        return null;
+    }
+
     public ArrayList<Reserva> obtenerReservas(){
         return mediator.getArcade().getListaReserva();
     }
@@ -50,18 +66,8 @@ public class ReservaController {
             this.listaReservaObservable.remove(eliminable);
         }
     }
-    public  Reserva consultarReserva(String id, String clave) {
-        ArrayList<Reserva> reservas = mediator.getArcade().getListaReserva();
-        for (Reserva value : reservas) {
-            if (value.getId().equals(id)){
-                return value;
-            }
-        }
-        return null;
-    }
 
-
-    public void actualizarReserva(String nombre, String id, String clave, String saldo){
+    public void actualizarReserva(Usuario usuario, Date fecha, Servicio servicio, String estado){
         ArrayList<Reserva> reservas = mediator.getArcade().getListaReserva();
         int actualizable = -1;
         Reserva reservaTemporal = null;
@@ -70,6 +76,7 @@ public class ReservaController {
             if (Objects.equals(reservas.get(i).getId(), id)){
                 reservaTemporal = reservas.get(i);
                 reservaTemporal.setEstado(nombre);
+                
                 actualizable = i;
             }
         }
@@ -82,11 +89,7 @@ public class ReservaController {
         }
     }
 
-    public void agregarReserva(String nombre, String id, String clave, String saldo){
-        Reserva reserva = new Reserva(null, id, null, null, null);
-        this.mediator.getArcade().addReserva(reserva);
-        this.listaReservaObservable.add(reserva);
-    }
+  
 
     public ObservableList<Reserva> getListaReservaObservable() {
         return listaReservaObservable;

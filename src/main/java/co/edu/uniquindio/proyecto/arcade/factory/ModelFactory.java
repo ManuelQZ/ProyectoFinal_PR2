@@ -16,16 +16,28 @@ public class ModelFactory {
 
 
     protected static void inicializarDatos(ProductivityPalace arcade) {
-        new RegistrarClienteCommand(arcade, "Juan Pérez", "juan.perez@example.com", "password123", "1500.00").execute();
-        new RegistrarClienteCommand(arcade, "Ana Torres", "ana.torres@example.com", "4naT0rr3s", "4500.00").execute();
-        new RegistrarEmpleadoCommand(arcade, "María López", "maria.lopez@example.com", "123").execute();
-        new RegistrarEmpleadoCommand(arcade, "Luis Martínez", "luis.martinez@example.com", "lu1sM8rt!").execute();
+        registrarUsuarios(arcade);
+        agregarProductos(arcade);
+        agregarServicios(arcade);
+        crearReservas(arcade);
+    }
 
-        Usuario usuario1 = arcade.obtenerUsuario("juan.perez@example.com");
-        Usuario usuario2 = arcade.obtenerUsuario("ana.torres@example.com");
-        Usuario usuario3 = arcade.obtenerUsuario("maria.lopez@example.com");
-        Usuario usuario4 = arcade.obtenerUsuario("luis.martinez@example.com");
+    private static void registrarUsuarios(ProductivityPalace arcade) {
+        registrarCliente(arcade, "Juan Pérez", "juan.perez@example.com", "password123", "1500.00");
+        registrarCliente(arcade, "Ana Torres", "ana.torres@example.com", "4naT0rr3s", "4500.00");
+        registrarEmpleado(arcade, "María López", "maria.lopez@example.com", "123");
+        registrarEmpleado(arcade, "Luis Martínez", "luis.martinez@example.com", "lu1sM8rt!");
+    }
 
+    private static void registrarCliente(ProductivityPalace arcade, String nombre, String email, String contraseña, String saldo) {
+        new RegistrarClienteCommand(arcade, nombre, email, contraseña, saldo).execute();
+    }
+
+    private static void registrarEmpleado(ProductivityPalace arcade, String nombre, String email, String contraseña) {
+        new RegistrarEmpleadoCommand(arcade, nombre, email, contraseña).execute();
+    }
+
+    private static void agregarProductos(ProductivityPalace arcade) {
         Producto producto1 = new Producto("GTA V", "5.99", "50");
         Producto producto2 = new Producto("Warframe", "3.49", "30");
         Producto producto3 = new Producto("Call of Duty", "2.99", "100");
@@ -37,7 +49,9 @@ public class ModelFactory {
         arcade.addProducto(producto3);
         arcade.addProducto(producto4);
         arcade.addProducto(producto5);
+    }
 
+    private static void agregarServicios(ProductivityPalace arcade) {
         Servicio servicio1 = new Servicio("Arcade Nocturno", "Acceso ilimitado al arcade durante las noches", Modalidad.TIEMPO, "12.99", "Disponible de 8 PM a 6 AM");
         Servicio servicio2 = new Servicio("Suscripción VIP", "Acceso completo a todas las máquinas y eventos especiales del arcade", Modalidad.SUSCRIPCION, "49.99 al mes", "Disponible");
         Servicio servicio3 = new Servicio("Partida Única", "Pago por una sola partida en cualquier juego del arcade", Modalidad.PAGO_POR_USO, "2.99 por partida", "Disponible");
@@ -49,6 +63,13 @@ public class ModelFactory {
         arcade.addServicio(servicio3);
         arcade.addServicio(servicio4);
         arcade.addServicio(servicio5);
+    }
+
+    private static void crearReservas(ProductivityPalace arcade) {
+        Usuario usuario1 = arcade.obtenerUsuario("juan.perez@example.com");
+        Usuario usuario2 = arcade.obtenerUsuario("ana.torres@example.com");
+        Usuario usuario3 = arcade.obtenerUsuario("maria.lopez@example.com");
+        Usuario usuario4 = arcade.obtenerUsuario("luis.martinez@example.com");
 
         Date fecha1 = new Date();
         Calendar cal = Calendar.getInstance();
@@ -66,11 +87,11 @@ public class ModelFactory {
         Date fecha5 = cal.getTime();
 
         // Crear reservas
-        Reserva reserva1 = new Reserva(usuario1, "1", fecha1, servicio1, "pendiente");
-        Reserva reserva2 = new Reserva(usuario2, "2", fecha2, servicio2, "confirmada");
-        Reserva reserva3 = new Reserva(usuario3, "3", fecha3, servicio3, "cancelada");
-        Reserva reserva4 = new Reserva(usuario4, "4", fecha4, servicio4, "pendiente");
-        Reserva reserva5 = new Reserva(usuario1, "5", fecha5, servicio5, "confirmada");
+        Reserva reserva1 = new Reserva(usuario1, "1", fecha1, arcade.obtenerServicio("Arcade Nocturno"), "pendiente");
+        Reserva reserva2 = new Reserva(usuario2, "2", fecha2, arcade.obtenerServicio("Suscripción VIP"), "confirmada");
+        Reserva reserva3 = new Reserva(usuario3, "3", fecha3, arcade.obtenerServicio("Partida Única"), "cancelada");
+        Reserva reserva4 = new Reserva(usuario4, "4", fecha4, arcade.obtenerServicio("Membresía Gratuita"), "pendiente");
+        Reserva reserva5 = new Reserva(usuario1, "5", fecha5, arcade.obtenerServicio("Pase de Evento Especial"), "confirmada");
 
         arcade.addReserva(reserva1);
         arcade.addReserva(reserva2);

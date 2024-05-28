@@ -7,11 +7,11 @@
 ## Cruds
 - [ ] `Reservas`.
 - [ ] `Usuario`.
-- [ ] `Producto`.
+- [ ] `Servicio`.
 
 ## Transacciones
-- [ ] Reserva de Servicio y Pago
-- [ ] Compra de Producto y Actualización de Inventario
+- [ ] Reserva de Servicio.
+- [ ] Pago de servicio o Producto.
 
 ## Patrones creacionales
 - [X] Builder -> Asignar atributos a `Usuario`.

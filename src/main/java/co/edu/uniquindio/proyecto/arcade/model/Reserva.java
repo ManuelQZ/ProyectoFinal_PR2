@@ -12,7 +12,7 @@ public class Reserva implements Cloneable {
     private String estado;
 
 
-    public Reserva(Usuario usuario, String id, Date fecha, Servicio servicio, String estado) {
+    public Reserva(Usuario usuario, Date fecha, Servicio servicio, String estado) {
         this.usuario = usuario;
         this.id = this.generarId();
         this.fecha = fecha;

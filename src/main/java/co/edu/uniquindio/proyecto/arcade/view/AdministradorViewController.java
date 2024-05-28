@@ -81,6 +81,12 @@ public class AdministradorViewController {
     private TableColumn<Servicio, String> tbcDisponibilidadReserva;
 
     @FXML
+    private TextField txtUsuarioReserva;
+
+     @FXML
+    private ComboBox<String> comboServicio;
+
+    @FXML
     private TableView<Producto> tbvGestionProducto;
 
     @FXML
@@ -126,9 +132,6 @@ public class AdministradorViewController {
     private TextField txtCantidad;
 
     @FXML
-    private TextField txtCosto;
-
-    @FXML
     private TextField txtServicio;
 
     @FXML
@@ -139,21 +142,60 @@ public class AdministradorViewController {
 
     @FXML
     void removeUsuario(ActionEvent event) {
+        String correo = txtCorreo.getText();
 
+        if (!correo.isEmpty()) {
+            usuarioController.eliminarUsuario(correo);
+            Tools.mostrarMensaje("Informacion", null, "Usuario eliminado exitosamente", Alert.AlertType.INFORMATION );
+        } else {
+            Tools.mostrarMensaje("Error", null, "Los campos están vacíos", Alert.AlertType.ERROR);
+        }
     }
 
     @FXML
     void addUsuario(ActionEvent event) {
+        String nombre = txtUsuario.getText();
+        String correo = txtCorreo.getText();
+        String contrasena = txtContrasena.getText();
+        String tipoUsuario = txtTIpoUsuario.getText();
+        
+        if(!nombre.isEmpty() && !correo.isEmpty() && !contrasena.isEmpty()) {
 
+            String msj = usuarioController.crearUsuario(nombre, correo, contrasena);
+            Tools.mostrarMensaje("Informacion", null, msj, Alert.AlertType.INFORMATION );
+        } else {
+            Tools.mostrarMensaje("Error", null, "Los campos están vacíos", Alert.AlertType.ERROR);
+        }
     }
 
     @FXML
     void updateUsuario(ActionEvent event) {
+        String nombre = txtUsuario.getText();
+        String correo = txtCorreo.getText();
+        String contrasena = txtContrasena.getText();
+        String tipoUsuario = txtTIpoUsuario.getText();
 
+        if (tipoUsuario.isEmpty) {
+            if(!nombre.isEmpty() && !correo.isEmpty() && !contrasena.isEmpty()) {
+                usuarioController.actualizarUsuario(nombre, correo, contrasena);
+            } else {
+            Tools.mostrarMensaje("Error", null, "Los campos están vacíos", Alert.AlertType.ERROR);
+        }
+        } else {
+            Tools.mostrarMensaje("Error", null, "No se puede modificar el tipo de usuario", Alert.AlertType.ERROR);
+        }
     }
 
     @FXML
     void addReserva(ActionEvent event) {
+        Usuario usuario = usuarioController.consultarUsuario(txtUsuarioReserva.getText());
+        Date fecha = Date.from(dateFechaReserva.getValue().atStartOfDay(ZoneId.systemDefault()).toInstant());
+        Servicio servicio = servicioController.consultarServicio(comboServicio.getValue());
+        String estado = txtEstadoReserva.getText();
+
+        if (usuario != null && fecha != null && servicio != null && !estado.isEmpty()) {
+            reservaController.agregarReserva(usuario, fecha, servicio, estado);
+        }
 
     }
 
@@ -274,7 +316,6 @@ public class AdministradorViewController {
         if (seleccionado != null) {
             dateFechaReserva.setValue(Tools.convertToLocalDate(seleccionado.getFecha()));
             txtEstadoReserva.setText(seleccionado.getEstado());
-            txtCosto.setText(seleccionado.getServicio().getPrecio());
         }
     }
 

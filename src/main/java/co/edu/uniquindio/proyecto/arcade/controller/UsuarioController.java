@@ -58,6 +58,45 @@ public class UsuarioController {
         return mediator.getArcade().getListaUsuario();
     }
 
+    public String crearUsuarioCliente(String nombre, String correo, String clave, String saldo) {
+        ArrayList<Usuario> usuarios = mediator.getArcade().getListaUsuario();
+        for (Usuario usuario : usuarios) {
+            if (Objects.equals(usuario.getCorreo(), correo)) {
+                return "El correo ingresado ya se encuentra en uso";
+            }
+        }
+            new RegistrarClienteCommand(mediator.getArcade(), nombre, correo, clave, saldo);
+            return "Cliente registrado exitosamente";
+    }
+
+    public String crearUsuario(String nombre, String correo, String clave, String tipoUsuario) {
+        ArrayList<Usuario> usuarios = mediator.getArcade().getListaUsuario();
+        for (Usuario usuario : usuarios) {
+            if (Objects.equals(usuario.getCorreo(), correo)) {
+                return "El correo ingresado ya se encuentra en uso";
+            }
+        }
+
+        if (tipoUsuario.equals("empleado") || tipoUsuario.equals("EMPLEADO")) {
+            new RegistrarEmpleadoCommand(mediator.getArcade(), nombre, correo, clave);
+                return "Empleado registrado exitosamente";
+        } else if (tipoUsuario.equals("cliente") || tipoUsuario.equals("CLIENTE")) {
+            new RegistrarEmpleadoCommand(mediator.getArcade(), nombre, correo, clave);
+                return "Cliente registrado exitosamente";
+        }
+
+        return "Error, no existe el tipo de usuario ingresado";
+    }
+
+    public  Usuario consultarUsuario(String correo, String clave){
+        ArrayList<Usuario> usuarios = mediator.getArcade().getListaUsuario();
+        for (Usuario value : usuarios) {
+            if (value.getCorreo().equals(correo)){
+                return value;
+            }
+        }
+        return null;
+    }
 
     public void eliminarUsuario(String correo){
         int eliminable = -1;
@@ -73,18 +112,8 @@ public class UsuarioController {
             this.listaUsuarioObservable.remove(eliminable);
         }
     }
-    public  Usuario consultarUsuario(String correo, String clave){
-        ArrayList<Usuario> usuarios = mediator.getArcade().getListaUsuario();
-        for (Usuario value : usuarios) {
-            if (value.getCorreo().equals(correo)){
-                return value;
-            }
-        }
-        return null;
-    }
 
-
-    public void actualizarUsuario(String nombre, String correo, String clave, String saldo){
+    public void actualizarUsuario(String nombre, String correo, String clave){
         ArrayList<Usuario> usuarios = mediator.getArcade().getListaUsuario();
         int actualizable = -1;
         Usuario usuarioTemporal = null;
@@ -93,7 +122,6 @@ public class UsuarioController {
                 usuarioTemporal = usuarios.get(i);
                 usuarioTemporal.setNombre(nombre);
                 usuarioTemporal.setClave(clave);
-                usuarioTemporal.setSaldo(saldo);
                 actualizable = i;
             }
         }
@@ -104,30 +132,6 @@ public class UsuarioController {
             this.listaUsuarioObservable.add(usuarioTemporal);
         }
     }
-
-    public String crearUsuarioCliente(String nombre, String correo, String clave, String saldo) {
-        ArrayList<Usuario> usuarios = mediator.getArcade().getListaUsuario();
-        for (Usuario usuario : usuarios) {
-            if (Objects.equals(usuario.getCorreo(), correo)) {
-                return "El correo ingresado ya se encuentra en uso";
-            }
-        }
-            new RegistrarClienteCommand(mediator.getArcade(), nombre, correo, clave, saldo);
-            return "Cliente registrado exitosamente";
-    }
-
-    public String crearUsuarioEmpleado(String nombre, String correo, String clave) {
-        ArrayList<Usuario> usuarios = mediator.getArcade().getListaUsuario();
-        for (Usuario usuario : usuarios) {
-            if (Objects.equals(usuario.getCorreo(), correo)) {
-                return "El correo ingresado ya se encuentra en uso";
-            }
-        }
-        new RegistrarEmpleadoCommand(mediator.getArcade(), nombre, correo, clave);
-        return "Empleado registrado exitosamente";
-    }
-
-
 
     public ObservableList<Usuario> getListaUsuarioObservable() {
         return listaUsuarioObservable;
