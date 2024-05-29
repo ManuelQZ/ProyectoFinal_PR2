@@ -2,10 +2,13 @@ package co.edu.uniquindio.proyecto.arcade.controller;
 
 import co.edu.uniquindio.proyecto.arcade.factory.Mediator;
 import co.edu.uniquindio.proyecto.arcade.model.Reserva;
+import co.edu.uniquindio.proyecto.arcade.model.Servicio;
+import co.edu.uniquindio.proyecto.arcade.model.Usuario;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.Objects;
 
 public class ReservaController {
@@ -67,7 +70,7 @@ public class ReservaController {
         }
     }
 
-    public void actualizarReserva(Usuario usuario, Date fecha, Servicio servicio, String estado){
+    public void actualizarReserva(Usuario usuario, Date fecha, Servicio servicio, String estado, String id){
         ArrayList<Reserva> reservas = mediator.getArcade().getListaReserva();
         int actualizable = -1;
         Reserva reservaTemporal = null;
@@ -75,7 +78,7 @@ public class ReservaController {
         for (int i = 0; i < reservas.size(); i++){
             if (Objects.equals(reservas.get(i).getId(), id)){
                 reservaTemporal = reservas.get(i);
-                reservaTemporal.setEstado(nombre);
+                reservaTemporal.setEstado(estado);
                 
                 actualizable = i;
             }

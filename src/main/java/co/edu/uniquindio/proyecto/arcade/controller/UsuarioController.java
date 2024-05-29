@@ -88,7 +88,7 @@ public class UsuarioController {
         return "Error, no existe el tipo de usuario ingresado";
     }
 
-    public  Usuario consultarUsuario(String correo, String clave){
+    public  Usuario consultarUsuario(String correo){
         ArrayList<Usuario> usuarios = mediator.getArcade().getListaUsuario();
         for (Usuario value : usuarios) {
             if (value.getCorreo().equals(correo)){

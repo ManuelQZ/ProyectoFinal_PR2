@@ -2,12 +2,14 @@ package co.edu.uniquindio.proyecto.arcade.view;
 
 import java.net.URL;
 import java.time.LocalDate;
+import java.util.Arrays;
 import java.util.ResourceBundle;
 
 import co.edu.uniquindio.proyecto.arcade.controller.ReservaController;
 import co.edu.uniquindio.proyecto.arcade.controller.UsuarioController;
 
 import co.edu.uniquindio.proyecto.arcade.model.*;
+import co.edu.uniquindio.proyecto.arcade.model.enumeradores.Modalidad;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -33,7 +35,7 @@ public class EmpleadoViewController {
     private ComboBox<Pago> boxMetodoPago;
 
     @FXML
-    private ComboBox<Servicio> boxServicio;
+    private ComboBox<String> boxServicio;
 
     @FXML
     private DatePicker dateFechaReserva;
@@ -119,7 +121,7 @@ public class EmpleadoViewController {
 
     @FXML
     void initialize() {
-
+        boxServicio.getItems().addAll();
         initview();
 
     }
@@ -131,6 +133,7 @@ public class EmpleadoViewController {
         tbvGestionUsuarios.setItems(usuarioController.getListaUsuarioObservable());
         tbvGestionReserva.setItems(reservaController.getListaReservaObservable());
         listenerSelectionUsuario();
+        listenerSelectionReserva();
     }
 
     private void initDataBinding() {
@@ -170,8 +173,8 @@ public class EmpleadoViewController {
     private void mostrarInformacionReserva(Reserva seleccionado) {
         if (seleccionado != null) {
             txtCliente.setText(seleccionado.getUsuario().getNombre());
-            boxServicio.setValue(seleccionado.getServicio());
-            dateFechaReserva.setValue(LocalDate.parse(seleccionado.getFecha().toString()));
+            boxServicio.setValue(seleccionado.getServicio().getNombre());
+            dateFechaReserva.setValue(Tools.convertToLocalDate(seleccionado.getFecha()));
         }
     }
 }

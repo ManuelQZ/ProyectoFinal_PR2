@@ -2,7 +2,9 @@ package co.edu.uniquindio.proyecto.arcade.view;
 
 import java.net.URL;
 import java.time.LocalDate;
+import java.time.ZoneId;
 import java.util.Arrays;
+import java.util.Date;
 import java.util.ResourceBundle;
 
 import co.edu.uniquindio.proyecto.arcade.controller.ProductoController;
@@ -114,6 +116,9 @@ public class AdministradorViewController {
     private TextField txtTIpoUsuario;
 
     @FXML
+    private TextField txtId;
+
+    @FXML
     private TableColumn<Reserva, String> tbcServicio;
 
     @FXML
@@ -161,7 +166,7 @@ public class AdministradorViewController {
         
         if(!nombre.isEmpty() && !correo.isEmpty() && !contrasena.isEmpty()) {
 
-            String msj = usuarioController.crearUsuario(nombre, correo, contrasena);
+            String msj = usuarioController.crearUsuario(nombre, correo, contrasena, tipoUsuario);
             Tools.mostrarMensaje("Informacion", null, msj, Alert.AlertType.INFORMATION );
         } else {
             Tools.mostrarMensaje("Error", null, "Los campos están vacíos", Alert.AlertType.ERROR);
@@ -175,7 +180,7 @@ public class AdministradorViewController {
         String contrasena = txtContrasena.getText();
         String tipoUsuario = txtTIpoUsuario.getText();
 
-        if (tipoUsuario.isEmpty) {
+        if (tipoUsuario.isEmpty()) {
             if(!nombre.isEmpty() && !correo.isEmpty() && !contrasena.isEmpty()) {
                 usuarioController.actualizarUsuario(nombre, correo, contrasena);
             } else {
@@ -193,7 +198,7 @@ public class AdministradorViewController {
         Servicio servicio = servicioController.consultarServicio(comboServicio.getValue());
         String estado = txtEstadoReserva.getText();
 
-        if (usuario != null && fecha != null && servicio != null && !estado.isEmpty()) {
+        if (usuario != null && servicio != null && !estado.isEmpty()) {
             reservaController.agregarReserva(usuario, fecha, servicio, estado);
         }
 
@@ -201,12 +206,21 @@ public class AdministradorViewController {
 
     @FXML
     void updateReserva(ActionEvent event) {
+        Usuario usuario = usuarioController.consultarUsuario(txtUsuarioReserva.getText());
+        Date fecha = Date.from(dateFechaReserva.getValue().atStartOfDay(ZoneId.systemDefault()).toInstant());
+        Servicio servicio = servicioController.consultarServicio(comboServicio.getValue());
+        String estado = txtEstadoReserva.getText();
+        String id = txtId.getText();
 
+        if (usuario != null && servicio != null && !estado.isEmpty()) {
+            reservaController.actualizarReserva(usuario, fecha, servicio, estado, id);
+        }
     }
 
     @FXML
     void removeReserva(ActionEvent event) {
-
+        
+        reservaController.eliminarReserva();
     }
 
     @FXML
