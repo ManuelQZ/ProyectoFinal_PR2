@@ -14,14 +14,17 @@ import java.util.Objects;
 public class UsuarioController {
 
     private ObservableList<Usuario> listaUsuarioObservable;
+    private ObservableList<Usuario> listaUsuarioClienteObservable;
     private final Mediator mediator;
     private static UsuarioController instance;
 
     private UsuarioController() {
         this.mediator = Mediator.getInstancia();
         this.listaUsuarioObservable = FXCollections.observableArrayList();
+        this.listaUsuarioClienteObservable = FXCollections.observableArrayList();
         this.sincronizarData();
     }
+
 
     public static UsuarioController getInstance(){
         if(instance == null){
@@ -141,11 +144,13 @@ public class UsuarioController {
         return listaUsuarioObservable;
     }
 
-    public void setListaUsuarioObservable(ObservableList<Usuario> listaUsuarioObservable) {
-        this.listaUsuarioObservable = listaUsuarioObservable;
-    }
+
 
     public void sincronizarData() {
         this.listaUsuarioObservable.addAll(this.mediator.getArcade().getListaUsuario());
+    }
+
+    public ObservableList<Usuario> getListaUsuarioClienteObservable() {
+        return listaUsuarioClienteObservable;
     }
 }
