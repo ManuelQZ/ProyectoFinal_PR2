@@ -112,10 +112,10 @@ public class EmpleadoViewController {
         String contrasena = txtContrasenaCliente.getText();
         String saldo = txtSaldoCliente.getText();
 
-        if(!nombre.isEmpty() && !correo.isEmpty() && !contrasena.isEmpty() && !saldo.isEmpty()) {
+        if (!nombre.isEmpty() && !correo.isEmpty() && !contrasena.isEmpty() && !saldo.isEmpty()) {
 
             String msj = usuarioController.crearUsuario(nombre, correo, contrasena, saldo);
-            Tools.mostrarMensaje("Informacion", null, msj, Alert.AlertType.INFORMATION );
+            Tools.mostrarMensaje("Informacion", null, msj, Alert.AlertType.INFORMATION);
         } else {
             Tools.mostrarMensaje("Error", null, "Los campos están vacíos", Alert.AlertType.ERROR);
         }
@@ -135,72 +135,76 @@ public class EmpleadoViewController {
         String saldo = txtSaldoCliente.getText();
         Usuario usuario = usuarioController.consultarUsuario(correo);
         if (usuario != null) {
-            if(!cliente.isEmpty() && !correo.isEmpty() && !contrasena.isEmpty() && !saldo.isEmpty()) {
+            if (!cliente.isEmpty() && !correo.isEmpty() && !contrasena.isEmpty() && !saldo.isEmpty()) {
                 usuarioController.actualizarUsuario(cliente, correo, contrasena, saldo);
             } else {
-                Tools.mostrarMensaje("Error", null, "Los campos están vacíos", Alert.AlertType.ERROR);}
+                Tools.mostrarMensaje("Error", null, "Los campos están vacíos", Alert.AlertType.ERROR);
+            }
         } else {
             Tools.mostrarMensaje("Error", null, "No se puede modificar el tipo de usuario", Alert.AlertType.ERROR);
         }
     }
-}
 
-@FXML
-void initialize() {
-    boxServicio.getItems().addAll(servicioController.getListaNombreServicio());
-    initview();
 
-}
+    @FXML
+    void initialize() {
+        boxServicio.getItems().addAll(servicioController.getListaNombreServicio());
+        initview();
 
-private void initview() {
-    initDataBinding();
-    tbvGestionUsuarios.getItems().clear();
-    tbvGestionReserva.getItems().clear();
-    tbvGestionUsuarios.setItems(usuarioController.getListaUsuarioObservable());
-    tbvGestionReserva.setItems(reservaController.getListaReservaObservable());
-    listenerSelectionUsuario();
-    listenerSelectionReserva();
-}
+    }
 
-private void initDataBinding() {
-    // lista de cliente
-    tbcNombreCliente.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getNombre()));
-    tbcCorreoCliente.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getCorreo()));
-    tbcClaveCliente.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getClave()));
-    tbcSaldoCliente.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getSaldo()));
+    private void initview() {
+        initDataBinding();
+        tbvGestionUsuarios.getItems().clear();
+        tbvGestionReserva.getItems().clear();
+        tbvGestionUsuarios.setItems(usuarioController.getListaUsuarioObservable());
+        tbvGestionReserva.setItems(reservaController.getListaReservaObservable());
+        listenerSelectionUsuario();
+        listenerSelectionReserva();
+    }
 
-    // lista de reserva
-    tbcIdReserva.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getId()));
-    tbcServicioReserva.setCellValueFactory(cellData -> new SimpleStringProperty(String.valueOf(cellData.getValue().getServicio().getNombre())));
-    tbcEstadoReserva.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getEstado()));
-    tbcCostoReserva.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getServicio().getPrecio()));
+    private void initDataBinding() {
+        // lista de cliente
+        tbcNombreCliente.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getNombre()));
+        tbcCorreoCliente.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getCorreo()));
+        tbcClaveCliente.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getClave()));
+        tbcSaldoCliente.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getSaldo()));
 
-}
+        // lista de reserva
+        tbcIdReserva.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getId()));
+        tbcServicioReserva.setCellValueFactory(cellData -> new SimpleStringProperty(String.valueOf(cellData.getValue().getServicio().getNombre())));
+        tbcEstadoReserva.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getEstado()));
+        tbcCostoReserva.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getServicio().getPrecio()));
 
-private void listenerSelectionUsuario() {
-    tbvGestionUsuarios.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
-        this.mostrarInformacionUsuario((Usuario) newSelection);
-    });
-}
+    }
 
-private void mostrarInformacionUsuario(Usuario seleccionado) {
-    if(seleccionado != null){
-        txtNombreCliente.setText(seleccionado.getNombre());
-        txtCorreoCliente.setText(String.valueOf(seleccionado.getCorreo()));
-        txtContrasenaCliente.setText(seleccionado.getClave());
-        txtSaldoCliente.setText(seleccionado.getSaldo());
+    private void listenerSelectionUsuario() {
+        tbvGestionUsuarios.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
+            this.mostrarInformacionUsuario((Usuario) newSelection);
+        });
+    }
+
+    private void mostrarInformacionUsuario(Usuario seleccionado) {
+        if (seleccionado != null) {
+            txtNombreCliente.setText(seleccionado.getNombre());
+            txtCorreoCliente.setText(String.valueOf(seleccionado.getCorreo()));
+            txtContrasenaCliente.setText(seleccionado.getClave());
+            txtSaldoCliente.setText(seleccionado.getSaldo());
+        }
+    }
+
+    private void listenerSelectionReserva() {
+        tbvGestionReserva.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
+            this.mostrarInformacionReserva((Reserva) newSelection);
+        });
+    }
+
+    private void mostrarInformacionReserva(Reserva seleccionado) {
+        if (seleccionado != null) {
+            txtCliente.setText(seleccionado.getUsuario().getNombre());
+            boxServicio.setValue(seleccionado.getServicio().getNombre());
+            dateFechaReserva.setValue(Tools.convertToLocalDate(seleccionado.getFecha()));
+        }
     }
 }
-private void listenerSelectionReserva() {
-    tbvGestionReserva.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
-        this.mostrarInformacionReserva((Reserva) newSelection);
-    });
-}
-private void mostrarInformacionReserva(Reserva seleccionado) {
-    if (seleccionado != null) {
-        txtCliente.setText(seleccionado.getUsuario().getNombre());
-        boxServicio.setValue(seleccionado.getServicio().getNombre());
-        dateFechaReserva.setValue(Tools.convertToLocalDate(seleccionado.getFecha()));
-    }
-}
-}
+
