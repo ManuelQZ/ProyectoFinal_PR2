@@ -148,9 +148,11 @@ public class UsuarioController {
 
     public void sincronizarData() {
         this.listaUsuarioObservable.addAll(this.mediator.getArcade().getListaUsuario());
+        this.listaUsuarioClienteObservable.addAll(this.mediator.getArcade().getListaCliente());
     }
 
     public ObservableList<Usuario> getListaUsuarioClienteObservable() {
         return listaUsuarioClienteObservable;
     }
+
 }
