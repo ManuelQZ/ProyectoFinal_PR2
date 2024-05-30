@@ -49,11 +49,9 @@ public class ProductivityPalace {
 
     public void addUsuario(Usuario usuario){
         this.listaUsuario.add(usuario);
-        System.out.println("la lista tiene los elementos: " + this.listaUsuario.toString());
     }
     public void addCliente(Usuario usuario){
-        this.listaUsuario.add(usuario);
-        System.out.println("la lista tiene los elementos: " + this.listaUsuario.toString());
+        this.listaCliente.add(usuario);
     }
 
     public Usuario obtenerUsuario(String correo) {
@@ -142,6 +140,15 @@ public class ProductivityPalace {
         if (usuario!= null) {
             usuario.realizarPago(tipoDePago, monto, fecha, nombresProductos, descuento);
         }
+    }
+
+    public Servicio obtenerServicio(String nombre) {
+        for (Servicio servicio : listaServicio) {
+            if (servicio.getNombre().equals(nombre)) {
+                return servicio;
+            }
+        }
+        return null;
     }
 
     public ArrayList<Usuario> getListaCliente() {

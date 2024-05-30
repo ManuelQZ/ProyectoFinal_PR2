@@ -38,7 +38,7 @@ public class LoginViewController {
     @FXML
     void ingresar(ActionEvent event) {
 
-        Usuario usuario = usuarioController.consultarUsuario(txtCorreo.getText(), txtContrasena.getText());
+        Usuario usuario = usuarioController.consultarUsuario(txtCorreo.getText());
         usuarioTemporal.setUsuario(usuario);
         sesion = usuarioTemporal.acceder();
 

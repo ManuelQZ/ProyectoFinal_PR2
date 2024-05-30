@@ -87,11 +87,11 @@ public class ModelFactory {
         Date fecha5 = cal.getTime();
 
         // Crear reservas
-        Reserva reserva1 = new Reserva(usuario1, "1", fecha1, arcade.obtenerServicio("Arcade Nocturno"), "pendiente");
-        Reserva reserva2 = new Reserva(usuario2, "2", fecha2, arcade.obtenerServicio("Suscripción VIP"), "confirmada");
-        Reserva reserva3 = new Reserva(usuario3, "3", fecha3, arcade.obtenerServicio("Partida Única"), "cancelada");
-        Reserva reserva4 = new Reserva(usuario4, "4", fecha4, arcade.obtenerServicio("Membresía Gratuita"), "pendiente");
-        Reserva reserva5 = new Reserva(usuario1, "5", fecha5, arcade.obtenerServicio("Pase de Evento Especial"), "confirmada");
+        Reserva reserva1 = new Reserva(usuario1,  fecha1, arcade.obtenerServicio("Arcade Nocturno"), "pendiente");
+        Reserva reserva2 = new Reserva(usuario2,  fecha2, arcade.obtenerServicio("Suscripción VIP"), "confirmada");
+        Reserva reserva3 = new Reserva(usuario3,  fecha3, arcade.obtenerServicio("Partida Única"), "cancelada");
+        Reserva reserva4 = new Reserva(usuario4,  fecha4, arcade.obtenerServicio("Membresía Gratuita"), "pendiente");
+        Reserva reserva5 = new Reserva(usuario1,  fecha5, arcade.obtenerServicio("Pase de Evento Especial"), "confirmada");
 
         arcade.addReserva(reserva1);
         arcade.addReserva(reserva2);

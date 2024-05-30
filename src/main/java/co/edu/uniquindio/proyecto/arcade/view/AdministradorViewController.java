@@ -179,16 +179,22 @@ public class AdministradorViewController {
         String correo = txtCorreo.getText();
         String contrasena = txtContrasena.getText();
         String tipoUsuario = txtTIpoUsuario.getText();
-
-        if (tipoUsuario.isEmpty()) {
-            if(!nombre.isEmpty() && !correo.isEmpty() && !contrasena.isEmpty()) {
-                usuarioController.actualizarUsuario(nombre, correo, contrasena);
+        Usuario usuario = usuarioController.consultarUsuario(correo);
+        if (usuario != null) {
+            String tipoUsuarioOriginal = usuario.getTipoUsuario();
+            if (tipoUsuario.equals(tipoUsuarioOriginal)) {
+                if(!nombre.isEmpty() && !correo.isEmpty() && !contrasena.isEmpty()) {
+                    usuarioController.actualizarUsuario(nombre, correo, contrasena);
+                } else {
+                    Tools.mostrarMensaje("Error", null, "Los campos están vacíos", Alert.AlertType.ERROR);
+                }
             } else {
-            Tools.mostrarMensaje("Error", null, "Los campos están vacíos", Alert.AlertType.ERROR);
+                Tools.mostrarMensaje("Error", null, "No se puede modificar el tipo de usuario", Alert.AlertType.ERROR);
+            }
+        }else{
+            Tools.mostrarMensaje("Error", null, "El usuario no existe", Alert.AlertType.ERROR);
         }
-        } else {
-            Tools.mostrarMensaje("Error", null, "No se puede modificar el tipo de usuario", Alert.AlertType.ERROR);
-        }
+
     }
 
     @FXML
@@ -212,16 +218,29 @@ public class AdministradorViewController {
         String estado = txtEstadoReserva.getText();
         String id = txtId.getText();
 
-        if (usuario != null && servicio != null && !estado.isEmpty()) {
-            reservaController.actualizarReserva(usuario, fecha, servicio, estado, id);
+        if (usuario != null) {
+            if(!estado.isEmpty()){
+                reservaController.actualizarReserva(usuario, fecha, servicio, estado, id);
+            }else{
+                Tools.mostrarMensaje("Error", null, "El campo estado está vacío", Alert.AlertType.ERROR);
+            }
+        }else {
+            Tools.mostrarMensaje("Error", null, "El usuario no existe", Alert.AlertType.ERROR);
         }
     }
 
     @FXML
     void removeReserva(ActionEvent event) {
-        
-//        reservaController.eliminarReserva();
+        String id = txtId.getText();
+
+        if (!id.isEmpty()) {
+            reservaController.eliminarReserva(id);
+            Tools.mostrarMensaje("Informacion", null, "Reserva eliminada exitosamente", Alert.AlertType.INFORMATION );
+        } else {
+            Tools.mostrarMensaje("Error", null, "No se selecciono una reserva eliminable", Alert.AlertType.ERROR);
+        }
     }
+
 
     @FXML
     void addServicio(ActionEvent event) {
@@ -257,6 +276,7 @@ public class AdministradorViewController {
     @FXML
     void initialize() {
         comboModalidad.getItems().addAll(Arrays.toString(Modalidad.values()).replace("[", "").replace("]", "").split(", "));
+        comboServicio.getItems().addAll(servicioController.getListaNombreServicio());
         initview();
 
     }
@@ -314,8 +334,10 @@ public class AdministradorViewController {
         if(seleccionado != null){
             txtUsuario.setText(seleccionado.getNombre());
             txtCorreo.setText(String.valueOf(seleccionado.getCorreo()));
+            txtCorreo.setDisable(true);
             txtContrasena.setText(seleccionado.getClave());
             txtTIpoUsuario.setText(seleccionado.getTipoUsuario());
+            txtTIpoUsuario.setDisable(true);
 
         }
     }
@@ -328,8 +350,11 @@ public class AdministradorViewController {
 
     private void mostrarInformacionReserva(Reserva seleccionado) {
         if (seleccionado != null) {
+            txtUsuarioReserva.setText(seleccionado.getUsuario().getCorreo());
+            comboServicio.setValue(seleccionado.getServicio().getNombre());
             dateFechaReserva.setValue(Tools.convertToLocalDate(seleccionado.getFecha()));
             txtEstadoReserva.setText(seleccionado.getEstado());
+            txtId.setText(seleccionado.getId());
         }
     }
 

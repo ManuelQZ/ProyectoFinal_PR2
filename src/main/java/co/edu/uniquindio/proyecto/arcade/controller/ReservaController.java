@@ -56,17 +56,13 @@ public class ReservaController {
 
 
     public void eliminarReserva(String id){
-        int eliminable = -1;
         ArrayList<Reserva> reservas = mediator.getArcade().getListaReserva();
-        for (int i = 0; i < reservas.size(); i++){
-            if (Objects.equals(reservas.get(i).getId(), id)){
-                reservas.remove(reservas.get(i));
-                this.mediator.getArcade().addReserva(reservas.get(i));
-                eliminable = i;
-            }
-        }
-        if (eliminable!= -1){
+        Reserva reservaEliminable = this.consultarReserva(id);
+        int eliminable;
+        if (reservaEliminable!= null){
+            eliminable = reservas.indexOf(reservaEliminable);
             this.listaReservaObservable.remove(eliminable);
+            this.mediator.getArcade().rmReserva(eliminable);
         }
     }
 

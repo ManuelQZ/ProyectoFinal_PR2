@@ -81,15 +81,16 @@ public class ServicioController {
         return null;
     }
 
-    public Servicio obtenerServicio(String nombre) {
-        ArrayList<Servicio> listaServicio = this.mediator.getArcade().getListaServicio();
-        for (Servicio servicio : listaServicio) {
-            if (servicio.getNombre().equals(nombre)) {
-                return servicio;
-            }
+    public String[] getListaNombreServicio(){
+        ArrayList<Servicio> servicios = mediator.getArcade().getListaServicio();
+        String[] nombres = new String[servicios.size()];
+        for (int i = 0; i < servicios.size(); i++){
+            nombres[i] = servicios.get(i).getNombre();
         }
-        return null;
+        return nombres;
     }
+
+
 
     public ObservableList<Servicio> getListaServicioObservable() {
         return listaServicioObservable;

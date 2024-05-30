@@ -4,6 +4,7 @@ import co.edu.uniquindio.proyecto.arcade.factory.Mediator;
 import co.edu.uniquindio.proyecto.arcade.model.Usuario;
 import co.edu.uniquindio.proyecto.arcade.model.command.RegistrarClienteCommand;
 import co.edu.uniquindio.proyecto.arcade.model.command.RegistrarEmpleadoCommand;
+import co.edu.uniquindio.proyecto.arcade.model.enumeradores.TipoUsuario;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
@@ -78,10 +79,15 @@ public class UsuarioController {
         }
 
         if (tipoUsuario.equals("empleado") || tipoUsuario.equals("EMPLEADO")) {
-            new RegistrarEmpleadoCommand(mediator.getArcade(), nombre, correo, clave);
+            new RegistrarEmpleadoCommand(mediator.getArcade(), nombre, correo, clave).execute();
+            listaUsuarioObservable.clear();
+            this.sincronizarData();
                 return "Empleado registrado exitosamente";
+
         } else if (tipoUsuario.equals("cliente") || tipoUsuario.equals("CLIENTE")) {
-            new RegistrarEmpleadoCommand(mediator.getArcade(), nombre, correo, clave);
+            new RegistrarClienteCommand(mediator.getArcade(), nombre, correo, clave, "0" ).execute();
+            listaUsuarioObservable.clear();
+            this.sincronizarData();
                 return "Cliente registrado exitosamente";
         }
 
@@ -101,14 +107,12 @@ public class UsuarioController {
     public void eliminarUsuario(String correo){
         int eliminable = -1;
         ArrayList<Usuario> usuarios = mediator.getArcade().getListaUsuario();
-        for (int i = 0; i < usuarios.size(); i++){
-            if (Objects.equals(usuarios.get(i).getCorreo(), correo)){
-                usuarios.remove(usuarios.get(i));
-                this.mediator.getArcade().addUsuario(usuarios.get(i));
-                eliminable = i;
-            }
-        }
-        if (eliminable!= -1){
+        Usuario usuarioEliminable = this.consultarUsuario(correo);
+
+        if (usuarioEliminable != null){
+            System.out.println("Eliminando usuario: " + usuarioEliminable.getCorreo());
+            eliminable = usuarios.indexOf(usuarioEliminable);
+            this.mediator.getArcade().rmUsuario(eliminable);
             this.listaUsuarioObservable.remove(eliminable);
         }
     }
