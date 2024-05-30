@@ -8,7 +8,7 @@ public class PagoTarjeta implements PagoStrategy {
     }
 
     @Override
-    public void pagar(double monto) {
+    public void pagar(String monto) {
         System.out.println("Pagando " + monto + " usando tarjeta con número " + numeroTarjeta);
         // Lógica de pago con tarjeta
     }

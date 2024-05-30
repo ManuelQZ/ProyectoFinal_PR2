@@ -6,10 +6,10 @@ import java.util.Date;
 
 public class Pago {
     private final PagoStrategy estrategiaPago;
-    private double monto;
+    private String monto;
     private final Date fecha;
 
-    public Pago(PagoStrategy estrategiaPago, double monto) {
+    public Pago(PagoStrategy estrategiaPago, String monto) {
         this.estrategiaPago = estrategiaPago;
         this.monto = monto;
         this.fecha = new Date();
@@ -19,15 +19,19 @@ public class Pago {
         estrategiaPago.pagar(monto);
     }
 
-    public double getMonto() {
+    public String getMonto() {
         return monto;
     }
 
-    public void setMonto(double monto) {
+    public void setMonto(String monto) {
         this.monto = monto;
     }
 
     public Date getFecha() {
         return fecha;
+    }
+
+    public String getMetodoPago() {
+        return estrategiaPago.getClass().getSimpleName();
     }
 }

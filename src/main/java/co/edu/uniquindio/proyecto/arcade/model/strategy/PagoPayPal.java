@@ -8,7 +8,7 @@ public class PagoPayPal implements PagoStrategy {
     }
 
     @Override
-    public void pagar(double monto) {
+    public void pagar(String monto) {
         System.out.println("Pagando " + monto + " usando PayPal con cuenta " + email);
         // Lógica de pago con PayPal
     }

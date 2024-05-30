@@ -7,10 +7,7 @@ import java.util.Arrays;
 import java.util.Date;
 import java.util.ResourceBundle;
 
-import co.edu.uniquindio.proyecto.arcade.controller.ProductoController;
-import co.edu.uniquindio.proyecto.arcade.controller.ServicioController;
-import co.edu.uniquindio.proyecto.arcade.controller.UsuarioController;
-import co.edu.uniquindio.proyecto.arcade.controller.ReservaController;
+import co.edu.uniquindio.proyecto.arcade.controller.*;
 import co.edu.uniquindio.proyecto.arcade.model.*;
 import co.edu.uniquindio.proyecto.arcade.model.enumeradores.Modalidad;
 import javafx.beans.property.SimpleStringProperty;
@@ -24,6 +21,9 @@ public class AdministradorViewController {
     ServicioController servicioController = ServicioController.getInstance();
     ProductoController productoController = ProductoController.getInstance();
     ReservaController reservaController = ReservaController.getInstance();
+
+    PagoController pagoController = PagoController.getInstance();
+
 
     @FXML
     private ResourceBundle resources;
@@ -335,14 +335,17 @@ public class AdministradorViewController {
         tbvGestionServicio.getItems().clear();
         tbvGestionReserva.getItems().clear();
         tbvGestionProducto.getItems().clear();
+        tbvPagos.getItems().clear();
         tbvGestionUsuario.setItems(usuarioController.getListaUsuarioObservable());
         tbvGestionServicio.setItems(servicioController.getListaServicioObservable());
         tbvGestionReserva.setItems(reservaController.getListaReservaObservable());
         tbvGestionProducto.setItems(productoController.getListaProductoObservable());
+        tbvPagos.setItems(pagoController.getListaPagosObservable());
         listenerSelectionUsuario();
         listenerSelectionServicio();
         listenerSelectionReserva();
         listenerSelectionProducto();
+
 
     }
 
@@ -370,6 +373,11 @@ public class AdministradorViewController {
         tbcNombreProducto.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getNombre()));
         tbcCantidadProducto.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getCantidadDisponible()));
         tbcPrecio.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getPrecio()));
+
+        // Lista de pagos
+        tbcMetodoPago.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getMetodoPago()));
+        tbcMontoPago.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getMonto()));
+        tbcFechaPago.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getFecha().toString()));
     }
 
     private void listenerSelectionUsuario() {
@@ -438,5 +446,20 @@ public class AdministradorViewController {
         }
     }
 
-
+//    //Pago
+//    private void listenerSelectionPago() {
+//        tbvGestionProducto.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
+//            this.mostrarInformacionPago((Pago) newSelection);
+//        });
+//    }
+//
+//
+//
+//    private void mostrarInformacionPago(Pago seleccionado) {
+//        if (seleccionado != null) {
+//            txtProducto.setText(seleccionado.getMetodoPago());
+//            txtCantidad.setText(seleccionado.getMonto());
+//            txtPrecio.setText(seleccionado.getFecha().toString());
+//        }
+//    }
 }

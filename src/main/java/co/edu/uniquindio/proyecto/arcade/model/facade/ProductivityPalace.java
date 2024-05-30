@@ -8,6 +8,7 @@ import co.edu.uniquindio.proyecto.arcade.model.builder.UsuarioBuilder;
 import co.edu.uniquindio.proyecto.arcade.model.enumeradores.TipoUsuario;
 import co.edu.uniquindio.proyecto.arcade.model.proxy.UsuarioProxy;
 
+
 import java.util.ArrayList;
 
 public class ProductivityPalace {
@@ -19,6 +20,7 @@ public class ProductivityPalace {
     private final ArrayList<Reserva> listaReserva;
     private final Usuario administrador;
     private final UsuarioProxy usuarioTemporal;
+    private final ArrayList<Pago> listaPagos;
 
     public ProductivityPalace() {
         this.listaCliente = new ArrayList<>();
@@ -27,6 +29,7 @@ public class ProductivityPalace {
         this.usuarioTemporal = new UsuarioProxy();
         this.listaProducto = new ArrayList<>();
         this.listaServicio = new ArrayList<>();
+        this.listaPagos = new ArrayList<>();
 
         this.administrador = new UsuarioBuilder()
                 .nombre("Productivty Palace")
@@ -153,6 +156,14 @@ public class ProductivityPalace {
 
     public ArrayList<Usuario> getListaCliente() {
         return listaCliente;
+    }
+
+    public void addPago(Pago pago) {
+        this.listaPagos.add(pago);
+    }
+
+    public ArrayList<Pago> getListaPago() {
+        return listaPagos;
     }
 }
 

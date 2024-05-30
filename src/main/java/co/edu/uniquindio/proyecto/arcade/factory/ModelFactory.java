@@ -1,13 +1,14 @@
 package co.edu.uniquindio.proyecto.arcade.factory;
 
-import co.edu.uniquindio.proyecto.arcade.model.Reserva;
+import co.edu.uniquindio.proyecto.arcade.model.*;
 import co.edu.uniquindio.proyecto.arcade.model.command.RegistrarClienteCommand;
 import co.edu.uniquindio.proyecto.arcade.model.command.RegistrarEmpleadoCommand;
 import co.edu.uniquindio.proyecto.arcade.model.enumeradores.Modalidad;
 import co.edu.uniquindio.proyecto.arcade.model.facade.ProductivityPalace;
-import co.edu.uniquindio.proyecto.arcade.model.Producto;
-import co.edu.uniquindio.proyecto.arcade.model.Servicio;
-import co.edu.uniquindio.proyecto.arcade.model.Usuario;
+import co.edu.uniquindio.proyecto.arcade.model.strategy.PagoEfectivo;
+import co.edu.uniquindio.proyecto.arcade.model.strategy.PagoPayPal;
+import co.edu.uniquindio.proyecto.arcade.model.strategy.PagoStrategy;
+import co.edu.uniquindio.proyecto.arcade.model.strategy.PagoTarjeta;
 
 import java.util.Calendar;
 import java.util.Date;
@@ -20,6 +21,7 @@ public class ModelFactory {
         agregarProductos(arcade);
         agregarServicios(arcade);
         crearReservas(arcade);
+        crearPagos(arcade);
     }
 
     private static void registrarUsuarios(ProductivityPalace arcade) {
@@ -98,6 +100,26 @@ public class ModelFactory {
         arcade.addReserva(reserva3);
         arcade.addReserva(reserva4);
         arcade.addReserva(reserva5);
+    }
+
+    private static void crearPagos(ProductivityPalace arcade) {
+        PagoStrategy estrategiaPago1 = new PagoEfectivo();
+        PagoStrategy estrategiaPago2 = new PagoPayPal("juan.perez@example.com");
+        PagoStrategy estrategiaPago3 = new PagoTarjeta("142054211510L");
+        PagoStrategy estrategiaPago4 = new PagoEfectivo();
+        PagoStrategy estrategiaPago5 = new PagoTarjeta("142064211510L");
+
+        Pago pago1 = new Pago(estrategiaPago1, "150.00");
+        Pago pago2 = new Pago(estrategiaPago2, "250.00");
+        Pago pago3 = new Pago(estrategiaPago3, "350.00");
+        Pago pago4 = new Pago(estrategiaPago4, "450.00");
+        Pago pago5 = new Pago(estrategiaPago5, "550.00");
+
+        arcade.addPago(pago1);
+        arcade.addPago(pago2);
+        arcade.addPago(pago3);
+        arcade.addPago(pago4);
+        arcade.addPago(pago5);
     }
 
 }
