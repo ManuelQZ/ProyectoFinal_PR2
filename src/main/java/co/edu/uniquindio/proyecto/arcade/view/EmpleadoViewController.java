@@ -31,7 +31,7 @@ public class EmpleadoViewController {
     private URL location;
 
     @FXML
-    private ComboBox<Pago> boxMetodoPago;
+    private ComboBox<String> boxMetodoPago;
 
     @FXML
     private ComboBox<String> boxServicio;
@@ -40,10 +40,16 @@ public class EmpleadoViewController {
     private DatePicker dateFechaReserva;
 
     @FXML
+    private TableColumn<Producto, String> tbcCantidadProductos;
+
+    @FXML
     private TableColumn<Usuario, String> tbcClaveCliente;
 
     @FXML
     private TableColumn<Usuario, String> tbcCorreoCliente;
+
+    @FXML
+    private TableView<Usuario> tbcCorreoElectronico;
 
     @FXML
     private TableColumn<Reserva, String> tbcCostoReserva;
@@ -58,10 +64,19 @@ public class EmpleadoViewController {
     private TableColumn<Usuario, String> tbcNombreCliente;
 
     @FXML
+    private TableColumn<Producto, String> tbcNombreProducto;
+
+    @FXML
+    private TableColumn<Producto, String> tbcPrecioProducto;
+
+    @FXML
     private TableColumn<Usuario, String> tbcSaldoCliente;
 
     @FXML
     private TableColumn<Reserva, String> tbcServicioReserva;
+
+    @FXML
+    private TableView<Producto> tbvGestionProductos;
 
     @FXML
     private TableView<Reserva> tbvGestionReserva;
@@ -85,6 +100,9 @@ public class EmpleadoViewController {
     private TextField txtCorreoCliente;
 
     @FXML
+    private TextArea txtDesCorreo;
+
+    @FXML
     private TextField txtId;
 
     @FXML
@@ -100,7 +118,7 @@ public class EmpleadoViewController {
         Servicio servicio = servicioController.consultarServicio(boxServicio.getValue());
 
         if (usuario != null && !servicio.getNombre().isEmpty()) {
-            reservaController.agregarReserva(usuario, fecha, servicio);
+            reservaController.agregarReserva(usuario, fecha, servicio, "No pago");
         }
 
     }
@@ -122,29 +140,14 @@ public class EmpleadoViewController {
     }
 
     @FXML
+    void enviarCorreo(ActionEvent event) {
+
+    }
+
+    @FXML
     void realizarPago(ActionEvent event) {
 
     }
-
-
-    @FXML
-    void updateUsuarios(ActionEvent event) {
-        String cliente = txtNombreCliente.getText();
-        String correo = txtCorreoCliente.getText();
-        String contrasena = txtContrasenaCliente.getText();
-        String saldo = txtSaldoCliente.getText();
-        Usuario usuario = usuarioController.consultarUsuario(correo);
-        if (usuario != null) {
-            if (!cliente.isEmpty() && !correo.isEmpty() && !contrasena.isEmpty() && !saldo.isEmpty()) {
-                usuarioController.actualizarUsuario(cliente, correo, contrasena, saldo);
-            } else {
-                Tools.mostrarMensaje("Error", null, "Los campos están vacíos", Alert.AlertType.ERROR);
-            }
-        } else {
-            Tools.mostrarMensaje("Error", null, "No se puede modificar el tipo de usuario", Alert.AlertType.ERROR);
-        }
-    }
-
 
     @FXML
     void initialize() {

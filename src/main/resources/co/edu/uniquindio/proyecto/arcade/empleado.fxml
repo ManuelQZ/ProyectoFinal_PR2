@@ -4,10 +4,12 @@
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
@@ -19,10 +21,9 @@
                <content>
                   <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="371.0" prefWidth="600.0">
                      <children>
-                        <TextField fx:id="txtNombreCliente" alignment="CENTER" layoutX="407.0" layoutY="42.0" promptText="Nombre" />
-                        <TextField fx:id="txtContrasenaCliente" alignment="CENTER" layoutX="407.0" layoutY="145.0" promptText="Contraseña" />
-                        <TextField fx:id="txtCorreoCliente" alignment="CENTER" layoutX="407.0" layoutY="92.0" promptText="Correo" />
-                        <Button layoutX="436.0" layoutY="291.0" mnemonicParsing="false" onAction="#updateUsuarios" prefWidth="93.0" text="Actualizar" />
+                        <TextField fx:id="txtNombreCliente" alignment="CENTER" layoutX="407.0" layoutY="63.0" promptText="Nombre" />
+                        <TextField fx:id="txtContrasenaCliente" alignment="CENTER" layoutX="407.0" layoutY="166.0" promptText="Contraseña" />
+                        <TextField fx:id="txtCorreoCliente" alignment="CENTER" layoutX="407.0" layoutY="113.0" promptText="Correo" />
                         <TableView fx:id="tbvGestionUsuarios" layoutX="14.0" layoutY="24.0" prefHeight="311.0" prefWidth="362.0">
                            <columns>
                               <TableColumn fx:id="tbcNombreCliente" text="Nombre" />
@@ -31,8 +32,8 @@
                               <TableColumn fx:id="tbcSaldoCliente" prefWidth="99.0" text="Saldo" />
                            </columns>
                         </TableView>
-                        <Button layoutX="436.0" layoutY="249.0" mnemonicParsing="false" onAction="#addUsuarios" prefWidth="93.0" text="Agregar" />
-                        <TextField fx:id="txtSaldoCliente" alignment="CENTER" layoutX="407.0" layoutY="197.0" promptText="Saldo" />
+                        <Button layoutX="436.0" layoutY="271.0" mnemonicParsing="false" onAction="#addUsuarios" prefWidth="93.0" text="Agregar" />
+                        <TextField fx:id="txtSaldoCliente" alignment="CENTER" layoutX="407.0" layoutY="218.0" promptText="Saldo" />
                      </children>
                   </AnchorPane>
                </content>
@@ -49,7 +50,7 @@
                               <TableColumn fx:id="tbcCostoReserva" prefWidth="92.0" text="costo" />
                            </columns>
                         </TableView>
-                        <Button layoutX="432.0" layoutY="277.0" mnemonicParsing="false" onAction="#addReserva" prefWidth="93.0" text="crear" />
+                        <Button layoutX="432.0" layoutY="242.0" mnemonicParsing="false" onAction="#addReserva" prefWidth="93.0" text="crear" />
                         <TextField fx:id="txtCliente" alignment="CENTER" layoutX="396.0" layoutY="66.0" promptText="Cliente" />
                         <DatePicker fx:id="dateFechaReserva" layoutX="396.0" layoutY="142.0" prefHeight="26.0" prefWidth="161.0" />
                         <ComboBox fx:id="boxServicio" layoutX="395.0" layoutY="104.0" prefHeight="26.0" prefWidth="162.0" promptText="Servicio" />
@@ -59,15 +60,47 @@
                   </AnchorPane>
                </content>
             </Tab>
-            <Tab text="pago">
+            <Tab text="Productos">
+               <content>
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="371.0" prefWidth="600.0">
+                     <children>
+                        <TableView fx:id="tbvGestionProductos" layoutX="32.0" layoutY="39.0" prefHeight="295.0" prefWidth="544.0">
+                          <columns>
+                            <TableColumn fx:id="tbcNombreProducto" prefWidth="150.0" text="Nombre" />
+                            <TableColumn fx:id="tbcPrecioProducto" prefWidth="171.0" text="Precio" />
+                              <TableColumn fx:id="tbcCantidadProductos" prefWidth="222.0" text="Cantidad Disponible" />
+                          </columns>
+                        </TableView>
+                     </children>
+                  </AnchorPane>
+               </content>
+            </Tab>
+            <Tab text="Pago">
                <content>
                   <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="371.0" prefWidth="600.0">
                      <children>
                         <Button layoutX="255.0" layoutY="285.0" mnemonicParsing="false" onAction="#realizarPago" prefWidth="93.0" text="Pagar" />
-                        <TextField fx:id="txtId" alignment="CENTER" layoutX="220.0" layoutY="80.0" promptText="Reserva" />
-                        <Label layoutX="228.0" layoutY="185.0" text="El monto a pagar es de: " />
-                        <Label fx:id="textMonto" layoutX="286.0" layoutY="211.0" text="\$0" />
-                        <ComboBox fx:id="boxMetodoPago" layoutX="221.0" layoutY="122.0" prefHeight="26.0" prefWidth="160.0" promptText="metodo de pago" />
+                        <TextField fx:id="txtId" alignment="CENTER" layoutX="220.0" layoutY="52.0" promptText="Reserva" />
+                        <Label layoutX="215.0" layoutY="154.0" text="El monto a pagar es de: " />
+                        <Label fx:id="textMonto" layoutX="292.0" layoutY="184.0" text="\$0" />
+                        <ComboBox fx:id="boxMetodoPago" layoutX="221.0" layoutY="94.0" prefHeight="26.0" prefWidth="160.0" promptText="metodo de pago" />
+                        <RadioButton layoutX="161.0" layoutY="229.0" mnemonicParsing="false" text="Pagar un producto" />
+                        <RadioButton layoutX="344.0" layoutY="229.0" mnemonicParsing="false" text="Pagar un servicio" />
+                     </children>
+                  </AnchorPane>
+               </content>
+            </Tab>
+            <Tab text="Correos">
+               <content>
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="371.0" prefWidth="600.0">
+                     <children>
+                        <TextArea fx:id="txtDesCorreo" layoutX="21.0" layoutY="28.0" prefHeight="309.0" prefWidth="329.0" promptText="Agrega una descripción" />
+                        <TableView fx:id="tbcCorreoElectronico" layoutX="372.0" layoutY="28.0" prefHeight="238.0" prefWidth="200.0">
+                          <columns>
+                            <TableColumn prefWidth="199.0" text="Correo electronico" />
+                          </columns>
+                        </TableView>
+                        <Button layoutX="441.0" layoutY="294.0" mnemonicParsing="false" onAction="#enviarCorreo" prefHeight="26.0" prefWidth="62.0" text="Enviar" />
                      </children>
                   </AnchorPane>
                </content>

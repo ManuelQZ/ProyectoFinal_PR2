@@ -11,10 +11,7 @@ import co.edu.uniquindio.proyecto.arcade.controller.ProductoController;
 import co.edu.uniquindio.proyecto.arcade.controller.ServicioController;
 import co.edu.uniquindio.proyecto.arcade.controller.UsuarioController;
 import co.edu.uniquindio.proyecto.arcade.controller.ReservaController;
-import co.edu.uniquindio.proyecto.arcade.model.Producto;
-import co.edu.uniquindio.proyecto.arcade.model.Reserva;
-import co.edu.uniquindio.proyecto.arcade.model.Servicio;
-import co.edu.uniquindio.proyecto.arcade.model.Usuario;
+import co.edu.uniquindio.proyecto.arcade.model.*;
 import co.edu.uniquindio.proyecto.arcade.model.enumeradores.Modalidad;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.event.ActionEvent;
@@ -81,6 +78,18 @@ public class AdministradorViewController {
 
     @FXML
     private TableColumn<Servicio, String> tbcDisponibilidadReserva;
+
+    @FXML
+    private TableView<Pago> tbvPagos;
+
+    @FXML
+    private TableColumn<Pago, String> tbcMontoPago;
+
+    @FXML
+    private TableColumn<Pago, String> tbcMetodoPago;
+
+    @FXML
+    private TableColumn<Pago, String> tbcFechaPago;
 
     @FXML
     private TextField txtUsuarioReserva;
@@ -163,7 +172,7 @@ public class AdministradorViewController {
         String correo = txtCorreo.getText();
         String contrasena = txtContrasena.getText();
         String tipoUsuario = txtTIpoUsuario.getText();
-        
+
         if(!nombre.isEmpty() && !correo.isEmpty() && !contrasena.isEmpty()) {
 
             String msj = usuarioController.crearUsuario(nombre, correo, contrasena, tipoUsuario);
