@@ -1,6 +1,7 @@
 package co.edu.uniquindio.proyecto.arcade.controller;
 
 import co.edu.uniquindio.proyecto.arcade.factory.Mediator;
+import co.edu.uniquindio.proyecto.arcade.model.Reserva;
 import co.edu.uniquindio.proyecto.arcade.model.Servicio;
 import co.edu.uniquindio.proyecto.arcade.model.enumeradores.Modalidad;
 import co.edu.uniquindio.proyecto.arcade.model.facade.ProductivityPalace;
@@ -37,24 +38,36 @@ public class ServicioController {
 
     public void eliminarServicio(String nombre){
         ArrayList<Servicio> servicios = mediator.getArcade().getListaServicio();
-        for (int i = 0; i < servicios.size(); i++){
-            if (Objects.equals(servicios.get(i).getNombre(), nombre)){
-                servicios.remove(servicios.get(i));
-                this.listaServicioObservable.remove(servicios.get(i));
-            }
+        Servicio servicioEliminable = this.consultarServicio(nombre);
+        int eliminable;
+        if (servicioEliminable != null){
+            eliminable = servicios.indexOf(servicioEliminable);
+            this.listaServicioObservable.remove(eliminable);
+            this.mediator.getArcade().rmServicio(eliminable);
         }
     }
 
     public void actualizarServicio(String nombre, String descripcion, Modalidad modalidad, String precio, String disponibilidadReserva){
         ArrayList<Servicio> servicios = mediator.getArcade().getListaServicio();
+        int actualizable = -1;
+        Servicio servicioTemporal = null;
+
         for (int i = 0; i < servicios.size(); i++){
             if (Objects.equals(servicios.get(i).getNombre(), nombre)){
-                Servicio nuevoServicio = new Servicio(nombre,descripcion, modalidad, precio, disponibilidadReserva);
-                servicios.remove(servicios.get(i));
-                servicios.add(nuevoServicio);
-                this.listaServicioObservable.remove(servicios.get(i));
-                this.listaServicioObservable.add(nuevoServicio);
+                servicioTemporal = servicios.get(i);
+                servicioTemporal.setDescripcion(descripcion);
+                servicioTemporal.setModalidad(modalidad);
+                servicioTemporal.setPrecio(precio);
+                servicioTemporal.setDisponibilidadReserva(disponibilidadReserva);
+                actualizable = i;
             }
+        }
+
+        if (actualizable != -1){
+            this.listaServicioObservable.remove(actualizable);
+            this.mediator.getArcade().rmServicio(actualizable);
+            this.mediator.getArcade().addServicio(servicioTemporal);
+            this.listaServicioObservable.add(servicioTemporal);
         }
     }
 
