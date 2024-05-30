@@ -292,17 +292,43 @@ public class AdministradorViewController {
 
     @FXML
     void addServicio(ActionEvent event) {
+        String nombre = txtServicio.getText();
+        String descripcion = txtDescripcion.getText();
+        String disponibilidad = txtDisponibilidadServicio.getText();
+        Modalidad modalidad = Modalidad.getModalidad(comboModalidad.getValue());
+        String precio = txtPrecioServicio.getText();
 
+        if (!nombre.isEmpty() && !descripcion.isEmpty() && !disponibilidad.isEmpty() && !precio.isEmpty() && modalidad != null) {
+
+            servicioController.crearServicio(nombre, descripcion, modalidad, precio, disponibilidad);
+            }
     }
 
     @FXML
     void updateServicio(ActionEvent event) {
+        String nombre = txtServicio.getText();
+        String descripcion = txtDescripcion.getText();
+        String disponibilidad = txtDisponibilidadServicio.getText();
+        String precio = txtPrecioServicio.getText();
+        Modalidad modalidad = Modalidad.getModalidad(comboModalidad.getValue());
 
+        if(!nombre.isEmpty() && !descripcion.isEmpty() && !disponibilidad.isEmpty() && !precio.isEmpty() && modalidad != null){
+            servicioController.actualizarServicio(nombre, descripcion, modalidad, precio, disponibilidad);
+        }else{
+                Tools.mostrarMensaje("Error", null, "El campo estado está vacío", Alert.AlertType.ERROR);
+        }
     }
 
     @FXML
     void removeServicio(ActionEvent event) {
+        String nombre = txtServicio.getText();
 
+        if (!nombre.isEmpty()) {
+            servicioController.eliminarServicio(nombre);
+            Tools.mostrarMensaje("Informacion", null, "Servicio eliminado exitosamente", Alert.AlertType.INFORMATION );
+        } else {
+            Tools.mostrarMensaje("Error", null, "No se selecciono un servicio eliminable", Alert.AlertType.ERROR);
+        }
     }
 
     @FXML
@@ -423,6 +449,7 @@ public class AdministradorViewController {
     private void mostrarInformacionServicio(Servicio seleccionado) {
         if (seleccionado != null) {
             txtServicio.setText(seleccionado.getNombre());
+            txtServicio.setDisable(true);
             txtDescripcion.setText(seleccionado.getDescripcion());
             comboModalidad.setValue(seleccionado.getModalidad().toString());
             txtPrecioServicio.setText(seleccionado.getPrecio());

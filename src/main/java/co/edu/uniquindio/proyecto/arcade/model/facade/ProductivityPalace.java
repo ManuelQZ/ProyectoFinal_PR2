@@ -165,5 +165,10 @@ public class ProductivityPalace {
     public ArrayList<Pago> getListaPago() {
         return listaPagos;
     }
+
+
+    public void rmServicio(int actualizable) {
+        this.listaServicio.remove(actualizable);
+    }
 }
 
