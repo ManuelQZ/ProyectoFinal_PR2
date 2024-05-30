@@ -66,6 +66,7 @@ public class ProductivityPalace {
 
     }
 
+
     public void rmUsuario(int index){
         this.listaUsuario.remove(index);
     }
@@ -141,6 +142,10 @@ public class ProductivityPalace {
         if (usuario!= null) {
             usuario.realizarPago(tipoDePago, monto, fecha, nombresProductos, descuento);
         }
+    }
+
+    public ArrayList<Usuario> getListaCliente() {
+        return listaCliente;
     }
 }
 

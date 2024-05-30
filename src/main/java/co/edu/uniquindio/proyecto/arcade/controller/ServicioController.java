@@ -1,9 +1,9 @@
 package co.edu.uniquindio.proyecto.arcade.controller;
 
 import co.edu.uniquindio.proyecto.arcade.factory.Mediator;
-import co.edu.uniquindio.proyecto.arcade.model.Producto;
 import co.edu.uniquindio.proyecto.arcade.model.Servicio;
 import co.edu.uniquindio.proyecto.arcade.model.enumeradores.Modalidad;
+import co.edu.uniquindio.proyecto.arcade.model.facade.ProductivityPalace;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
@@ -76,6 +76,16 @@ public class ServicioController {
         for (Servicio value : servicios) {
             if (value.getNombre().equals(nombre)){
                 return value;
+            }
+        }
+        return null;
+    }
+
+    public Servicio obtenerServicio(String nombre) {
+        ArrayList<Servicio> listaServicio = this.mediator.getArcade().getListaServicio();
+        for (Servicio servicio : listaServicio) {
+            if (servicio.getNombre().equals(nombre)) {
+                return servicio;
             }
         }
         return null;

@@ -220,7 +220,7 @@ public class AdministradorViewController {
     @FXML
     void removeReserva(ActionEvent event) {
         
-        reservaController.eliminarReserva();
+//        reservaController.eliminarReserva();
     }
 
     @FXML

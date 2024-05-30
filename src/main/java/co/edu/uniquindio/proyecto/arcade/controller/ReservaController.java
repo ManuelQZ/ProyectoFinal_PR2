@@ -40,7 +40,7 @@ public class ReservaController {
         this.listaReservaObservable.add(reserva);
     }
 
-    public  Reserva consultarReserva(String id, String clave) {
+    public  Reserva consultarReserva(String id) {
         ArrayList<Reserva> reservas = mediator.getArcade().getListaReserva();
         for (Reserva value : reservas) {
             if (value.getId().equals(id)){

@@ -2,10 +2,13 @@ package co.edu.uniquindio.proyecto.arcade.view;
 
 import java.net.URL;
 import java.time.LocalDate;
+import java.time.ZoneId;
 import java.util.Arrays;
+import java.util.Date;
 import java.util.ResourceBundle;
 
 import co.edu.uniquindio.proyecto.arcade.controller.ReservaController;
+import co.edu.uniquindio.proyecto.arcade.controller.ServicioController;
 import co.edu.uniquindio.proyecto.arcade.controller.UsuarioController;
 
 import co.edu.uniquindio.proyecto.arcade.model.*;
@@ -13,12 +16,7 @@ import co.edu.uniquindio.proyecto.arcade.model.enumeradores.Modalidad;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.DatePicker;
-import javafx.scene.control.Label;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 
 public class EmpleadoViewController {
 
@@ -96,11 +94,27 @@ public class EmpleadoViewController {
 
     @FXML
     void addReserva(ActionEvent event) {
+        Usuario usuario = usuarioController.consultarUsuario(txtCliente.getText());
+        Date fecha = Date.from(dateFechaReserva.getValue().atStartOfDay(ZoneId.systemDefault()).toInstant());
+        Servicio servicio = reservaController.consultarReserva(boxServicio.getValue()).getServicio();
+        String estado = boxMetodoPago.getValue().toString();
 
     }
 
     @FXML
     void addUsuarios(ActionEvent event) {
+        String nombre = txtNombreCliente.getText();
+        String correo = txtCorreoCliente.getText();
+        String contrasena = txtContrasenaCliente.getText();
+        String saldo = txtSaldoCliente.getText();
+
+        if(!nombre.isEmpty() && !correo.isEmpty() && !contrasena.isEmpty() && !saldo.isEmpty()) {
+
+            String msj = usuarioController.crearUsuario(nombre, correo, contrasena, saldo);
+            Tools.mostrarMensaje("Informacion", null, msj, Alert.AlertType.INFORMATION );
+        } else {
+            Tools.mostrarMensaje("Error", null, "Los campos están vacíos", Alert.AlertType.ERROR);
+        }
 
     }
 
@@ -109,14 +123,19 @@ public class EmpleadoViewController {
 
     }
 
-    @FXML
-    void removeUsuarios(ActionEvent event) {
-
-    }
 
     @FXML
     void updateUsuarios(ActionEvent event) {
+        String nombre = txtNombreCliente.getText();
+        String correo = txtCorreoCliente.getText();
+        String contrasena = txtContrasenaCliente.getText();
+        String saldo = txtSaldoCliente.getText();
 
+        if(!nombre.isEmpty() && !correo.isEmpty() && !contrasena.isEmpty() && !saldo.isEmpty()) {
+            usuarioController.actualizarUsuario(nombre, correo, contrasena);
+        } else {
+            Tools.mostrarMensaje("Error", null, "Los campos están vacíos", Alert.AlertType.ERROR);
+        }
     }
 
     @FXML
