@@ -11,6 +11,7 @@
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleGroup?>
 <?import javafx.scene.layout.AnchorPane?>
 
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uniquindio.proyecto.arcade.view.EmpleadoViewController">
@@ -80,12 +81,15 @@
                   <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="371.0" prefWidth="600.0">
                      <children>
                         <Button layoutX="255.0" layoutY="285.0" mnemonicParsing="false" onAction="#realizarPago" prefWidth="93.0" text="Pagar" />
-                        <TextField fx:id="txtId" alignment="CENTER" layoutX="220.0" layoutY="52.0" promptText="Reserva" />
-                        <Label layoutX="215.0" layoutY="154.0" text="El monto a pagar es de: " />
-                        <Label fx:id="textMonto" layoutX="292.0" layoutY="184.0" text="\$0" />
-                        <ComboBox fx:id="boxMetodoPago" layoutX="221.0" layoutY="94.0" prefHeight="26.0" prefWidth="160.0" promptText="metodo de pago" />
-                        <RadioButton layoutX="161.0" layoutY="229.0" mnemonicParsing="false" text="Pagar un producto" />
-                        <RadioButton layoutX="344.0" layoutY="229.0" mnemonicParsing="false" text="Pagar un servicio" />
+                        <TextField fx:id="txtId" alignment="CENTER" layoutX="222.0" layoutY="111.0" promptText="Reserva o producto" />
+                        <Label layoutX="217.0" layoutY="213.0" text="El monto a pagar es de: " />
+                        <Label fx:id="textMonto" layoutX="294.0" layoutY="243.0" text="\$0" />
+                        <ComboBox fx:id="boxMetodoPago" layoutX="223.0" layoutY="153.0" prefHeight="26.0" prefWidth="160.0" promptText="metodo de pago" />
+                        <RadioButton layoutX="155.0" layoutY="61.0" mnemonicParsing="false" text="Pagar un producto">
+                           <toggleGroup>
+                              <ToggleGroup fx:id="objetoDePago" />
+                           </toggleGroup></RadioButton>
+                        <RadioButton layoutX="338.0" layoutY="61.0" mnemonicParsing="false" text="Pagar un servicio" toggleGroup="$objetoDePago" />
                      </children>
                   </AnchorPane>
                </content>
@@ -95,12 +99,14 @@
                   <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="371.0" prefWidth="600.0">
                      <children>
                         <TextArea fx:id="txtDesCorreo" layoutX="21.0" layoutY="28.0" prefHeight="309.0" prefWidth="329.0" promptText="Agrega una descripción" />
-                        <TableView fx:id="tbcCorreoElectronico" layoutX="372.0" layoutY="28.0" prefHeight="238.0" prefWidth="200.0">
+                        <TableView fx:id="tbvCorreoElectronico" layoutX="372.0" layoutY="28.0" prefHeight="238.0" prefWidth="200.0">
                           <columns>
-                            <TableColumn prefWidth="199.0" text="Correo electronico" />
+                            <TableColumn fx:id="tbcCorreoElectronico" prefWidth="199.0" text="Correo electronico" />
                           </columns>
                         </TableView>
                         <Button layoutX="441.0" layoutY="294.0" mnemonicParsing="false" onAction="#enviarCorreo" prefHeight="26.0" prefWidth="62.0" text="Enviar" />
+                        <TextField fx:id="txtCorreoInvisible" disable="true" editable="false" layoutX="398.0" layoutY="337.0" visible="false" />
+                        <TextField fx:id="txtCorreoInvisible" layoutX="398.0" layoutY="325.0" opacity="0.0" />
                      </children>
                   </AnchorPane>
                </content>

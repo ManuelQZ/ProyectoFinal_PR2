@@ -63,13 +63,15 @@ public class UsuarioController {
     }
 
     public String crearUsuarioCliente(String nombre, String correo, String clave, String saldo) {
-        ArrayList<Usuario> usuarios = mediator.getArcade().getListaUsuario();
+        ArrayList<Usuario> usuarios = mediator.getArcade().getListaCliente();
         for (Usuario usuario : usuarios) {
             if (Objects.equals(usuario.getCorreo(), correo)) {
                 return "El correo ingresado ya se encuentra en uso";
             }
         }
             new RegistrarClienteCommand(mediator.getArcade(), nombre, correo, clave, saldo);
+            listaUsuarioClienteObservable.clear();
+            this.sincronizarData();
             return "Cliente registrado exitosamente";
     }
 
@@ -144,15 +146,15 @@ public class UsuarioController {
         return listaUsuarioObservable;
     }
 
-
+    public ObservableList<Usuario> getListaUsuarioClienteObservable() {
+        return listaUsuarioClienteObservable;
+    }
 
     public void sincronizarData() {
         this.listaUsuarioObservable.addAll(this.mediator.getArcade().getListaUsuario());
         this.listaUsuarioClienteObservable.addAll(this.mediator.getArcade().getListaCliente());
     }
 
-    public ObservableList<Usuario> getListaUsuarioClienteObservable() {
-        return listaUsuarioClienteObservable;
-    }
+
 
 }
