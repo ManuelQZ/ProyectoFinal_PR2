@@ -155,6 +155,45 @@ public class AdministradorViewController {
     private TableColumn<Reserva, String> tbcEstado;
 
     @FXML
+    void limpiarCampos(ActionEvent event) {
+        txtCantidad.setText("");
+        txtPrecio.setText("");
+        txtServicio.setText("");
+        txtUsuario.setText("");
+        txtCorreo.setText("");
+        txtContrasena.setText("");
+        txtTIpoUsuario.setText("");
+        txtProducto.setText("");
+        txtPrecioServicio.setText("");
+        txtDisponibilidadServicio.setText("");
+        txtUsuarioReserva.setText("");
+        txtEstadoReserva.setText("");
+        txtDescripcion.setText("");
+
+        txtId.setDisable(false);
+        txtCorreo.setDisable(false);
+        txtContrasena.setDisable(false);
+        txtTIpoUsuario.setDisable(false);
+        txtProducto.setDisable(false);
+        txtPrecioServicio.setDisable(false);
+        txtDisponibilidadServicio.setDisable(false);
+        txtUsuarioReserva.setDisable(false);
+        txtCantidad.setDisable(false);
+        txtPrecio.setDisable(false);
+        txtServicio.setDisable(false);
+        txtUsuario.setDisable(false);
+        txtCorreo.setDisable(false);
+        txtContrasena.setDisable(false);
+        txtTIpoUsuario.setDisable(false);
+        txtProducto.setDisable(false);
+        txtPrecioServicio.setDisable(false);
+        txtDisponibilidadServicio.setDisable(false);
+        txtUsuarioReserva.setDisable(false);
+        txtEstadoReserva.setDisable(false);
+        txtDescripcion.setDisable(false);
+    }
+
+    @FXML
     void removeUsuario(ActionEvent event) {
         String correo = txtCorreo.getText();
 
